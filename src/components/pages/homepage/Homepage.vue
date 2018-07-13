@@ -58,7 +58,7 @@ export default {
     background-color: grey;
   }
 
-  .popup-wrapper {
+  .wrapper__popup {
     grid-area: add_show;
   }
 }
