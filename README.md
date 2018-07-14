@@ -21,7 +21,7 @@ I like to keep track of my favorite tv shows on a text file, so i decided to bui
 
 ```bash
 # install dependencies
-npm install
+npm run install-all
 
 # run your MongoDB server
 
@@ -29,5 +29,5 @@ npm install
 npm run seed-data
 
 # serve with hot reload at localhost:8080 and localhost:3000
-npm run dev-client or npm run dev-server
+npm run all
 ```
