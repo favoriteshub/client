@@ -1,7 +1,10 @@
 <template>
-  <div class="show-wrapper">
-    <img :src="show.poster" width="170" height="250" :alt="`${show.title} poster`" @click="deleteShow">
-    <div class="show-wrapper__information">
+  <div class="show">
+    <div class="show__poster">
+      <img :src="show.poster" width="170" height="250" :alt="`${show.title} poster`" @click="deleteShow">
+      <i class="show--edit" @click="editShow" />
+    </div>
+    <div class="show__information">
       <label>Title</label>
       <p>{{show.title}}</p>
       <label>Status</label>
@@ -49,14 +52,39 @@ export default {
     },
     resetDeleteCounter: function() {
       this.deleteCounter = {times: 0, time: null};
+    },
+    editShow: function() {
+      console.log(this.show.title);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.show-wrapper {
+.show {
   display: flex;
+
+  &__poster {
+    position: relative;
+  }
+
+  &--edit {
+    @include icon($icon-edit);
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 2.4rem;
+    padding: 5px;
+    background-color: white;
+    border-radius: 3px;
+    opacity: 0;
+    transition: all 0.75s ease;
+
+    &:hover {
+      opacity: 1;
+      transition: all 0.75s ease;
+    }
+  }
 
   &__information {
     margin-left: 10px;
