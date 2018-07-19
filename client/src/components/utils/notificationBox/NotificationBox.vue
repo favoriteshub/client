@@ -23,13 +23,11 @@ export default {
 
 <style lang="scss">
 .notification-box {
+  @include flex-center();
   border: 2px solid #e5e5e5;
   border-radius: 3px;
   height: 50px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   &.primary {
     border-color: $color-primary;

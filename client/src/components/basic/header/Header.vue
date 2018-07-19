@@ -30,15 +30,14 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: $measure-height-header;
   background-color: $color-grey-main;
   display: flex;
   align-items: center;
+	z-index: 100;
 
   .menu {
     @include icon($icon-menu-open);
-    padding-left: $measure-padding-general;
+    padding-left: 2.5%;
     font-size: 2rem;
 
     &.close:after {

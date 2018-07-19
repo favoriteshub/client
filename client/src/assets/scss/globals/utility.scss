@@ -1,0 +1,4 @@
+.overlay {
+  @include absolute-100();
+  background-color: $color-overlay;
+}

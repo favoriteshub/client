@@ -4,7 +4,7 @@
     <slot name="trigger"></slot>
   </div>
   <div v-if="open" class="popup">
-    <div class="popup__overlay" @click="trigger"></div>
+    <div class="overlay" @click="trigger"></div>
     <div class="popup__content">
       <slot name="content" :closePopup="trigger"></slot>
     </div>
@@ -40,21 +40,11 @@ export default {
 
 <style lang="scss" scoped>
 .popup {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center();
+  @include absolute-100();
 
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  .overlay {
+    @include absolute-100();
     background-color: $color-overlay;
     display: none;
 
@@ -81,17 +71,15 @@ export default {
   }
 
   &__content {
+    @include flex-center();
     width: 100%;
     height: 100%;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     @include media($breakpoint-medium) {
       width: 75%;
       height: 75%;
-      z-index: 2;
+      z-index: 100;
     }
   }
 }

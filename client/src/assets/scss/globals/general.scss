@@ -12,10 +12,16 @@ body {
   font-size: 1.6rem;
 }
 
+header,
+footer {
+  height: 40px;
+  width: 100%;
+}
+
 main {
   height: 100vh;
   width: 100%;
-  padding: calc(#{$measure-height-header} + 20px) $measure-padding-general;
+  padding: 60px 2.5%;
 }
 
 h1 {

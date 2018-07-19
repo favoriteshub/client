@@ -27,12 +27,8 @@ export default {
 
 <style lang="scss" scoped>
 .overlay {
-  position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - #{$measure-height-header});
-  background-color: $color-overlay;
+  height: calc(100vh - 40px);
   transform: translateX(-100%);
   transition: all 0.5s ease;
 
@@ -66,7 +62,7 @@ export default {
           text-decoration: none;
           display: block;
           padding: 15px 0;
-          padding-left: calc(#{$measure-padding-general} * 2);
+          padding-left: 5%;
         }
       }
     }
