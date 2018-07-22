@@ -1,10 +1,11 @@
 <template>
-  <div v-show="visible" class="overlay">
-    <div class="content">
-      <component :is="component.name" v-bind="component.props" />
-    </div>
-    <button type="button" v-on:click="closePopup">close</button>
+<div v-show="visible" class="popup">
+  <div class="overlay" @click="closePopup"></div>
+  <div class="popup__content">
+    <component :is="component.name" v-bind="component.props" />
   </div>
+  <i class="popup--close" @click="closePopup" />
+</div>
 </template>
 
 <script>
@@ -18,37 +19,51 @@ export default {
   }),
   methods: {
     closePopup: function() {
-      this.$store.commit("globalPopup/setVisibility", false);
+      this.$store.commit("globalPopup/close");
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: $color-overlay;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.popup {
+  @include absolute-100();
+  @include flex-center();
+  z-index: 100;
 
-  button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+  .overlay {
+    display: none;
+
+    @include media($breakpoint-medium) {
+      display: block;
+    }
   }
 
-  .content {
-    width: 75%;
-    height: 75%;
+  &--close {
+    @include icon($icon-close);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    font-size: 2.4rem;
+    background-color: $color-grey-main;
+
+    @include media($breakpoint-medium) {
+      display: none;
+    }
+  }
+
+  &__content {
+    @include flex-center();
+    width: 100%;
+    height: 100%;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    @include media($breakpoint-medium) {
+      width: 75%;
+      height: 75%;
+      z-index: 10;
+    }
   }
 }
 </style>

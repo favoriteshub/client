@@ -15,10 +15,11 @@ const actions = {};
 
 // mutations
 const mutations = {
-  setVisibility(state, status) {
-    state.visible = status;
+  close(state) {
+    state.visible = false;
   },
-  setComponent(state, component) {
+  open(state, component) {
+    state.visible = true;
     state.component = component;
   }
 };

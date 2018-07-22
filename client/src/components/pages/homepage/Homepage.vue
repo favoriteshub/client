@@ -5,25 +5,32 @@
 		</div>
 		<div class="add-news">
 		</div>
-		<Popup>
-			<Button slot="trigger" text="add new show" importance="primary" />
-			<AddShow slot="content" slot-scope="{closePopup}" :sumbitAction="closePopup" />
-		</Popup>
+		<Button text="add new show" importance="primary" :action="openAddShowPopup" />
 	</div>
 </template>
 
 <script>
+import {mapMutations} from "vuex";
 import Showcase from "@/components/basic/showcase/Showcase";
 import AddShow from "@/components/basic/addShow/AddShow";
-import Popup from "@/components/utils/popup/Popup";
 import Button from "@/components/utils/button/Button";
 
 export default {
   components: {
     Showcase,
     AddShow,
-    Popup,
     Button
+  },
+  methods: {
+    openAddShowPopup: function() {
+      this.$store.commit("globalPopup/open", {
+        name: AddShow,
+        props: {sumbitAction: this.closeAddShowPopup}
+      });
+    },
+    closeAddShowPopup: function() {
+      this.$store.commit("globalPopup/close");
+    }
   }
 };
 </script>
@@ -58,7 +65,7 @@ export default {
     background-color: grey;
   }
 
-  .wrapper__popup {
+  button {
     grid-area: add_show;
   }
 }
