@@ -10,7 +10,6 @@
 
 <script>
 import {mapState, mapMutations} from "vuex";
-import Button from "@/components/utils/button/Button";
 
 export default {
   computed: mapState({

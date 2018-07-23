@@ -1,6 +1,3 @@
-import * as API from "../utils/api";
-import _ from "lodash";
-
 // initial state
 const state = {
   visible: false,

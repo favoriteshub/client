@@ -1,16 +1,16 @@
 <template>
   <form @submit="submit">
     <slot></slot>
-    <Button type="submit" name="form-submit-button" :text="submitButtonText" importance="primary" />
+    <cButton type="submit" name="form-submit-button" :text="submitButtonText" importance="primary" />
   </form>
 </template>
 
 <script>
-import Button from "@/components/utils/button/Button";
+import cButton from "@/components/utils/button/Button";
 
 export default {
   components: {
-    Button
+    cButton
   },
   props: {
     submit: Function,

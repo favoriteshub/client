@@ -5,7 +5,7 @@
 		</div>
 		<div class="add-news">
 		</div>
-		<Button text="add new show" importance="primary" :action="openAddShowPopup" />
+		<cButton text="add new show" importance="primary" :action="openAddShowPopup" />
 	</div>
 </template>
 
@@ -13,13 +13,13 @@
 import {mapMutations} from "vuex";
 import Showcase from "@/components/basic/showcase/Showcase";
 import AddShow from "@/components/basic/addShow/AddShow";
-import Button from "@/components/utils/button/Button";
+import cButton from "@/components/utils/button/Button";
 
 export default {
   components: {
     Showcase,
     AddShow,
-    Button
+    cButton
   },
   methods: {
     openAddShowPopup: function() {

@@ -1,16 +1,16 @@
 <template>
 	<header>
 		<i :class="[{close: menuVisibility}, 'menu']" @click="trigger" />
-		<Menu :visible="menuVisibility" :itemClick="trigger" />
+		<cMenu :visible="menuVisibility" :itemClick="trigger" />
 	</header>
 </template>
 
 <script>
-import Menu from "@/components/basic/header/utils/Menu";
+import cMenu from "@/components/basic/header/utils/Menu";
 
 export default {
   components: {
-    Menu
+    cMenu
   },
   data: function() {
     return {
