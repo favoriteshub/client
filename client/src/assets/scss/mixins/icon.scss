@@ -1,7 +1,7 @@
-// @include icon($icon-bars);
+// @include icon($icon-bars, false);
 
-@mixin icon($icon) {
-  font-family: "Font Awesome 5 Free";
+@mixin icon($icon, $regular: true) {
+  font-family: "FA Regular", "FA Solid", "FA Brands";
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -9,6 +9,10 @@
   font-variant: normal;
   text-rendering: auto;
   line-height: 1;
+
+  @if $regular == false {
+    font-family: "FA Solid";
+  }
 
   &:after {
     content: $icon;
