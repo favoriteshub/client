@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 .input-wrapper {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   label {
     display: block;

@@ -4,7 +4,6 @@
       <ul>
         <li @click="itemClick"><router-link to="/">Home</router-link></li>
         <li @click="itemClick"><router-link to="/settings">Settings</router-link></li>
-        <li @click="itemClick"><router-link to="/import-export">Import Export</router-link></li>
       </ul>
     </nav>
   </div>
