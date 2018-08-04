@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Show from "@/components/basic/showcase/utils/Show";
+import Show from "@/components/pages/homepage/showcase/Show";
 import {mapState, mapActions} from "vuex";
 
 export default {

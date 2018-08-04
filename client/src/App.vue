@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import cHeader from "@/components/basic/header/Header";
+import cHeader from "@/components/utils/header/Header";
 import GlobalPopup from "@/components/utils/globalPopup/GlobalPopup";
 import Loader from "@/components/utils/loader/Loader";
 
@@ -24,5 +24,5 @@ export default {
 };
 </script>
 
-<style src="./assets/scss/index.scss" lang="scss">
+<style src="@/scss/index.scss" lang="scss">
 </style>

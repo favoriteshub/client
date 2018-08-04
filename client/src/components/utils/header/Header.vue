@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import cMenu from "@/components/basic/header/utils/Menu";
+import cMenu from "@/components/utils/menu/Menu";
 
 export default {
   components: {

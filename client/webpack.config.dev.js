@@ -9,7 +9,7 @@ module.exports = {
   devtool: "cheap-module-eval-source-map",
   entry: {app: "./src/main.js"},
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
     publicPath: "/"
   },
@@ -17,7 +17,7 @@ module.exports = {
     extensions: [".js", ".vue", ".json"],
     alias: {
       vue$: "vue/dist/vue.esm.js",
-      "@": path.resolve(__dirname, "./src")
+      "@": path.resolve(__dirname, "src")
     }
   },
   module: {
@@ -46,8 +46,7 @@ module.exports = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              data:
-                '@import "src/assets/scss/variables/index.scss"; @import "src/assets/scss/mixins/index.scss";'
+              data: '@import "src/scss/variables/index.scss"; @import "src/scss/mixins/index.scss";'
             }
           }
         ]
@@ -68,12 +67,12 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "index.html",
+      template: "src/index.html",
       inject: true
     }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, "./static"),
+        from: path.resolve(__dirname, "src/static"),
         to: "static",
         ignore: [".*"]
       }

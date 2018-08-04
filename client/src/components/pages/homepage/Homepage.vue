@@ -11,8 +11,8 @@
 
 <script>
 import {mapMutations} from "vuex";
-import Showcase from "@/components/basic/showcase/Showcase";
-import AddShow from "@/components/basic/addShow/AddShow";
+import Showcase from "@/components/pages/homepage/showcase/Showcase";
+import AddShow from "@/components/pages/homepage/addShow/AddShow";
 import cButton from "@/components/utils/button/Button";
 
 export default {
