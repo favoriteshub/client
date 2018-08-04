@@ -1,3 +1,5 @@
+import {noScroll} from "@/components/helpers/body";
+
 // initial state
 const state = {
   visible: false
@@ -13,9 +15,11 @@ const actions = {};
 const mutations = {
   close(state) {
     state.visible = false;
+    noScroll(false);
   },
   open(state) {
     state.visible = true;
+    noScroll(true);
   }
 };
 
