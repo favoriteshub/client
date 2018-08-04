@@ -3,8 +3,8 @@
   <div class="overlay" @click="closePopup"></div>
   <div class="popup__content">
     <component :is="component.name" v-bind="component.props" />
+    <i class="popup__content--close" @click="closePopup" />
   </div>
-  <i class="popup--close" @click="closePopup" />
 </div>
 </template>
 
@@ -13,12 +13,12 @@ import {mapState, mapMutations} from "vuex";
 
 export default {
   computed: mapState({
-    visible: (state) => state.globalPopup.visible,
-    component: (state) => state.globalPopup.component
+    visible: (state) => state.popup.visible,
+    component: (state) => state.popup.component
   }),
   methods: {
     closePopup: function() {
-      this.$store.commit("globalPopup/close");
+      this.$store.commit("popup/close");
     }
   }
 };
@@ -26,42 +26,40 @@ export default {
 
 <style lang="scss" scoped>
 .popup {
-  @include absolute-100();
-  @include flex-center();
-  z-index: 100;
-
   .overlay {
-    display: none;
-
-    @include media($breakpoint-medium) {
-      display: block;
-    }
-  }
-
-  &--close {
-    @include icon($icon-close);
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 15px;
-    font-size: 2.4rem;
-    background-color: $color-grey-main;
-
-    @include media($breakpoint-medium) {
-      display: none;
-    }
+    position: fixed;
   }
 
   &__content {
     @include flex-center();
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: #fff;
 
     @include media($breakpoint-medium) {
+      top: 50%;
+      left: 50%;
       width: 75%;
       height: 75%;
-      z-index: 10;
+      transform: translate(-50%, -50%);
+    }
+
+    &--close {
+      @include icon($icon-close);
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 2.4rem;
+      background-color: $color-grey-main;
+      padding: 15px;
+      border-bottom-left-radius: 3px;
+
+      @include media($breakpoint-medium) {
+        display: none;
+      }
     }
   }
 }

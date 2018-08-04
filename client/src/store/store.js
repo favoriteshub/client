@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import shows from "./modules/showsModule";
-import globalPopup from "./modules/globalPopupModule";
+import popup from "./modules/popupModule";
 import loader from "./modules/loaderModule";
 
 Vue.use(Vuex);
@@ -9,7 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   modules: {
     shows,
-    globalPopup,
+    popup,
     loader
   }
 });

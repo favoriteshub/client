@@ -23,13 +23,13 @@ export default {
   },
   methods: {
     openAddShowPopup: function() {
-      this.$store.commit("globalPopup/open", {
+      this.$store.commit("popup/open", {
         name: AddShow,
         props: {sumbitAction: this.closeAddShowPopup}
       });
     },
     closeAddShowPopup: function() {
-      this.$store.commit("globalPopup/close");
+      this.$store.commit("popup/close");
     }
   }
 };

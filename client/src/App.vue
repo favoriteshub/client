@@ -4,21 +4,21 @@
     <main>
       <router-view/>
     </main>
-    <GlobalPopup/>
+    <Popup/>
     <Loader/>
   </div>
 </template>
 
 <script>
 import cHeader from "@/components/utils/header/Header";
-import GlobalPopup from "@/components/utils/globalPopup/GlobalPopup";
+import Popup from "@/components/utils/popup/Popup";
 import Loader from "@/components/utils/loader/Loader";
 
 export default {
   name: "App",
   components: {
     cHeader,
-    GlobalPopup,
+    Popup,
     Loader
   }
 };
