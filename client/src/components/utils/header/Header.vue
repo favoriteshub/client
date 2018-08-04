@@ -1,48 +1,25 @@
 <template>
-	<header>
-		<i :class="[{close: menuVisibility}, 'menu']" @click="trigger" />
-		<cMenu :visible="menuVisibility" :itemClick="trigger" />
-	</header>
+<header>
+	<router-link to="/settings" class="gear"></router-link>
+</header>
 </template>
 
 <script>
-import cMenu from "@/components/utils/menu/Menu";
-
-export default {
-  components: {
-    cMenu
-  },
-  data: function() {
-    return {
-      menuVisibility: false
-    };
-  },
-  methods: {
-    trigger: function() {
-      this.menuVisibility = !this.menuVisibility;
-    }
-  }
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  height: 40px;
+  width: 100%;
   background-color: $color-grey-main;
   display: flex;
   align-items: center;
-	z-index: 100;
+  justify-content: flex-end;
 
-  .menu {
-    @include icon($icon-menu-open);
-    padding-left: 2.5%;
-    font-size: 2rem;
-
-    &.close:after {
-      content: $icon-menu-close;
-    }
+  .gear {
+    @include icon($icon-gear);
+    margin-right: 2.5%;
   }
 }
 </style>

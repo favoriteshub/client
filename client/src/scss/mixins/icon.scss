@@ -9,6 +9,7 @@
   font-variant: normal;
   text-rendering: auto;
   line-height: 1;
+  cursor: pointer;
 
   @if $regular == false {
     font-family: "FA Solid";
