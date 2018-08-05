@@ -3,8 +3,10 @@ import Router from "vue-router";
 import store from "@/store/store";
 
 import Homepage from "@/components/pages/homepage/Homepage";
-import Settings from "@/components/pages/settings/Settings";
+import Guest from "@/components/pages/guest/Guest";
 import Login from "@/components/pages/login/Login";
+import Register from "@/components/pages/register/Register";
+import Settings from "@/components/pages/settings/Settings";
 
 Vue.use(Router);
 
@@ -16,14 +18,24 @@ const router = new Router({
       component: Homepage
     },
     {
-      path: "/settings",
-      name: "Settings",
-      component: Settings
+      path: "/guest",
+      name: "Guest",
+      component: Guest
     },
     {
       path: "/login",
       name: "Login",
       component: Login
+    },
+    {
+      path: "/register",
+      name: "Register",
+      component: Register
+    },
+    {
+      path: "/settings",
+      name: "Settings",
+      component: Settings
     }
   ]
 });
@@ -32,13 +44,14 @@ router.beforeEach((to, from, next) => {
   let authenticated = store.state.auth.authenticated;
 
   if (authenticated) {
-    if (to.name === "Login") {
+    if (to.name === "Login" || to.name === "Register") {
       next(!from.name ? "/" : false);
     } else {
       next();
     }
   } else {
-    next(to.name === "Login" ? undefined : "/login");
+    let guestSession = to.name === "Login" || to.name === "Register" || to.name === "Guest";
+    next(guestSession ? undefined : "/guest");
   }
 });
 

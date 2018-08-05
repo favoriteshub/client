@@ -1,11 +1,24 @@
 <template>
-<header>
-	<router-link to="/settings" class="gear"></router-link>
+<header v-if="authenticated">
+</header>
+
+<header v-else>
+	<router-link to="/guest" class="home"></router-link>
+	<div class="to-raftel">
+		<router-link to="/login">Log in</router-link>
+		<router-link to="/register">Register</router-link>
+	</div>
 </header>
 </template>
 
 <script>
-export default {};
+import {mapState} from "vuex";
+
+export default {
+  computed: mapState({
+    authenticated: (state) => state.auth.authenticated
+  })
+};
 </script>
 
 <style lang="scss" scoped>
@@ -15,11 +28,26 @@ header {
   background-color: $color-grey-main;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 0 2.5%;
+  font-size: 2rem;
 
-  .gear {
-    @include icon($icon-gear);
-    margin-right: 2.5%;
+  .home {
+    @include icon($icon-home);
+  }
+
+  .to-raftel {
+    a {
+      font-style: italic;
+
+      &:hover {
+        color: cyan;
+      }
+
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
   }
 }
 </style>
