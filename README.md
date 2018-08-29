@@ -9,12 +9,18 @@ I like to keep track of my favorite tv shows on a text file, so i decided to bui
 #### Frontend
 
 - Vue.js with Vue Loader, Vue Router and Vuex
-- Sass Preprocessor
+- Sass
 - webpack
 
 #### Backend
 
 - Node.js with Express and mongoose
+- MongoDB
+
+## Dependencies
+
+- Node.js
+- [node-gyp](https://github.com/nodejs/node-gyp) and its dependencies
 - MongoDB
 
 ## Build Setup
