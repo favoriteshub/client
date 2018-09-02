@@ -1,10 +1,12 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: `http://localhost:3000/api/`,
-  withCredentials: false,
-  headers: {}
+  baseURL: `http://localhost:3000/api`
 });
+
+export function setHeader(token) {
+  API.defaults.headers.common["Authorization"] = token;
+}
 
 export function get(url, resolve) {
   return API.get(url)
