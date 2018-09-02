@@ -1,11 +1,11 @@
 <template>
 	<div class="login">
 		<div class="login__form">
-			<cForm :submit="login" submitButtonText="login">
+			<cForm :submit="login" submitButtonText="log in">
 			  <cInput label="Username" name="username" :blur="inputBlurHandler" />
-			  <cInput label="Password" name="password" :blur="inputBlurHandler" />
+			  <cInput label="Password" name="password" type="password" :blur="inputBlurHandler" />
 			</cForm>
-			<p>Don't have an account yet? <span @click="register">Sign up</span></p>
+			<p>Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
 		</div>
 	</div>
 </template>
@@ -23,12 +23,7 @@ export default {
     login: function(e) {
       e.preventDefault();
 
-      // TODO:
-      debugger;
-    },
-    register: function() {
-      // TODO:
-      debugger;
+      this.$store.dispatch("auth/login", this._data);
     },
     inputBlurHandler: function(e) {
       this._data[e.target.name] = e.target.value;
@@ -40,27 +35,30 @@ export default {
 <style lang="scss" scoped>
 .login {
   @include flex-center();
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
-    url("../../../../static/img/bb.jpg") center no-repeat;
-  z-index: 1000;
+  width: 100%;
+  height: calc(100vh - 40px);
+  background: linear-gradient(rgba(cyan, 0.5), rgba(white, 0.5)),
+    url("../../../static/img/bb.jpg") center/cover no-repeat;
 
   &__form {
-    width: 50%;
+    width: 75%;
     background-color: rgba(#fff, 0.75);
     padding: 5%;
     border-radius: 20px;
 
+    @include media($breakpoint-medium) {
+      width: 66.666%;
+    }
+
     p {
       margin-top: 20px;
 
-      span {
+      a {
         color: #fff;
-        cursor: pointer;
+
+        &:hover {
+          color: cyan;
+        }
       }
     }
   }

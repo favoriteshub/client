@@ -2,10 +2,10 @@
   <div id="app">
     <cHeader />
     <main>
-      <router-view/>
+      <router-view />
     </main>
-    <Popup/>
-    <Loader/>
+    <Popup />
+    <Loader />
   </div>
 </template>
 
