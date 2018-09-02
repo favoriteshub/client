@@ -1,5 +1,7 @@
 <template>
 <header v-if="authenticated">
+	<router-link to="/" class="home"></router-link>
+	<router-link to="/logout" class="logout"></router-link>
 </header>
 
 <header v-else>
@@ -34,6 +36,10 @@ header {
 
   .home {
     @include icon($icon-home);
+  }
+
+  .logout {
+    @include icon($icon-logout);
   }
 
   .to-raftel {

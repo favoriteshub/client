@@ -28,6 +28,14 @@ const router = new Router({
       component: Login
     },
     {
+      path: "/logout",
+      name: "Logout",
+      beforeEnter(to, from, next) {
+        store.commit("auth/logout");
+        next("/guest");
+      }
+    },
+    {
       path: "/register",
       name: "Register",
       component: Register
