@@ -21,6 +21,11 @@ const actions = {
     API.post("/auth/login", data, (resolve) => {
       commit("authenticateUser", resolve.data);
     });
+  },
+  register({commit, state}, data) {
+    API.post("/auth/register", data, (resolve) => {
+      commit("authenticateUser", resolve.data);
+    });
   }
 };
 
