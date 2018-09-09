@@ -1,11 +1,22 @@
 import axios from "axios";
+import {refreshTokens} from "../utils/auth";
 
 const API = axios.create({
   baseURL: `http://localhost:3000/api`
 });
 
+API.interceptors.response.use(undefined, (error) => {
+  if (error.response && error.response.status === 401 && error.config && !error.config.__isRetryRequest) {
+    return refreshTokens().then(() => {
+      error.config.__isRetryRequest = true;
+      return API(error.config);
+    });
+  }
+  return Promise.reject(error);
+});
+
 export function setHeader(token) {
-  API.defaults.headers.common["Authorization"] = token;
+  API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 
 export function get(url, resolve) {

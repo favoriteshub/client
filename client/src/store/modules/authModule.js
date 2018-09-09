@@ -1,10 +1,6 @@
 import * as API from "../utils/api";
+import {isAuthenticated, saveTokensInStorage, removeTokensfromStorage} from "../utils/auth";
 import router from "@/router/router";
-
-const isAuthenticated = () => {
-  let token = localStorage.getItem("token");
-  return token !== null;
-};
 
 // initial state
 const state = {
@@ -32,15 +28,13 @@ const actions = {
 // mutations
 const mutations = {
   authenticateUser(state, apiResponse) {
-    localStorage.setItem("token", apiResponse.token);
-    API.setHeader(apiResponse.token);
+    saveTokensInStorage(apiResponse);
     state.currentUser = apiResponse.data;
     state.authenticated = true;
     router.push("/");
   },
   logout(state) {
-    localStorage.clear();
-    API.setHeader();
+    removeTokensfromStorage();
     state.authenticated = false;
   }
 };
