@@ -2,11 +2,11 @@ import Vue from "vue";
 import Router from "vue-router";
 import store from "@/store/store";
 
-import Homepage from "@/components/pages/homepage/Homepage";
-import Guest from "@/components/pages/guest/Guest";
-import Login from "@/components/pages/login/Login";
-import Register from "@/components/pages/register/Register";
-import Settings from "@/components/pages/settings/Settings";
+import Homepage from "@/components/pages/homepage";
+import About from "@/components/pages/about";
+import Login from "@/components/pages/login";
+import Register from "@/components/pages/register";
+import Settings from "@/components/pages/settings";
 
 Vue.use(Router);
 
@@ -18,9 +18,14 @@ const router = new Router({
       component: Homepage
     },
     {
-      path: "/guest",
-      name: "Guest",
-      component: Guest
+      path: "/about",
+      name: "About",
+      component: About
+    },
+    {
+      path: "/register",
+      name: "Register",
+      component: Register
     },
     {
       path: "/login",
@@ -32,13 +37,8 @@ const router = new Router({
       name: "Logout",
       beforeEnter(to, from, next) {
         store.commit("auth/logout");
-        next("/guest");
+        next("/about");
       }
-    },
-    {
-      path: "/register",
-      name: "Register",
-      component: Register
     },
     {
       path: "/settings",
@@ -58,8 +58,8 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    let guestSession = to.name === "Login" || to.name === "Register" || to.name === "Guest";
-    next(guestSession ? undefined : "/guest");
+    let guestSession = to.name === "Login" || to.name === "Register" || to.name === "About";
+    next(guestSession ? undefined : "/about");
   }
 });
 

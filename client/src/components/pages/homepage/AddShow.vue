@@ -9,9 +9,8 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
-import cForm from "@/components/utils/form/Form";
-import cInput from "@/components/utils/input/Input";
+import cForm from "@/components/utils/form";
+import cInput from "@/components/utils/input";
 
 export default {
   components: {

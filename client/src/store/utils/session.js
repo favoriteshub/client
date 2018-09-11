@@ -1,4 +1,5 @@
-import * as API from "../utils/api";
+import * as API from "./api";
+import router from "@/router/router";
 
 export function isAuthenticated() {
   let token = localStorage.getItem("token");
@@ -12,7 +13,7 @@ export function saveTokensInStorage(data) {
   API.setHeader(data.token);
 }
 
-export function removeTokensfromStorage(data) {
+export function removeTokensfromStorage() {
   localStorage.clear();
   API.setHeader();
 }
@@ -20,7 +21,14 @@ export function removeTokensfromStorage(data) {
 export function refreshTokens() {
   let data = {token: localStorage.getItem("token"), refreshToken: localStorage.getItem("refreshToken")};
 
-  return API.post("/auth/refresh", data, (resolve) => {
-    saveTokensInStorage(resolve.data);
-  });
+  return API.post(
+    "/auth/refresh",
+    data,
+    (resolve) => {
+      saveTokensInStorage(resolve.data);
+    },
+    (reject) => {
+      router.push("/logout");
+    }
+  );
 }

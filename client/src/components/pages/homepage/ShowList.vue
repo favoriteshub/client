@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Show from "@/components/pages/homepage/showcase/Show";
-import {mapState, mapActions} from "vuex";
+import Show from "@/components/pages/homepage/Show";
+import {mapState} from "vuex";
 
 export default {
   components: {

@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import cHeader from "@/components/utils/header/Header";
-import Popup from "@/components/utils/popup/Popup";
-import Loader from "@/components/utils/loader/Loader";
+import cHeader from "@/components/utils/header";
+import Popup from "@/components/utils/popup";
+import Loader from "@/components/utils/loader";
 
 export default {
   name: "App",

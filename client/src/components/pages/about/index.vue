@@ -1,5 +1,5 @@
 <template>
-	<p>guest</p>
+<p>WIP</p>
 </template>
 
 <script>

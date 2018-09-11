@@ -11,23 +11,23 @@ const getters = {};
 
 // actions
 const actions = {
-  getShows({commit, state}) {
-    API.get("shows", (resolve) => {
+  getShows({commit}) {
+    return API.get("user-shows", (resolve) => {
       commit("setList", resolve.data);
     });
   },
-  addShow({commit, state}, data) {
-    API.post("shows", data, (resolve) => {
+  addShow({commit}, data) {
+    return API.post("shows", data, (resolve) => {
       commit("addShow", resolve.data);
     });
   },
-  updateShow({commit, state}, {id, data}) {
-    API.put(`shows/${id}`, data, (resolve) => {
+  updateShow({commit}, {id, data}) {
+    return API.put(`shows/${id}`, data, (resolve) => {
       commit("updateShow", {id, data});
     });
   },
-  deleteShow({commit, state}, id) {
-    API.del(`shows/${id}`, (resolve) => {
+  deleteShow({commit}, id) {
+    return API.del(`shows/${id}`, (resolve) => {
       commit("removeShow", id);
     });
   }
@@ -36,7 +36,7 @@ const actions = {
 // mutations
 const mutations = {
   setList(state, shows) {
-    state.showsList = shows;
+    state.showsList = shows.data;
   },
   addShow(state, show) {
     state.showsList.push(show);

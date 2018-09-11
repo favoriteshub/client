@@ -1,5 +1,5 @@
 import * as API from "../utils/api";
-import {isAuthenticated, saveTokensInStorage, removeTokensfromStorage} from "../utils/auth";
+import {isAuthenticated, saveTokensInStorage, removeTokensfromStorage} from "../utils/session";
 import router from "@/router/router";
 
 // initial state
@@ -13,13 +13,13 @@ const getters = {};
 
 // actions
 const actions = {
-  login({commit, state}, data) {
-    API.post("/auth/login", data, (resolve) => {
+  login({commit}, data) {
+    return API.post("/auth/login", data, (resolve) => {
       commit("authenticateUser", resolve.data);
     });
   },
-  register({commit, state}, data) {
-    API.post("/auth/register", data, (resolve) => {
+  register({commit}, data) {
+    return API.post("/auth/register", data, (resolve) => {
       commit("authenticateUser", resolve.data);
     });
   }

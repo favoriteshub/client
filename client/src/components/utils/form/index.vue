@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import cButton from "@/components/utils/button/Button";
+import cButton from "@/components/utils/button";
 
 export default {
   components: {

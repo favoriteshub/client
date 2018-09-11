@@ -1,18 +1,18 @@
 <template>
 	<div class="login">
 		<div class="login__form">
-			<cForm :submit="login" submitButtonText="sign up">
+			<cForm :submit="login" submitButtonText="log in">
 			  <cInput label="Username" name="username" :blur="inputBlurHandler" />
 			  <cInput label="Password" name="password" type="password" :blur="inputBlurHandler" />
-			  <cInput label="Email" name="email" type="email" :blur="inputBlurHandler" />
 			</cForm>
+			<p>Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
 		</div>
 	</div>
 </template>
 
 <script>
-import cForm from "@/components/utils/form/Form";
-import cInput from "@/components/utils/input/Input";
+import cForm from "@/components/utils/form";
+import cInput from "@/components/utils/input";
 
 export default {
   components: {
@@ -23,7 +23,7 @@ export default {
     login: function(e) {
       e.preventDefault();
 
-      this.$store.dispatch("auth/register", this._data);
+      this.$store.dispatch("auth/login", this._data);
     },
     inputBlurHandler: function(e) {
       this._data[e.target.name] = e.target.value;
@@ -37,8 +37,8 @@ export default {
   @include flex-center();
   width: 100%;
   height: calc(100vh - 40px);
-  background: linear-gradient(rgba(#738383, 0.5), rgba(white, 0.5)),
-    url("../../../static/img/vikings.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(cyan, 0.5), rgba(white, 0.5)),
+    url("../../../static/img/bb.jpg") center/cover no-repeat;
 
   &__form {
     width: 75%;
@@ -48,6 +48,18 @@ export default {
 
     @include media($breakpoint-medium) {
       width: 66.666%;
+    }
+
+    p {
+      margin-top: 20px;
+
+      a {
+        color: #fff;
+
+        &:hover {
+          color: cyan;
+        }
+      }
     }
   }
 }

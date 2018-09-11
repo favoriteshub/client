@@ -1,6 +1,6 @@
 <template>
 	<div class="homepage">
-		<Showcase />
+		<ShowList />
 		<div class="news">
 		</div>
 		<div class="add-news">
@@ -10,14 +10,13 @@
 </template>
 
 <script>
-import {mapMutations} from "vuex";
-import Showcase from "@/components/pages/homepage/showcase/Showcase";
-import AddShow from "@/components/pages/homepage/addShow/AddShow";
-import cButton from "@/components/utils/button/Button";
+import ShowList from "@/components/pages/homepage/ShowList";
+import AddShow from "@/components/pages/homepage/AddShow";
+import cButton from "@/components/utils/button";
 
 export default {
   components: {
-    Showcase,
+    ShowList,
     AddShow,
     cButton
   },

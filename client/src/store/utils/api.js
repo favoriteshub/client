@@ -1,5 +1,5 @@
 import axios from "axios";
-import {refreshTokens} from "../utils/auth";
+import {refreshTokens} from "./session";
 
 const API = axios.create({
   baseURL: `http://localhost:3000/api`
@@ -19,42 +19,54 @@ export function setHeader(token) {
   API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 
-export function get(url, resolve) {
+export function get(url, resolve, reject) {
   return API.get(url)
     .then((response) => {
       resolve(response);
     })
     .catch((error) => {
       console.log(error);
+      if (reject) {
+        reject();
+      }
     });
 }
 
-export function post(url, data, resolve) {
+export function post(url, data, resolve, reject) {
   return API.post(url, data)
     .then((response) => {
       resolve(response);
     })
     .catch((error) => {
       console.log(error);
+      if (reject) {
+        reject();
+      }
     });
 }
 
-export function put(url, data, resolve) {
+export function put(url, data, resolve, reject) {
   return API.put(url, data)
     .then((response) => {
       resolve(response);
     })
     .catch((error) => {
       console.log(error);
+      if (reject) {
+        reject();
+      }
     });
 }
 
-export function del(url, resolve) {
+export function del(url, resolve, reject) {
   return API.delete(url)
     .then((response) => {
       resolve(response);
     })
     .catch((error) => {
       console.log(error);
+      if (reject) {
+        reject();
+      }
     });
 }
