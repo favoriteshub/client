@@ -7,10 +7,14 @@ const API = axios.create({
 
 API.interceptors.response.use(undefined, (error) => {
   if (error.response && error.response.status === 401 && error.config && !error.config.__isRetryRequest) {
-    return refreshTokens().then(() => {
-      error.config.__isRetryRequest = true;
-      return API(error.config);
-    });
+    return refreshTokens()
+      .then(() => {
+        error.config.__isRetryRequest = true;
+        return API(error.config);
+      })
+      .catch(() => {
+        return Promise.reject(error);
+      });
   }
   return Promise.reject(error);
 });
@@ -27,7 +31,7 @@ export function get(url, resolve, reject) {
     .catch((error) => {
       console.log(error);
       if (reject) {
-        reject();
+        reject(error);
       }
     });
 }
@@ -40,7 +44,7 @@ export function post(url, data, resolve, reject) {
     .catch((error) => {
       console.log(error);
       if (reject) {
-        reject();
+        reject(error);
       }
     });
 }
@@ -53,7 +57,7 @@ export function put(url, data, resolve, reject) {
     .catch((error) => {
       console.log(error);
       if (reject) {
-        reject();
+        reject(error);
       }
     });
 }
@@ -66,7 +70,7 @@ export function del(url, resolve, reject) {
     .catch((error) => {
       console.log(error);
       if (reject) {
-        reject();
+        reject(error);
       }
     });
 }

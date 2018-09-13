@@ -29,6 +29,7 @@ export function refreshTokens() {
     },
     (reject) => {
       router.push("/logout");
+      throw reject;
     }
   );
 }
