@@ -1,9 +1,19 @@
 import axios from "axios";
-import {refreshTokens} from "./session";
+import {getToken, refreshTokens} from "./session";
 
 const API = axios.create({
   baseURL: `http://localhost:3000/api`
 });
+
+API.interceptors.request.use((config) => {
+  const token = getToken();
+
+  if (token != null) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+}, undefined);
 
 API.interceptors.response.use(undefined, (error) => {
   if (error.response && error.response.status === 401 && error.config && !error.config.__isRetryRequest) {
@@ -18,10 +28,6 @@ API.interceptors.response.use(undefined, (error) => {
   }
   return Promise.reject(error);
 });
-
-export function setHeader(token) {
-  API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-}
 
 export function get(url, resolve, reject) {
   return API.get(url)
