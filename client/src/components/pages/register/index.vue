@@ -2,9 +2,16 @@
 	<div class="login">
 		<div class="login__form">
 			<cForm :submit="login" submitButtonText="sign up">
-			  <cInput label="Username" name="username" :blur="inputBlurHandler" />
-			  <cInput label="Password" name="password" type="password" :blur="inputBlurHandler" />
-			  <cInput label="Email" name="email" type="email" :blur="inputBlurHandler" />
+        <cInput
+          v-for="(field, index) in $options.jsonForm"
+          :key="index"
+          :label="field.label"
+          :name="field.name"
+          :type="field.type"
+          :disabled="field.disabled"
+          :required="field.required"
+          :blur="inputBlurHandler"
+        />
 			</cForm>
 		</div>
 	</div>
@@ -13,8 +20,10 @@
 <script>
 import cForm from "@/components/utils/form";
 import cInput from "@/components/utils/input";
+import jsonForm from "@/configuration/form/register.json";
 
 export default {
+  jsonForm: jsonForm,
   components: {
     cForm,
     cInput

@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Username",
+    "name": "username",
+    "type": "text",
+    "disabled": false,
+    "required": true
+  },
+  {
+    "label": "Password",
+    "name": "password",
+    "type": "password",
+    "disabled": false,
+    "required": true
+  },
+  {
+    "label": "Email",
+    "name": "email",
+    "type": "email",
+    "disabled": false,
+    "required": false
+  }
+]
