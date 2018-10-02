@@ -1,0 +1,37 @@
+[
+  {
+    "label": "Title",
+    "name": "title",
+    "type": "text",
+    "disabled": false,
+    "required": true
+  },
+  {
+    "label": "Status",
+    "name": "status",
+    "type": "text",
+    "disabled": false,
+    "required": true
+  },
+  {
+    "label": "Last Aired",
+    "name": "last_aired",
+    "type": "text",
+    "disabled": false,
+    "required": false
+  },
+  {
+    "label": "Last Seen",
+    "name": "last_seen",
+    "type": "text",
+    "disabled": false,
+    "required": false
+  },
+  {
+    "label": "Poster",
+    "name": "poster",
+    "type": "text",
+    "disabled": false,
+    "required": false
+  }
+]

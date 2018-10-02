@@ -1,18 +1,25 @@
 <template>
 <cForm :submit="addShow" submitButtonText="add">
-  <cInput label="Title" name="title" :blur="inputBlurHandler" />
-  <cInput label="Status" name="status" :blur="inputBlurHandler" />
-  <cInput label="Last Aired" name="last_aired" :blur="inputBlurHandler" />
-  <cInput label="Last Seen" name="last_seen" :blur="inputBlurHandler" />
-  <cInput label="Poster" name="poster" :blur="inputBlurHandler" />
+  <cInput
+    v-for="(field, index) in $options.jsonForm"
+    :key="index"
+    :label="field.label"
+    :name="field.name"
+    :type="field.type"
+    :disabled="field.disabled"
+    :required="field.required"
+    :blur="inputBlurHandler"
+  />
 </cForm>
 </template>
 
 <script>
 import cForm from "@/components/utils/form";
 import cInput from "@/components/utils/input";
+import jsonForm from "@/configuration/form/addShow.json";
 
 export default {
+  jsonForm: jsonForm,
   components: {
     cForm,
     cInput
