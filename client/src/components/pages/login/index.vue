@@ -1,18 +1,7 @@
 <template>
 	<div class="login">
 		<div class="login__form">
-			<cForm :submit="login" submitButtonText="log in">
-			  <cInput
-          v-for="(field, index) in $options.jsonForm"
-          :key="index"
-          :label="field.label"
-          :name="field.name"
-          :type="field.type"
-          :disabled="field.disabled"
-          :required="field.required"
-          :blur="inputBlurHandler"
-        />
-			</cForm>
+			<cForm :submit="login" submitButtonText="log in" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
 			<p>Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
 		</div>
 	</div>
@@ -20,14 +9,12 @@
 
 <script>
 import cForm from "@/components/utils/form";
-import cInput from "@/components/utils/input";
 import jsonForm from "@/configuration/form/login.json";
 
 export default {
   jsonForm: jsonForm,
   components: {
-    cForm,
-    cInput
+    cForm
   },
   methods: {
     login: function(e) {

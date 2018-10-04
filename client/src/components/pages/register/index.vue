@@ -1,35 +1,22 @@
 <template>
 	<div class="login">
 		<div class="login__form">
-			<cForm :submit="login" submitButtonText="sign up">
-        <cInput
-          v-for="(field, index) in $options.jsonForm"
-          :key="index"
-          :label="field.label"
-          :name="field.name"
-          :type="field.type"
-          :disabled="field.disabled"
-          :required="field.required"
-          :blur="inputBlurHandler"
-        />
-			</cForm>
+      <cForm :submit="register" submitButtonText="log in" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
 		</div>
 	</div>
 </template>
 
 <script>
 import cForm from "@/components/utils/form";
-import cInput from "@/components/utils/input";
 import jsonForm from "@/configuration/form/register.json";
 
 export default {
   jsonForm: jsonForm,
   components: {
-    cForm,
-    cInput
+    cForm
   },
   methods: {
-    login: function(e) {
+    register: function(e) {
       e.preventDefault();
 
       this.$store.dispatch("auth/register", this._data);

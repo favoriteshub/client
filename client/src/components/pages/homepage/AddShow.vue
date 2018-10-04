@@ -1,28 +1,15 @@
 <template>
-<cForm :submit="addShow" submitButtonText="add">
-  <cInput
-    v-for="(field, index) in $options.jsonForm"
-    :key="index"
-    :label="field.label"
-    :name="field.name"
-    :type="field.type"
-    :disabled="field.disabled"
-    :required="field.required"
-    :blur="inputBlurHandler"
-  />
-</cForm>
+	<cForm :submit="addShow" submitButtonText="log in" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
 </template>
 
 <script>
 import cForm from "@/components/utils/form";
-import cInput from "@/components/utils/input";
 import jsonForm from "@/configuration/form/addShow.json";
 
 export default {
   jsonForm: jsonForm,
   components: {
-    cForm,
-    cInput
+    cForm
   },
   props: {
     sumbitAction: Function
