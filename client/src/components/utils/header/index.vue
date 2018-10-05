@@ -5,7 +5,7 @@
 </header>
 
 <header v-else>
-	<router-link to="/about" class="home"></router-link>
+	<router-link to="/welcome" class="home"></router-link>
 	<div class="to-raftel">
 		<router-link to="/login">Log in</router-link>
 		<router-link to="/register">Register</router-link>

@@ -3,7 +3,7 @@ import Router from "vue-router";
 import store from "@/store/store";
 
 import Homepage from "@/components/pages/homepage";
-import About from "@/components/pages/about";
+import Welcome from "@/components/pages/welcome";
 import Login from "@/components/pages/login";
 import Register from "@/components/pages/register";
 import Settings from "@/components/pages/settings";
@@ -18,9 +18,9 @@ const router = new Router({
       component: Homepage
     },
     {
-      path: "/about",
-      name: "About",
-      component: About
+      path: "/welcome",
+      name: "Welcome",
+      component: Welcome
     },
     {
       path: "/register",
@@ -37,7 +37,7 @@ const router = new Router({
       name: "Logout",
       beforeEnter(to, from, next) {
         store.commit("auth/logout");
-        next("/about");
+        next("/welcome");
       }
     },
     {
@@ -58,8 +58,8 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    let guestSession = to.name === "Login" || to.name === "Register" || to.name === "About";
-    next(guestSession ? undefined : "/about");
+    let guestSession = to.name === "Login" || to.name === "Register" || to.name === "Welcome";
+    next(guestSession ? undefined : "/welcome");
   }
 });
 
