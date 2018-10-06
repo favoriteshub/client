@@ -10,8 +10,7 @@ export default {};
 
 <style lang="scss" scoped>
 .welcome {
-  height: calc(100vh - 40px);
-  width: 100vw;
+  @include viewport-100();
   @include flex-center();
 }
 </style>

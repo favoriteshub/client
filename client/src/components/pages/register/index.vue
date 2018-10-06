@@ -30,9 +30,8 @@ export default {
 
 <style lang="scss" scoped>
 .login {
+  @include viewport-100();
   @include flex-center();
-  width: 100%;
-  height: calc(100vh - 40px);
   background: linear-gradient(rgba(#738383, 0.5), rgba(white, 0.5)),
     url("../../../static/img/vikings.jpg") center/cover no-repeat;
 
