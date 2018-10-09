@@ -33,11 +33,7 @@ export default {
   }
 
   input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 3px;
-    border: 1px solid rgba(#000000, 0.12);
-    color: rgba(#000000, 0.87);
+    @include input();
   }
 }
 </style>
