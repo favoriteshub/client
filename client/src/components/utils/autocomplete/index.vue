@@ -10,7 +10,7 @@
     />
 
     <ul v-if="!error && isListVisible && list.length > 0">
-      <li v-for="(el) in list" :key="el" @mousedown="handleItemClick">{{el}}</li>
+      <li v-for="(el, index) in list" :key="el" @mousedown="handleItemClick($event, index)">{{el}}</li>
     </ul>
 
     <span v-if="error">No results were found</span>
@@ -42,15 +42,15 @@ export default {
   methods: {
     handleChange: function(e) {
       if (e.target.value !== "") {
-        this.$store.dispatch(this.action, e.target.value);
+        this.$store.dispatch(`${this.action}/searchCount`, e.target.value);
       }
     },
     handleBlur: function(e) {
       this.$data.isListVisible = !this.$data.isListVisible;
     },
-    handleItemClick: function(e) {
+    handleItemClick: function(e, index) {
       if (this.onItemClick) {
-        let item = this.$store.getters["search/getElementByTitle"](e.target.innerText);
+        let item = this.$store.getters[`${this.action}/getSearchItemByIndex`](index);
         this.onItemClick(item);
       }
     }
