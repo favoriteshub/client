@@ -17,10 +17,10 @@ export default {
     Show
   },
   computed: mapState({
-    shows: (state) => state.shows.showsList
+    shows: (state) => state.user.shows
   }),
   created() {
-    this.$store.dispatch("shows/getShows");
+    this.$store.dispatch("user/getShows");
   }
 };
 </script>

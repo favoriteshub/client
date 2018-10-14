@@ -5,6 +5,7 @@ import shows from "./modules/shows";
 import popup from "./modules/popup";
 import loader from "./modules/loader";
 import auth from "./modules/auth";
+import user from "./modules/user";
 
 Vue.use(Vuex);
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     shows,
     popup,
     loader,
-    auth
+    auth,
+    user
   }
 });
