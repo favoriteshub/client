@@ -3,53 +3,47 @@ import _ from "lodash";
 
 // initial state
 const state = {
-  showsList: []
+  search: {
+    onlyTitles: [],
+    fullList: [],
+    noData: false
+  }
 };
 
 // getters
-const getters = {};
+const getters = {
+  getSearchItemByIndex: (state) => (index) => {
+    return state.search.fullList[index];
+  }
+};
 
 // actions
 const actions = {
-  getShows({commit}) {
-    return API.get("user-shows", (resolve) => {
-      commit("setList", resolve.data);
+  searchCount({commit, dispatch}, title) {
+    return API.get(`shows/search/count?title=${title}`, (resolve) => {
+      if (resolve.data.data.count > 0) {
+        dispatch("searchPaged", {title, page: 0});
+      } else {
+        commit("setSearchNoData", true);
+      }
     });
   },
-  addShow({commit}, data) {
-    return API.post("shows", data, (resolve) => {
-      commit("addShow", resolve.data);
-    });
-  },
-  updateShow({commit}, {id, data}) {
-    return API.put(`shows/${id}`, data, (resolve) => {
-      commit("updateShow", {id, data});
-    });
-  },
-  deleteShow({commit}, id) {
-    return API.del(`shows/${id}`, (resolve) => {
-      commit("removeShow", id);
+  searchPaged({commit}, {title, page}) {
+    return API.get(`shows/search/${page}?title=${title}`, (resolve) => {
+      commit("setSearchLists", resolve.data.data);
+      commit("setSearchNoData", false);
     });
   }
 };
 
 // mutations
 const mutations = {
-  setList(state, shows) {
-    state.showsList = shows.data;
+  setSearchLists(state, elements) {
+    state.search.onlyTitles = _.map(elements, "title");
+    state.search.fullList = elements;
   },
-  addShow(state, show) {
-    state.showsList.push(show);
-  },
-  removeShow(state, id) {
-    state.showsList = _.filter(state.showsList, (elem) => elem._id !== id);
-  },
-  updateShow(state, {id, data}) {
-    let index = _.findIndex(state.showsList, {_id: id});
-    let keys = _.keys(data);
-    for (let key of keys) {
-      state.showsList[index][key] = data[key];
-    }
+  setSearchNoData(state, condition) {
+    state.search.noData = condition;
   }
 };
 
