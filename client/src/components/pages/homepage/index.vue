@@ -7,6 +7,13 @@
     </div>
 
     <div class="homepage__options">
+      <Autocomplete
+        :list="showsSearch.onlyTitles"
+        :error="showsSearch.noData"
+        action="shows"
+        :onItemClick="handleSearch"
+      />
+      <span>{{searchedElement}}</span>
     </div>
   </div>
 </template>
@@ -14,11 +21,27 @@
 <script>
 import Tabs from "@/components/utils/tabs";
 import ShowList from "@/components/pages/homepage/ShowList";
+import Autocomplete from "@/components/utils/autocomplete";
+import {mapState} from "vuex";
 
 export default {
   components: {
     Tabs,
-    ShowList
+    ShowList,
+    Autocomplete
+  },
+  data: function() {
+    return {
+      searchedElement: ""
+    };
+  },
+  computed: mapState({
+    showsSearch: (state) => state.shows.search
+  }),
+  methods: {
+    handleSearch: function(item) {
+      this.$data.searchedElement = item.title;
+    }
   }
 };
 </script>
