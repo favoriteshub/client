@@ -21,7 +21,7 @@ const getters = {
 const actions = {
   searchCount({commit, dispatch}, title) {
     return API.get(`shows/search/count?title=${title}`, (resolve) => {
-      if (resolve.data.data.count > 0) {
+      if (resolve.data.count > 0) {
         dispatch("searchPaged", {title, page: 0});
       } else {
         commit("setSearchNoData", true);
@@ -30,7 +30,7 @@ const actions = {
   },
   searchPaged({commit}, {title, page}) {
     return API.get(`shows/search/${page}?title=${title}`, (resolve) => {
-      commit("setSearchLists", resolve.data.data);
+      commit("setSearchLists", resolve.data);
       commit("setSearchNoData", false);
     });
   }

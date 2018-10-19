@@ -12,15 +12,15 @@ const getters = {};
 const actions = {
   getShows({commit}) {
     return API.get("user-shows", (resolve) => {
-      commit("setList", {data: resolve.data, type: "shows"});
+      commit("setList", {list: resolve.data, type: "shows"});
     });
   }
 };
 
 // mutations
 const mutations = {
-  setList(state, {data, type}) {
-    state[type] = data.data;
+  setList(state, {list, type}) {
+    state[type] = list;
   }
 };
 
