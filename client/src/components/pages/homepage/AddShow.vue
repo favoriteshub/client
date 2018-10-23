@@ -1,5 +1,5 @@
 <template>
-	<cForm :submit="addShow" submitButtonText="log in" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
+	<cForm :submit="addShow" submitButtonText="add" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
 </template>
 
 <script>

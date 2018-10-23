@@ -2,7 +2,7 @@
   <div class="autocomplete">
     <input
       type="text"
-      placeholder="Search"
+      :placeholder="text"
       @input="handleChange"
       @blur="handleBlur"
       @focus="handleBlur"
@@ -20,6 +20,10 @@
 <script>
 export default {
   props: {
+    text: {
+      type: String,
+      default: "Search"
+    },
     list: {
       type: Array,
       required: true
@@ -61,6 +65,7 @@ export default {
 <style lang="scss" scoped>
 .autocomplete {
   position: relative;
+  width: 100%;
 
   input {
     @include input();

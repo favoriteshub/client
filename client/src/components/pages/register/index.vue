@@ -1,7 +1,7 @@
 <template>
 	<div class="login">
 		<div class="login__form">
-      <cForm :submit="register" submitButtonText="log in" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
+      <cForm :submit="register" submitButtonText="sign up" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
 		</div>
 	</div>
 </template>

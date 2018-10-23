@@ -12,7 +12,7 @@ export default {
     name: String,
     text: {
       type: String,
-      required: true
+      required: false
     },
     importance: {
       type: String,
@@ -29,9 +29,9 @@ export default {
 <style lang="scss" scoped>
 button {
   text-transform: uppercase;
-  width: 100%;
-  padding: 10px;
   background-color: #e5e5e5;
+  width: 100%;
+  height: 40px;
   border: 0;
   border-radius: 3px;
 

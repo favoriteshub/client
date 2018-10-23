@@ -1,16 +1,16 @@
 <template>
-<header v-if="authenticated">
-	<router-link to="/" class="home"></router-link>
-	<router-link to="/logout" class="logout"></router-link>
-</header>
+  <header v-if="authenticated">
+    <router-link to="/" class="home"></router-link>
+    <router-link to="/logout" class="logout"></router-link>
+  </header>
 
-<header v-else>
-	<router-link to="/welcome" class="home"></router-link>
-	<div class="to-raftel">
-		<router-link to="/login">Log in</router-link>
-		<router-link to="/register">Register</router-link>
-	</div>
-</header>
+  <header v-else>
+    <router-link to="/welcome" class="home"></router-link>
+    <div class="to-raftel">
+      <router-link to="/login">Log in</router-link>
+      <router-link to="/register">Register</router-link>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5%;
+  padding: 0 20px;
   font-size: 2rem;
 
   .home {
