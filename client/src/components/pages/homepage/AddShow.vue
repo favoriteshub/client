@@ -14,26 +14,19 @@ export default {
   props: {
     sumbitAction: Function
   },
+  data: function() {
+    return {
+      show: {}
+    };
+  },
   methods: {
     addShow: function(e) {
       e.preventDefault();
 
-      let show = {
-        title: this._data.title,
-        status: this._data.status,
-        last_aired: this._data.last_aired,
-        last_seen: this._data.last_seen,
-        poster: this._data.poster
-      };
-
-      this.$store.dispatch("shows/addShow", show);
-
-      if (this.sumbitAction) {
-        this.sumbitAction();
-      }
+      this.$store.dispatch("shows/addShow", this.show).then(() => this.$store.commit("popup/close"));
     },
     inputBlurHandler: function(e) {
-      this._data[e.target.name] = e.target.value;
+      this.show[e.target.name] = e.target.value;
     }
   }
 };

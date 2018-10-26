@@ -33,6 +33,11 @@ const actions = {
       commit("setSearchLists", resolve.data);
       commit("setSearchNoData", false);
     });
+  },
+  addShow({commit}, data) {
+    return API.post("shows", data, (resolve) => {
+      commit("addShow", resolve.data);
+    });
   }
 };
 
