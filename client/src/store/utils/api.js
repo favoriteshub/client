@@ -32,7 +32,9 @@ API.interceptors.response.use(undefined, (error) => {
 export function get(url, resolve, reject) {
   return API.get(url)
     .then((response) => {
-      resolve(response);
+      if (resolve) {
+        resolve(response);
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -45,7 +47,9 @@ export function get(url, resolve, reject) {
 export function post(url, data, resolve, reject) {
   return API.post(url, data)
     .then((response) => {
-      resolve(response);
+      if (resolve) {
+        resolve(response);
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -58,7 +62,9 @@ export function post(url, data, resolve, reject) {
 export function put(url, data, resolve, reject) {
   return API.put(url, data)
     .then((response) => {
-      resolve(response);
+      if (resolve) {
+        resolve(response);
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -71,7 +77,9 @@ export function put(url, data, resolve, reject) {
 export function del(url, resolve, reject) {
   return API.delete(url)
     .then((response) => {
-      resolve(response);
+      if (resolve) {
+        resolve(response);
+      }
     })
     .catch((error) => {
       console.log(error);

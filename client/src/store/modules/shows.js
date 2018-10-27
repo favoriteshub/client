@@ -35,9 +35,7 @@ const actions = {
     });
   },
   addShow({commit}, data) {
-    return API.post("shows", data, (resolve) => {
-      commit("addShow", resolve.data);
-    });
+    return API.post("shows", data);
   }
 };
 
