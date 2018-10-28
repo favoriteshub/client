@@ -16,6 +16,7 @@ const actions = {};
 const mutations = {
   close(state) {
     state.visible = false;
+    state.component = {};
     noScroll(false);
   },
   open(state, component) {
