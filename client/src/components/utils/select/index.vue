@@ -1,5 +1,6 @@
 <template>
   <div class="select">
+    <label>{{label}}</label>
     <input
       type="text"
       :readonly="true"
@@ -18,6 +19,7 @@
 <script>
 export default {
   props: {
+    label: String,
     options: {
       type: Array,
       required: true
@@ -54,6 +56,14 @@ export default {
 .select {
   position: relative;
   width: 100%;
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 1.4rem;
+    color: rgba(#000000, 0.6);
+  }
 
   input {
     @include input();
