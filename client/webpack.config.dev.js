@@ -30,7 +30,7 @@ module.exports = {
         test: /\.js$/,
         use: {
           loader: "babel-loader",
-          options: {presets: ["env"]}
+          options: {presets: ["env", "stage-2"]}
         },
         exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file)
       },
