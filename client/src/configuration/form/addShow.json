@@ -2,35 +2,40 @@
   {
     "label": "Title",
     "name": "title",
-    "type": "text",
+    "type": "input",
+    "inputType": "text",
+    "disabled": false,
+    "required": true
+  },
+  {
+    "label": "Country",
+    "name": "country",
+    "type": "select",
+    "inputType": "",
     "disabled": false,
     "required": true
   },
   {
     "label": "Status",
     "name": "status",
-    "type": "text",
-    "disabled": false,
-    "required": true
-  },
-  {
-    "label": "Last Aired",
-    "name": "last_aired",
-    "type": "text",
+    "type": "input",
+    "inputType": "text",
     "disabled": false,
     "required": false
   },
   {
-    "label": "Last Seen",
-    "name": "last_seen",
-    "type": "text",
+    "label": "Seasons",
+    "name": "seasons",
+    "type": "input",
+    "inputType": "number",
     "disabled": false,
     "required": false
   },
   {
     "label": "Poster",
     "name": "poster",
-    "type": "text",
+    "type": "input",
+    "inputType": "text",
     "disabled": false,
     "required": false
   }
