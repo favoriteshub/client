@@ -1,7 +1,7 @@
 <template>
 	<div class="login">
 		<div class="login__form">
-			<cForm :submit="login" submitButtonText="log in" :fields="{list: $options.jsonForm, onBlur: inputBlurHandler}" />
+			<cForm :submit="login" submitButtonText="log in" :fields="$options.jsonForm" :callBack="dataHandler" />
 			<p>Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
 		</div>
 	</div>
@@ -16,14 +16,19 @@ export default {
   components: {
     cForm
   },
+  data: function() {
+    return {
+      credentials: {}
+    };
+  },
   methods: {
     login: function(e) {
       e.preventDefault();
 
-      this.$store.dispatch("auth/login", this._data);
+      this.$store.dispatch("auth/login", this.credentials);
     },
-    inputBlurHandler: function(e) {
-      this._data[e.target.name] = e.target.value;
+    dataHandler: function(key, val) {
+      this.credentials[key] = val;
     }
   }
 };
