@@ -2,21 +2,24 @@
   {
     "label": "Username",
     "name": "username",
-    "type": "text",
+    "type": "input",
+    "inputType": "text",
     "disabled": false,
     "required": true
   },
   {
     "label": "Password",
     "name": "password",
-    "type": "password",
+    "type": "input",
+    "inputType": "password",
     "disabled": false,
     "required": true
   },
   {
     "label": "Email",
     "name": "email",
-    "type": "email",
+    "type": "input",
+    "inputType": "email",
     "disabled": false,
     "required": false
   }
