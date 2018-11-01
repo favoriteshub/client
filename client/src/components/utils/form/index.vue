@@ -7,8 +7,8 @@
         :label="field.label"
         :name="field.name"
         :type="field.inputType"
-        :disabled="field.disabled"
         :required="field.required"
+        :disabled="field.disabled"
         :blur="(e) => callBack(field.name, e.target.value)"
       />
 
@@ -17,6 +17,8 @@
         :key="index"
         :label="field.label"
         :name="field.name"
+        :required="field.required"
+        :disabled="field.disabled"
         :options="field.options"
         :onItemClick="(val) => callBack(field.name, val)"
       />

@@ -6,3 +6,8 @@
 .no-scroll {
   overflow: hidden;
 }
+
+.required:after {
+  content: " *";
+  color: $color-secondary;
+}

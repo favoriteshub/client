@@ -1,17 +1,19 @@
 <template>
   <div class="select">
-    <label>{{label}}</label>
+    <label :class="{required}">{{label}}</label>
     <div class="select__input">
       <input
         type="text"
         :readonly="true"
         placeholder="Select an option"
         :value="value"
+        :required="required"
+        :disabled="disabled"
         @click="handleClick"
         @blur="handleBlur"
       />
 
-      <i :class="isListVisible ? `open`: ``" />
+      <i :class="{open: isListVisible}" />
 
       <transition name="select--animation">
         <ul v-if="isListVisible">
@@ -26,6 +28,8 @@
 export default {
   props: {
     label: String,
+    required: Boolean,
+    disabled: Boolean,
     options: {
       type: Array,
       required: true

@@ -1,6 +1,6 @@
 <template>
   <div class="input-wrapper">
-    <label>{{label}}</label>
+    <label :class="{required}">{{label}}</label>
     <input :type="type" :name="name" :required="required" :disabled="disabled" @blur="blur"/>
   </div>
 </template>
@@ -14,8 +14,8 @@ export default {
     },
     name: String,
     label: String,
-    disabled: Boolean,
     required: Boolean,
+    disabled: Boolean,
     blur: Function
   }
 };
