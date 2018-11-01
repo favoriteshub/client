@@ -1,18 +1,24 @@
 <template>
   <div class="select">
     <label>{{label}}</label>
-    <input
-      type="text"
-      :readonly="true"
-      placeholder="Select an option"
-      :value="value"
-      @click="handleClick"
-      @blur="handleBlur"
-    />
+    <div class="select__input">
+      <input
+        type="text"
+        :readonly="true"
+        placeholder="Select an option"
+        :value="value"
+        @click="handleClick"
+        @blur="handleBlur"
+      />
 
-    <ul v-if="isListVisible">
-      <li v-for="(el) in options" :key="el" @mousedown="handleItemClick">{{el}}</li>
-    </ul>
+      <i :class="isListVisible ? `open`: ``" />
+
+      <transition name="select--animation">
+        <ul v-if="isListVisible">
+          <li v-for="(el) in options" :key="el" @mousedown="handleItemClick">{{el}}</li>
+        </ul>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -54,7 +60,6 @@ export default {
 
 <style lang="scss" scoped>
 .select {
-  position: relative;
   width: 100%;
   margin-bottom: 20px;
 
@@ -65,26 +70,58 @@ export default {
     color: rgba(#000000, 0.6);
   }
 
-  input {
-    @include input();
-    cursor: pointer;
+  &--animation {
+    &-enter-active,
+    &-leave-active {
+      transition: 0.5s all ease;
+    }
+
+    &-enter,
+    &-leave-to {
+      transform: translateY(-5px);
+      opacity: 0;
+    }
   }
 
-  ul {
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    width: 100%;
-    border: 1px solid rgba(#000, 0.12);
-    border-radius: 3px;
+  &__input {
+    position: relative;
 
-    li {
-      padding: 10px;
-      background-color: #fff;
+    input {
+      @include input();
       cursor: pointer;
+    }
 
-      &:hover {
-        background-color: $color-grey-main;
+    i {
+      @include icon($icon-angle-down);
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: 0.5s all ease;
+
+      &.open {
+        transform: rotate(180deg) translateY(50%);
+        transition: 0.5s all ease;
+      }
+    }
+
+    ul {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      width: 100%;
+      border: 1px solid rgba(#000, 0.12);
+      border-radius: 3px;
+
+      li {
+        padding: 10px;
+        background-color: #fff;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-grey-main;
+        }
       }
     }
   }
