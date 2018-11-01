@@ -10,14 +10,13 @@
       <div class="homepage__options__search-new">
         <Autocomplete
           text="Search among the existing series or add a new one"
-          :list="showsSearch.onlyTitles"
-          :error="showsSearch.noData"
-          action="shows"
-          :onItemClick="handleSearch"
+          module="shows"
+          orderBy="title"
+          :onItemClick="handleSearchClick"
+          :onSubmit="handleSearchSubmit"
         />
         <cButton importance="primary" :action="openAddShowPopup" />
       </div>
-      <span>{{searchedElement}}</span>
     </div>
   </div>
 </template>
@@ -28,7 +27,6 @@ import ShowList from "@/components/pages/homepage/ShowList";
 import Autocomplete from "@/components/utils/autocomplete";
 import cButton from "@/components/utils/button";
 import AddShow from "@/components/pages/homepage/AddShow";
-import {mapState} from "vuex";
 
 export default {
   components: {
@@ -39,15 +37,15 @@ export default {
   },
   data: function() {
     return {
-      searchedElement: ""
+      searchedElements: []
     };
   },
-  computed: mapState({
-    showsSearch: (state) => state.shows.search
-  }),
   methods: {
-    handleSearch: function(item) {
-      this.$data.searchedElement = item.title;
+    handleSearchClick: function(item) {
+      this.$data.searchedElements = [item];
+    },
+    handleSearchSubmit: function(items) {
+      this.$data.searchedElements = items;
     },
     openAddShowPopup: function() {
       this.$store.commit("popup/open", {name: AddShow});

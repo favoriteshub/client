@@ -1,21 +1,12 @@
 import * as API from "../utils/api";
-import _ from "lodash";
 
 // initial state
 const state = {
-  search: {
-    onlyTitles: [],
-    fullList: [],
-    noData: false
-  }
+  searchList: []
 };
 
 // getters
-const getters = {
-  getSearchItemByIndex: (state) => (index) => {
-    return state.search.fullList[index];
-  }
-};
+const getters = {};
 
 // actions
 const actions = {
@@ -24,29 +15,24 @@ const actions = {
       if (resolve.data.count > 0) {
         dispatch("searchPaged", {title, page: 0});
       } else {
-        commit("setSearchNoData", true);
+        commit("setSearchList", []);
       }
     });
   },
   searchPaged({commit}, {title, page}) {
     return API.get(`shows/search/${page}?title=${title}`, (resolve) => {
-      commit("setSearchLists", resolve.data);
-      commit("setSearchNoData", false);
+      commit("setSearchList", resolve.data);
     });
   },
-  addShow({commit}, data) {
+  addShow({}, data) {
     return API.post("shows", data);
   }
 };
 
 // mutations
 const mutations = {
-  setSearchLists(state, elements) {
-    state.search.onlyTitles = _.map(elements, "title");
-    state.search.fullList = elements;
-  },
-  setSearchNoData(state, condition) {
-    state.search.noData = condition;
+  setSearchList(state, elements) {
+    state.searchList = elements;
   }
 };
 

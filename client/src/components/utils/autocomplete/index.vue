@@ -4,58 +4,76 @@
       type="text"
       :placeholder="text"
       @input="handleChange"
+      @focus="handleFocus"
       @blur="handleBlur"
-      @focus="handleBlur"
-      @keyup.enter="submit"
+      @keyup.enter="handleSubmit"
     />
 
-    <ul v-if="!error && isListVisible && list.length > 0">
-      <li v-for="(el, index) in list" :key="el" @mousedown="handleItemClick($event, index)">{{el}}</li>
+    <ul v-if="list.length > 0 && isListVisible">
+      <li v-for="(el, index) in list" :key="index" @mousedown="handleItemClick($event, index)">{{el[orderBy]}}</li>
     </ul>
 
-    <span v-if="error">No results were found</span>
+    <span v-if="list.length === 0 && !isFirstTime">No results were found</span>
   </div>
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   props: {
     text: {
       type: String,
       default: "Search"
     },
-    list: {
-      type: Array,
-      required: true
-    },
-    error: {
-      type: Boolean,
-      required: true
-    },
-    action: {
+    module: {
       type: String,
       required: true
     },
-    onItemClick: Function
+    orderBy: {
+      type: String,
+      required: true
+    },
+    onItemClick: Function,
+    onSubmit: Function
   },
   data: function() {
     return {
-      isListVisible: false
+      isListVisible: false,
+      isFirstTime: true
     };
   },
+  computed: mapState({
+    list(state) {
+      return state[this.module].searchList;
+    }
+  }),
   methods: {
     handleChange: function(e) {
       if (e.target.value !== "") {
-        this.$store.dispatch(`${this.action}/searchCount`, e.target.value);
+        this.$store.dispatch(`${this.module}/searchCount`, e.target.value);
+
+        if (this.$data.isFirstTime) {
+          this.$data.isFirstTime = false;
+        }
       }
     },
+    handleFocus: function(e) {
+      this.$data.isListVisible = true;
+    },
     handleBlur: function(e) {
-      this.$data.isListVisible = !this.$data.isListVisible;
+      this.$data.isListVisible = false;
     },
     handleItemClick: function(e, index) {
       if (this.onItemClick) {
-        let item = this.$store.getters[`${this.action}/getSearchItemByIndex`](index);
-        this.onItemClick(item);
+        this.onItemClick(this.list[index]);
+      }
+    },
+    handleSubmit: function(e) {
+      e.target.blur();
+
+      if (this.onSubmit) {
+        this.onSubmit(this.list);
       }
     }
   }
