@@ -84,6 +84,7 @@ export default {
 		}
 
 		.search-box {
+			@include scrollbar();
 			margin-top: 20px;
 			height: calc(100% - 60px);
 			overflow: auto;

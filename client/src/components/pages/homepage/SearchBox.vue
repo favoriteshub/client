@@ -36,12 +36,11 @@ export default {
 	align-content: start;
 
 	&__element {
-		width: 153px;
+		width: 100%;
 		position: relative;
 
 		img {
 			width: 100%;
-			height: 100%;
 		}
 
 		.overlay {
