@@ -1,18 +1,23 @@
 <template>
 	<div class="search-box">
-		<div v-for="(option, index) in options" :key="index" class="search-box__element">
-			<img :src="option.poster" :alt="`${option.title} poster`" />
-			<div class="overlay"><i class="search-box__element__star" @click="handleFavClick(option);" /></div>
-		</div>
+		<Poster
+			v-for="(option, index) in options"
+			:key="index"
+			:info="option"
+			:defaultChecked="option.isAssociated"
+			:onIconClick="handleIconClick"
+		/>
 	</div>
 </template>
 
 <script>
 import Show from "@/components/pages/homepage/Show";
+import Poster from "@/components/utils/poster";
 
 export default {
 	components: {
-		Show
+		Show,
+		Poster
 	},
 	props: {
 		options: {
@@ -21,8 +26,10 @@ export default {
 		}
 	},
 	methods: {
-		handleFavClick: function(item) {
-			console.log(item);
+		handleIconClick: function(item, checked) {
+			return checked
+				? this.$store.dispatch("user/addShow", {id: item._id, obj: item})
+				: this.$store.dispatch("user/removeShow", item._id);
 		}
 	}
 };
@@ -34,34 +41,5 @@ export default {
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 10px;
 	align-content: start;
-
-	&__element {
-		width: 100%;
-		position: relative;
-
-		img {
-			width: 100%;
-		}
-
-		.overlay {
-			display: none;
-		}
-
-		&__star {
-			@include icon($icon-star);
-			font-size: 3.6rem;
-			color: yellow;
-
-			&:hover {
-				@include icon($icon-star, false);
-			}
-		}
-
-		&:hover {
-			.overlay {
-				@include flex-center();
-			}
-		}
-	}
 }
 </style>
