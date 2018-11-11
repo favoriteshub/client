@@ -12,11 +12,13 @@
 
 <script>
 import Show from "@/components/pages/homepage/Show";
+import Film from "@/components/pages/homepage/Film";
 import Poster from "@/components/utils/poster";
 
 export default {
 	components: {
 		Show,
+		Film,
 		Poster
 	},
 	props: {

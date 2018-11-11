@@ -2,15 +2,14 @@ import * as API from "../utils/api";
 
 // initial state
 const state = {
-<<<<<<< HEAD
-  shows: [],
-  films: []
+	shows: [],
+	films: []
 };
 
 // getters
 const getters = {};
 
-// actions
+// actions Shows
 const actions = {
 	getShows({commit}) {
 		return API.get("user-shows", (resolve) => {
@@ -26,13 +25,25 @@ const actions = {
 		return API.del(`user-shows/${id}`, (resolve) => {
 			commit("remove", {id, type: "shows"});
 		});
-  },
+	},
 
-  getFilms({commit}) {
-    return API.get("user-films", (resolve) => {
-      commit("setList", {list: resolve.data, type: "films"});
-    });
-  }
+	// actions Films
+	getFilms({commit}) {
+		return API.get("user-films", (resolve) => {
+			commit("setList", {list: resolve.data, type: "films"});
+		});
+	},
+
+	addFilm({commit}, {id, obj}) {
+		return API.post(`user-films/${id}`, null, (resolve) => {
+			commit("add", {obj, type: "films"});
+		});
+	},
+	removeFilm({commit}, id) {
+		return API.del(`user-films/${id}`, (resolve) => {
+			commit("remove", {id, type: "films"});
+		});
+	}
 };
 
 // mutations
