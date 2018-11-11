@@ -2,7 +2,8 @@ import * as API from "../utils/api";
 
 // initial state
 const state = {
-  shows: []
+  shows: [],
+  films: []
 };
 
 // getters
@@ -13,6 +14,11 @@ const actions = {
   getShows({commit}) {
     return API.get("user-shows", (resolve) => {
       commit("setList", {list: resolve.data, type: "shows"});
+    });
+  },
+  getFilms({commit}) {
+    return API.get("user-films", (resolve) => {
+      commit("setList", {list: resolve.data, type: "films"});
     });
   }
 };
