@@ -1,7 +1,7 @@
 <template>
 	<div class="homepage">
 		<div class="homepage__library">
-			<Tabs :list="[`Shows`]"> <ShowList /> </Tabs>
+			<Tabs :list="[`Shows`]"> <ShowList slot="Shows" /> </Tabs>
 		</div>
 
 		<div class="homepage__options">
