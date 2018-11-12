@@ -11,44 +11,44 @@ import cForm from "@/components/utils/form";
 import jsonForm from "@/configuration/form/register.json";
 
 export default {
-  jsonForm: jsonForm,
-  components: {
-    cForm
-  },
-  data: function() {
-    return {
-      credentials: {}
-    };
-  },
-  methods: {
-    register: function(e) {
-      e.preventDefault();
+	jsonForm: jsonForm,
+	components: {
+		cForm
+	},
+	data: function() {
+		return {
+			credentials: {}
+		};
+	},
+	methods: {
+		register: function(e) {
+			e.preventDefault();
 
-      this.$store.dispatch("auth/register", this.credentials);
-    },
-    dataHandler: function(key, val) {
-      this.credentials[key] = val;
-    }
-  }
+			this.$store.dispatch("auth/register", this.credentials);
+		},
+		dataHandler: function(key, val) {
+			this.credentials[key] = val;
+		}
+	}
 };
 </script>
 
 <style lang="scss" scoped>
 .login {
-  @include viewport-100();
-  @include flex-center();
-  background: linear-gradient(rgba(#738383, 0.5), rgba(white, 0.5)),
-    url("../../../static/img/vikings.jpg") center/cover no-repeat;
+	@include viewport-100();
+	@include flex-center();
+	background: linear-gradient(rgba(#738383, 0.5), rgba(white, 0.5)),
+		url("../../../static/img/vikings.jpg") center/cover no-repeat;
 
-  &__form {
-    width: 75%;
-    background-color: rgba(#fff, 0.75);
-    padding: 5%;
-    border-radius: 20px;
+	&__form {
+		width: 75%;
+		background-color: rgba(#fff, 0.75);
+		padding: 5%;
+		border-radius: 20px;
 
-    @include media($breakpoint-medium) {
-      width: 66.666%;
-    }
-  }
+		@include media($breakpoint-medium) {
+			width: 66.666%;
+		}
+	}
 }
 </style>

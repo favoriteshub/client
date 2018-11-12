@@ -1,18 +1,18 @@
 [
-  {
-    "label": "Username",
-    "name": "username",
-    "type": "input",
-    "inputType": "text",
-    "disabled": false,
-    "required": true
-  },
-  {
-    "label": "Password",
-    "name": "password",
-    "type": "input",
-    "inputType": "password",
-    "disabled": false,
-    "required": true
-  }
+	{
+		"label": "Username",
+		"name": "username",
+		"type": "input",
+		"inputType": "text",
+		"disabled": false,
+		"required": true
+	},
+	{
+		"label": "Password",
+		"name": "password",
+		"type": "input",
+		"inputType": "password",
+		"disabled": false,
+		"required": true
+	}
 ]

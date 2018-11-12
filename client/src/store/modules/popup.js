@@ -2,8 +2,8 @@ import {noScroll} from "@/components/helpers/body";
 
 // initial state
 const state = {
-  visible: false,
-  component: {}
+	visible: false,
+	component: {}
 };
 
 // getters
@@ -14,22 +14,22 @@ const actions = {};
 
 // mutations
 const mutations = {
-  close(state) {
-    state.visible = false;
-    state.component = {};
-    noScroll(false);
-  },
-  open(state, component) {
-    state.visible = true;
-    state.component = component;
-    noScroll(true);
-  }
+	close(state) {
+		state.visible = false;
+		state.component = {};
+		noScroll(false);
+	},
+	open(state, component) {
+		state.visible = true;
+		state.component = component;
+		noScroll(true);
+	}
 };
 
 export default {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
+	namespaced: true,
+	state,
+	getters,
+	actions,
+	mutations
 };

@@ -15,12 +15,12 @@ import Popup from "@/components/utils/popup";
 import Loader from "@/components/utils/loader";
 
 export default {
-  name: "App",
-  components: {
-    cHeader,
-    Popup,
-    Loader
-  }
+	name: "App",
+	components: {
+		cHeader,
+		Popup,
+		Loader
+	}
 };
 </script>
 

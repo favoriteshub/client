@@ -34,29 +34,29 @@ import cSelect from "@/components/utils/select";
 import cButton from "@/components/utils/button";
 
 export default {
-  components: {
-    cButton,
-    cSelect,
-    cInput
-  },
-  props: {
-    submit: {
-      type: Function,
-      required: true
-    },
-    callBack: {
-      type: Function,
-      required: true
-    },
-    submitButtonText: {
-      type: String,
-      default: "submit"
-    },
-    fields: {
-      type: Array,
-      required: true
-    }
-  }
+	components: {
+		cButton,
+		cSelect,
+		cInput
+	},
+	props: {
+		submit: {
+			type: Function,
+			required: true
+		},
+		callBack: {
+			type: Function,
+			required: true
+		},
+		submitButtonText: {
+			type: String,
+			default: "submit"
+		},
+		fields: {
+			type: Array,
+			required: true
+		}
+	}
 };
 </script>
 

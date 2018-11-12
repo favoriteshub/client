@@ -4,57 +4,57 @@
 
 <script>
 export default {
-  props: {
-    type: {
-      type: String,
-      default: "button"
-    },
-    name: String,
-    text: {
-      type: String,
-      required: false
-    },
-    importance: {
-      type: String,
-      validator: (value) => {
-        return ["primary", "secondary"].indexOf(value) !== -1;
-      }
-    },
-    disabled: Boolean,
-    action: Function
-  }
+	props: {
+		type: {
+			type: String,
+			default: "button"
+		},
+		name: String,
+		text: {
+			type: String,
+			required: false
+		},
+		importance: {
+			type: String,
+			validator: (value) => {
+				return ["primary", "secondary"].indexOf(value) !== -1;
+			}
+		},
+		disabled: Boolean,
+		action: Function
+	}
 };
 </script>
 
 <style lang="scss" scoped>
 button {
-  text-transform: uppercase;
-  background-color: #e5e5e5;
-  width: 100%;
-  height: 40px;
-  border: 0;
-  border-radius: 3px;
+	text-transform: uppercase;
+	background-color: #e5e5e5;
+	width: 100%;
+	height: 40px;
+	border: 0;
+	border-radius: 3px;
 
-  &:disabled {
-    opacity: 0.5;
-  }
+	&:disabled {
+		opacity: 0.5;
+	}
 }
 
 .primary {
-  background-color: $color-primary;
-  color: #fff;
+	background-color: $color-primary;
+	color: #fff;
 
-  &:hover {
-    background-color: $color-primary-dark;
-  }
+	&:hover {
+		background-color: $color-primary-dark;
+	}
 }
 
 .secondary {
-  background-color: $color-secondary;
-  color: #fff;
+	background-color: $color-secondary;
+	color: #fff;
 
-  &:hover {
-    background-color: $color-secondary-dark;
-  }
+	&:hover {
+		background-color: $color-secondary-dark;
+	}
 }
 </style>
