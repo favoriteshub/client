@@ -10,7 +10,7 @@
 		/>
 
 		<ul v-if="list.length > 0 && isListVisible">
-			<li v-for="(el, index) in list" :key="index" @mousedown="handleItemClick($event, index);">{{ el[orderBy] }}</li>
+			<li v-for="(el, index) in list" :key="index" @mousedown="handleItemClick($event, index);">{{el[orderBy]}}</li>
 		</ul>
 
 		<span v-if="list.length === 0 && !isFirstTime">No results were found</span>
@@ -96,6 +96,10 @@ export default {
 		width: 100%;
 		border: 1px solid rgba(#000, 0.12);
 		border-radius: 3px;
+		z-index: 10;
+		outline-offset: -2px;
+		outline: -webkit-focus-ring-color auto 5px;
+		cursor: pointer;
 
 		li {
 			padding: 10px;

@@ -7,11 +7,11 @@
 				@click="handleTabCLick(index);"
 				:class="{selected: el === selectedTab}"
 			>
-				{{ el }}
+				{{el}}
 			</p>
 		</div>
 
-		<div class="tabs__content"><slot v-for="el in list" :name="el" v-if="el === selectedTab"></slot></div>
+		<div class="tabs__content"><slot v-for="el in list" :name="el" v-if="el === selectedTab" /></div>
 	</div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
 			padding: 10px 15px;
 			border: 1px solid $color-grey-normal;
 			border-right: none;
-			border-radius: 10px 10px 0 0;
+			border-radius: 5px 5px 0 0;
 			background-color: $color-grey-light;
 			transition: all 0.5s ease;
 
@@ -71,7 +71,7 @@ export default {
 		width: 100%;
 		padding: 10px;
 		border: 1px solid $color-grey-normal;
-		border-radius: 0 10px 10px 10px;
+		border-radius: 0 5px 5px 5px;
 	}
 }
 </style>
