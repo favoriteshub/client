@@ -67,7 +67,7 @@ module.exports = {
 		new webpack.NamedModulesPlugin(),
 		new HtmlWebpackPlugin({
 			filename: "index.html",
-			template: "src/index.html",
+			template: "public/index.html",
 			inject: true
 		}),
 		new CopyWebpackPlugin([
