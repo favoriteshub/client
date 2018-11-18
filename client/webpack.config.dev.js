@@ -46,7 +46,7 @@ module.exports = {
 						loader: "sass-loader",
 						options: {
 							sourceMap: true,
-							data: '@import "src/scss/variables/index.scss"; @import "src/scss/mixins/index.scss";'
+							data: '@import "src/style/variables/index.scss"; @import "src/style/mixins/index.scss";'
 						}
 					}
 				]
