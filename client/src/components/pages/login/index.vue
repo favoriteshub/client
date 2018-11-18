@@ -9,7 +9,7 @@
 
 <script>
 import cForm from "@/components/utils/form";
-import jsonForm from "@/configuration/form/login.json";
+import jsonForm from "@/config/form/login.json";
 
 export default {
 	jsonForm: jsonForm,

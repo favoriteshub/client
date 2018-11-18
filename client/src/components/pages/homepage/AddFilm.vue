@@ -4,8 +4,8 @@
 
 <script>
 import cForm from "@/components/utils/form";
-import jsonForm from "@/configuration/form/addFilm.json";
-import jsonCountries from "@/configuration/countries.json";
+import jsonForm from "@/config/form/addFilm.json";
+import jsonCountries from "@/config/countries.json";
 
 export default {
 	jsonForm: jsonForm,
