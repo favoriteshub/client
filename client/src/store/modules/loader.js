@@ -1,4 +1,4 @@
-import {noScroll} from "@/components/helpers/body";
+import {noScroll} from "@/helpers/body";
 
 // initial state
 const state = {
