@@ -1,32 +1,32 @@
 <template>
-  <div class="filmcase">
-    <Film
-      v-for="(film, index) in films"
+  <div class="showcase">
+    <Show
+      v-for="(show, index) in shows"
       :key="index"
-      :film="film">
-    </Film>
+      :show="show">
+    </Show>
   </div>
 </template>
 
 <script>
-import Film from "@/components/pages/homepage/Film";
+import Show from "@/views/homepage/Show";
 import {mapState} from "vuex";
 
 export default {
 	components: {
-		Film
+		Show
 	},
 	computed: mapState({
-		films: (state) => state.user.films
+		shows: (state) => state.user.shows
 	}),
 	created() {
-		this.$store.dispatch("user/getFilms");
+		this.$store.dispatch("user/getShows");
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-.filmcase {
+.showcase {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 10px 0;

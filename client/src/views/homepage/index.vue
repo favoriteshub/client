@@ -23,13 +23,13 @@
 
 <script>
 import Tabs from "@/components/utils/tabs";
-import ShowList from "@/components/pages/homepage/ShowList";
-import FilmList from "@/components/pages/homepage/FilmList";
+import ShowList from "@/views/homepage/ShowList";
+import FilmList from "@/views/homepage/FilmList";
 import Autocomplete from "@/components/utils/autocomplete";
 import cButton from "@/components/utils/button";
-import SearchBox from "@/components/pages/homepage/SearchBox";
-import AddShow from "@/components/pages/homepage/AddShow";
-import AddFilm from "@/components/pages/homepage/AddFilm";
+import SearchBox from "@/views/homepage/SearchBox";
+import AddShow from "@/views/homepage/AddShow";
+import AddFilm from "@/views/homepage/AddFilm";
 
 export default {
 	components: {

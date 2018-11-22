@@ -2,11 +2,11 @@ import Vue from "vue";
 import Router from "vue-router";
 import store from "@/store/store";
 
-import Homepage from "@/components/pages/homepage";
-import Welcome from "@/components/pages/welcome";
-import Login from "@/components/pages/login";
-import Register from "@/components/pages/register";
-import Settings from "@/components/pages/settings";
+import Homepage from "@/views/homepage";
+import Welcome from "@/views/welcome";
+import Login from "@/views/login";
+import Register from "@/views/register";
+import Settings from "@/views/settings";
 
 Vue.use(Router);
 

@@ -38,7 +38,7 @@ export default {
 	@include viewport-100();
 	@include flex-center();
 	background: linear-gradient(rgba(#738383, 0.5), rgba(white, 0.5)),
-		url("../../../assets/img/vikings.jpg") center/cover no-repeat;
+		url("../../assets/img/vikings.jpg") center/cover no-repeat;
 
 	&__form {
 		width: 75%;
