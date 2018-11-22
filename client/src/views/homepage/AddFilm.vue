@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import cForm from "@/components/utils/form";
+import cForm from "@/components/form";
 import jsonForm from "@/config/form/addFilm.json";
 import jsonCountries from "@/config/countries.json";
 

@@ -13,7 +13,7 @@
 <script>
 import Show from "@/views/homepage/Show";
 import Film from "@/views/homepage/Film";
-import Poster from "@/components/utils/poster";
+import Poster from "@/components/poster";
 
 export default {
 	components: {

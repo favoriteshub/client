@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import Tabs from "@/components/utils/tabs";
+import Tabs from "@/components/tabs";
 import ShowList from "@/views/homepage/ShowList";
 import FilmList from "@/views/homepage/FilmList";
-import Autocomplete from "@/components/utils/autocomplete";
-import cButton from "@/components/utils/button";
+import Autocomplete from "@/components/autocomplete";
+import cButton from "@/components/button";
 import SearchBox from "@/views/homepage/SearchBox";
 import AddShow from "@/views/homepage/AddShow";
 import AddFilm from "@/views/homepage/AddFilm";

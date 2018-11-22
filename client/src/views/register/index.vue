@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import cForm from "@/components/utils/form";
+import cForm from "@/components/form";
 import jsonForm from "@/config/form/register.json";
 
 export default {

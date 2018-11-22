@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import cInput from "@/components/utils/input";
-import cSelect from "@/components/utils/select";
-import cButton from "@/components/utils/button";
+import cInput from "@/components/input";
+import cSelect from "@/components/select";
+import cButton from "@/components/button";
 
 export default {
 	components: {
