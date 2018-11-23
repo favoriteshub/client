@@ -6,7 +6,6 @@ import Homepage from "@/views/homepage";
 import Welcome from "@/views/welcome";
 import Login from "@/views/login";
 import Register from "@/views/register";
-import Settings from "@/views/settings";
 
 Vue.use(Router);
 
@@ -39,11 +38,6 @@ const router = new Router({
 				store.commit("auth/logout");
 				next("/welcome");
 			}
-		},
-		{
-			path: "/settings",
-			name: "Settings",
-			component: Settings
 		}
 	]
 });
