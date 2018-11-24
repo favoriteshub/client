@@ -38,7 +38,7 @@ export default {
 .login {
 	@include viewport-100();
 	@include flex-center();
-	background: linear-gradient(rgba(cyan, 0.5), rgba(white, 0.5)), url("../../assets/img/bb.jpg") center/cover no-repeat;
+	background: linear-gradient(rgba(cyan, 0.5), rgba(white, 0.5)), url("../assets/img/bb.jpg") center/cover no-repeat;
 
 	&__form {
 		width: 75%;
