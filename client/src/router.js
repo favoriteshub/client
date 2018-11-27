@@ -13,27 +13,27 @@ const router = new Router({
 	routes: [
 		{
 			path: "/",
-			name: "Homepage",
+			name: "homepage",
 			component: Homepage
 		},
 		{
 			path: "/welcome",
-			name: "Welcome",
+			name: "welcome",
 			component: Welcome
 		},
 		{
 			path: "/register",
-			name: "Register",
+			name: "register",
 			component: Register
 		},
 		{
 			path: "/login",
-			name: "Login",
+			name: "login",
 			component: Login
 		},
 		{
 			path: "/logout",
-			name: "Logout",
+			name: "logout",
 			beforeEnter(to, from, next) {
 				store.commit("auth/logout");
 				next("/welcome");
@@ -46,13 +46,13 @@ router.beforeEach((to, from, next) => {
 	let authenticated = store.state.auth.authenticated;
 
 	if (authenticated) {
-		if (to.name === "Login" || to.name === "Register") {
+		if (to.name === "login" || to.name === "register") {
 			next(!from.name ? "/" : false);
 		} else {
 			next();
 		}
 	} else {
-		let guestSession = to.name === "Login" || to.name === "Register" || to.name === "Welcome";
+		let guestSession = to.name === "login" || to.name === "register" || to.name === "welcome";
 		next(guestSession ? undefined : "/welcome");
 	}
 });
