@@ -4,8 +4,7 @@ import store from "@/store/store";
 
 import Homepage from "@/views/homepage/index";
 import Welcome from "@/views/welcome";
-import Login from "@/views/login";
-import Register from "@/views/register";
+import Auth from "@/views/auth";
 
 Vue.use(Router);
 
@@ -24,12 +23,14 @@ const router = new Router({
 		{
 			path: "/register",
 			name: "register",
-			component: Register
+			component: Auth,
+			props: {location: "register"}
 		},
 		{
 			path: "/login",
 			name: "login",
-			component: Login
+			component: Auth,
+			props: {location: "login"}
 		},
 		{
 			path: "/logout",
