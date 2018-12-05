@@ -29,6 +29,8 @@ I like to keep track of my favorite tv shows on a text file, so i decided to bui
 # install dependencies
 npm run install-all
 
+# rename server/.env.example into server/.env
+
 # run your MongoDB server
 
 # if you need seed data (requires mongodb tool mongorestore installed on your machine)
