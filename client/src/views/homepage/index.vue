@@ -1,7 +1,7 @@
 <template>
 	<div class="homepage">
 		<div class="homepage__library">
-			<Tabs :list="[`Shows`, `Films`]"> <ShowList slot="Shows" /> <FilmList slot="Films" /> </Tabs>
+			<Tabs :list="[`Shows`]"><ShowList slot="Shows" /></Tabs>
 		</div>
 
 		<div class="homepage__options">
@@ -24,18 +24,15 @@
 <script>
 import Tabs from "@/components/tabs";
 import ShowList from "@/views/homepage/showList";
-import FilmList from "@/views/homepage/filmList";
 import Autocomplete from "@/components/autocomplete";
 import cButton from "@/components/button";
 import SearchBox from "@/views/homepage/searchBox";
 import AddShow from "@/views/homepage/addShow";
-import AddFilm from "@/views/homepage/addFilm";
 
 export default {
 	components: {
 		Tabs,
 		ShowList,
-		FilmList,
 		Autocomplete,
 		cButton,
 		SearchBox
