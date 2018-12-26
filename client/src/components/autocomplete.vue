@@ -1,26 +1,27 @@
 <template>
-	<div class="autocomplete">
-		<input
-			type="text"
-			:placeholder="text"
-			@input="handleChange"
-			@focus="handleFocus"
-			@blur="handleBlur"
-			@keyup.enter="handleSubmit"
-		/>
+<div class="v-autocomplete">
+	<input
+		type="text"
+		:placeholder="text"
+		@input="handleChange"
+		@focus="handleFocus"
+		@blur="handleBlur"
+		@keyup.enter="handleSubmit"
+	/>
 
-		<ul v-if="list.length > 0 && isListVisible">
-			<li v-for="(el, index) in list" :key="index" @mousedown="handleItemClick($event, index);">{{el[orderBy]}}</li>
-		</ul>
+	<ul v-if="list.length > 0 && isListVisible">
+		<li v-for="(el, index) in list" :key="index" @mousedown="handleItemClick($event, index);">{{el[orderBy]}}</li>
+	</ul>
 
-		<span v-if="list.length === 0 && !isFirstTime">No results were found</span>
-	</div>
+	<span v-if="list.length === 0 && !isFirstTime">No results were found</span>
+</div>
 </template>
 
 <script>
 import {mapState} from "vuex";
 
 export default {
+	name: "v-autocomplete",
 	props: {
 		text: {
 			type: String,
@@ -81,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.autocomplete {
+.v-autocomplete {
 	position: relative;
 	width: 100%;
 

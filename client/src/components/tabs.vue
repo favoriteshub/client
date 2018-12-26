@@ -1,22 +1,23 @@
 <template>
-	<div>
-		<div class="tabs__selector">
-			<p
-				v-for="(el, index) in list"
-				:key="index"
-				@click="handleTabCLick(index);"
-				:class="{selected: el === selectedTab}"
-			>
-				{{el}}
-			</p>
-		</div>
-
-		<div class="tabs__content"><slot v-for="el in list" :name="el" v-if="el === selectedTab" /></div>
+<div class="v-tabs">
+	<div class="v-tabs__selector">
+		<p
+			v-for="(el, index) in list"
+			:key="index"
+			@click="handleTabCLick(index);"
+			:class="{selected: el === selectedTab}"
+		>
+			{{el}}
+		</p>
 	</div>
+
+	<div class="v-tabs__content"><slot v-for="el in list" :name="el" v-if="el === selectedTab" /></div>
+</div>
 </template>
 
 <script>
 export default {
+	name: "v-tabs",
 	props: {
 		list: {
 			type: Array,
@@ -37,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tabs {
+.v-tabs {
 	&__selector {
 		display: flex;
 		margin-bottom: -1px;

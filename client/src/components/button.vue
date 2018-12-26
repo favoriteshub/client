@@ -1,9 +1,16 @@
 <template>
-  <button :type="type" :name="name" :class="importance" :disabled="disabled" v-on="action ? {click: action} : {}">{{text}}</button>
+<button
+	:type="type"
+	:name="name"
+	:class="[`v-button`, importance]"
+	:disabled="disabled"
+	v-on="onClick ? {click: onClick} : {}"
+>{{text}}</button>
 </template>
 
 <script>
 export default {
+	name: "v-button",
 	props: {
 		type: {
 			type: String,
@@ -21,13 +28,13 @@ export default {
 			}
 		},
 		disabled: Boolean,
-		action: Function
+		onClick: Function
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-button {
+.v-button {
 	text-transform: uppercase;
 	background-color: #e5e5e5;
 	width: 100%;
@@ -38,23 +45,23 @@ button {
 	&:disabled {
 		opacity: 0.5;
 	}
-}
 
-.primary {
-	background-color: $color-primary;
-	color: #fff;
+	&.primary {
+		background-color: $color-primary;
+		color: #fff;
 
-	&:hover {
-		background-color: $color-primary-dark;
+		&:hover {
+			background-color: $color-primary-dark;
+		}
 	}
-}
 
-.secondary {
-	background-color: $color-secondary;
-	color: #fff;
+	&.secondary {
+		background-color: $color-secondary;
+		color: #fff;
 
-	&:hover {
-		background-color: $color-secondary-dark;
+		&:hover {
+			background-color: $color-secondary-dark;
+		}
 	}
 }
 </style>

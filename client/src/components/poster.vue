@@ -1,14 +1,15 @@
 <template>
-	<div class="poster">
-		<img :src="info.poster" :alt="`${info.title} poster`" />
-		<div class="overlay">
-			<i class="poster__star" @click="handleIconCLick" :class="{[`poster__star--checked`]: checked}" />
-		</div>
+<div class="v-poster">
+	<img :src="info.poster" :alt="`${info.title} poster`" />
+	<div class="overlay">
+		<i class="v-poster__star" @click="handleIconCLick" :class="{[`v-poster__star--checked`]: checked}" />
 	</div>
+</div>
 </template>
 
 <script>
 export default {
+	name: "v-poster",
 	props: {
 		info: {
 			type: Object,
@@ -39,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.poster {
+.v-poster {
 	width: 100%;
 	position: relative;
 

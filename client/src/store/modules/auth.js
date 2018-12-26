@@ -2,16 +2,13 @@ import * as API from "../utils/api";
 import {isAuthenticated, saveTokensInStorage, removeTokensfromStorage} from "../utils/session";
 import router from "@/router";
 
-// initial state
 const state = {
 	authenticated: isAuthenticated(),
 	currentUser: {}
 };
 
-// getters
 const getters = {};
 
-// actions
 const actions = {
 	login({commit}, data) {
 		return API.post("/auth/login", data, (resolve) => {
@@ -25,7 +22,6 @@ const actions = {
 	}
 };
 
-// mutations
 const mutations = {
 	authenticateUser(state, apiResponse) {
 		saveTokensInStorage(apiResponse);

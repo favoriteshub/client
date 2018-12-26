@@ -1,14 +1,11 @@
 import * as API from "../utils/api";
 
-// initial state
 const state = {
 	searchList: []
 };
 
-// getters
 const getters = {};
 
-// actions
 const actions = {
 	searchCount({commit, dispatch}, title) {
 		return API.get(`shows/search/count?title=${title}`, (resolve) => {
@@ -29,7 +26,6 @@ const actions = {
 	}
 };
 
-// mutations
 const mutations = {
 	setSearchList(state, elements) {
 		state.searchList = elements;

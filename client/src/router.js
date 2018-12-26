@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import store from "@/store/store";
 
-import Homepage from "@/views/homepage/index";
+import Homepage from "@/views/homepage";
 import Welcome from "@/views/welcome";
 import Auth from "@/views/auth";
 

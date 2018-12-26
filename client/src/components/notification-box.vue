@@ -1,11 +1,12 @@
 <template>
-<div :class="importance === undefined ? `notification-box` : `notification-box ${importance}`">
+<div :class="[`v-notification-box`, importance]">
   <span>{{text}}</span>
 </div>
 </template>
 
 <script>
 export default {
+	name: "v-notification-box",
 	props: {
 		text: {
 			type: String,
@@ -21,8 +22,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.notification-box {
+<style lang="scss" scoped>
+.v-notification-box {
 	@include flex-center();
 	border: 2px solid #e5e5e5;
 	border-radius: 3px;

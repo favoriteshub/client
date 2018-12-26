@@ -1,11 +1,11 @@
 <template>
-<div v-show="visible" class="loader">
+<div v-show="visible" class="v-loader">
   <div class="overlay"></div>
-  <div class="loader__element">
-    <div class="loader__element__line"></div>
-    <div class="loader__element__line"></div>
-    <div class="loader__element__line"></div>
-    <div class="loader__element__line"></div>
+  <div class="v-loader__element">
+    <div class="v-loader__element__line"></div>
+    <div class="v-loader__element__line"></div>
+    <div class="v-loader__element__line"></div>
+    <div class="v-loader__element__line"></div>
   </div>
 </div>
 </template>
@@ -14,6 +14,7 @@
 import {mapState} from "vuex";
 
 export default {
+	name: "v-loader",
 	computed: mapState({
 		visible: (state) => state.loader.visible
 	})
@@ -21,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.loader {
+.v-loader {
 	.overlay {
 		position: fixed;
 		background-color: rgba(#fff, 0.9);

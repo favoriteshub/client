@@ -1,14 +1,11 @@
 import * as API from "../utils/api";
 
-// initial state
 const state = {
 	shows: []
 };
 
-// getters
 const getters = {};
 
-// actions Shows
 const actions = {
 	getShows({commit}) {
 		return API.get("user-shows", (resolve) => {
@@ -27,7 +24,6 @@ const actions = {
 	}
 };
 
-// mutations
 const mutations = {
 	setList(state, {list, type}) {
 		state[type] = list;

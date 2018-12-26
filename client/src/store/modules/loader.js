@@ -1,17 +1,13 @@
 import {noScroll} from "@/helpers/body";
 
-// initial state
 const state = {
 	visible: false
 };
 
-// getters
 const getters = {};
 
-// actions
 const actions = {};
 
-// mutations
 const mutations = {
 	close(state) {
 		state.visible = false;

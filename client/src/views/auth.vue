@@ -1,25 +1,26 @@
 <template>
-	<div :class="`auth auth--${location}`">
-		<div class="auth__form">
-			<cForm
-				:submit="authenticate"
-				:submitButtonText="location === `login` ? `log in` : `sign up`"
-				:fields="jsonForm"
-				:callBack="dataHandler"
-			/>
-			<p v-if="location === `login`">Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
-		</div>
+<div :class="`auth auth--${location}`">
+	<div class="auth__form">
+		<VForm
+			:submit="authenticate"
+			:submitButtonText="location === `login` ? `log in` : `sign up`"
+			:fields="jsonForm"
+			:callBack="dataHandler"
+		/>
+		<p v-if="location === `login`">Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
 	</div>
+</div>
 </template>
 
 <script>
-import cForm from "@/components/form";
+import VForm from "@/components/form";
 import loginForm from "@/config/form/login.json";
 import registerForm from "@/config/form/register.json";
 
 export default {
+	name: "auth",
 	components: {
-		cForm
+		VForm
 	},
 	props: {
 		location: {
@@ -70,7 +71,7 @@ export default {
 		padding: 5%;
 		border-radius: 20px;
 
-		@include media($breakpoint-medium) {
+		@include media("m") {
 			width: 66.666%;
 		}
 

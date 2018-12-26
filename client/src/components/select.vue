@@ -1,31 +1,32 @@
 <template>
-	<div class="select">
-		<label :class="{required}">{{ label }}</label>
-		<div class="select__input">
-			<input
-				type="text"
-				:readonly="true"
-				placeholder="Select an option"
-				:value="value"
-				:required="required"
-				:disabled="disabled"
-				@click="handleClick"
-				@blur="handleBlur"
-			/>
+<div class="v-select">
+	<label :class="{required}">{{ label }}</label>
+	<div class="v-select__input">
+		<input
+			type="text"
+			:readonly="true"
+			placeholder="Select an option"
+			:value="value"
+			:required="required"
+			:disabled="disabled"
+			@click="handleClick"
+			@blur="handleBlur"
+		/>
 
-			<i :class="{open: isListVisible}" />
+		<i :class="{open: isListVisible}" />
 
-			<transition name="select--animation">
-				<ul v-if="isListVisible">
-					<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{ el }}</li>
-				</ul>
-			</transition>
-		</div>
+		<transition name="v-select--animation">
+			<ul v-if="isListVisible">
+				<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{ el }}</li>
+			</ul>
+		</transition>
 	</div>
+</div>
 </template>
 
 <script>
 export default {
+	name: "v-select",
 	props: {
 		label: String,
 		required: Boolean,
@@ -63,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.select {
+.v-select {
 	width: 100%;
 	margin-bottom: 20px;
 

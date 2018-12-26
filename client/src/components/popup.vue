@@ -1,17 +1,18 @@
 <template>
-	<div v-show="visible" class="popup">
-		<div class="overlay" @click="closePopup"></div>
-		<div class="popup__content">
-			<component :is="component.name" v-bind="component.props" />
-			<i class="popup__content--close" @click="closePopup" />
-		</div>
+<div v-show="visible" class="v-popup">
+	<div class="overlay" @click="closePopup"></div>
+	<div class="v-popup__content">
+		<component :is="component.name" v-bind="component.props" />
+		<i class="v-popup__content--close" @click="closePopup" />
 	</div>
+</div>
 </template>
 
 <script>
 import {mapState, mapMutations} from "vuex";
 
 export default {
+	name: "v-popup",
 	computed: mapState({
 		visible: (state) => state.popup.visible,
 		component: (state) => state.popup.component
@@ -25,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.popup {
+.v-popup {
 	.overlay {
 		position: fixed;
 	}
@@ -39,7 +40,7 @@ export default {
 		height: 100%;
 		background-color: #fff;
 
-		@include media($breakpoint-medium) {
+		@include media("m") {
 			top: 50%;
 			left: 50%;
 			width: 75%;
@@ -57,7 +58,7 @@ export default {
 			padding: 15px;
 			border-bottom-left-radius: 3px;
 
-			@include media($breakpoint-medium) {
+			@include media("m") {
 				display: none;
 			}
 		}

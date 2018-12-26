@@ -1,22 +1,23 @@
 <template>
-	<header v-if="authenticated">
-		<router-link to="/" class="home"></router-link>
-		<router-link to="/logout" class="logout"></router-link>
-	</header>
+<header class="v-header" v-if="authenticated">
+	<router-link to="/" class="home"></router-link>
+	<router-link to="/logout" class="logout"></router-link>
+</header>
 
-	<header v-else>
-		<router-link to="/welcome" class="home"></router-link>
-		<div class="to-raftel">
-			<router-link to="/login">Log in</router-link>
-			<router-link to="/register">Register</router-link>
-		</div>
-	</header>
+<header class="v-header" v-else>
+	<router-link to="/welcome" class="home"></router-link>
+	<div class="raftel">
+		<router-link to="/login">Log in</router-link>
+		<router-link to="/register">Register</router-link>
+	</div>
+</header>
 </template>
 
 <script>
 import {mapState} from "vuex";
 
 export default {
+	name: "v-header",
 	computed: mapState({
 		authenticated: (state) => state.auth.authenticated
 	})
@@ -24,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header {
+.v-header {
 	height: 40px;
 	width: 100%;
 	background-color: $color-grey-light;
@@ -32,7 +33,6 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 20px;
-	font-size: 2rem;
 
 	.home {
 		@include icon($icon-home);
@@ -42,7 +42,7 @@ header {
 		@include icon($icon-logout);
 	}
 
-	.to-raftel {
+	.raftel {
 		a {
 			font-style: italic;
 

@@ -1,12 +1,13 @@
 <template>
-  <div class="input-wrapper">
-    <label :class="{required}">{{label}}</label>
-    <input :type="type" :name="name" :required="required" :disabled="disabled" @blur="blur"/>
-  </div>
+<div class="v-input">
+	<label :class="{required}">{{label}}</label>
+	<input :type="type" :name="name" :required="required" :disabled="disabled" @blur="blur" />
+</div>
 </template>
 
 <script>
 export default {
+	name: "v-input",
 	props: {
 		type: {
 			type: String,
@@ -22,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.input-wrapper {
+.v-input {
 	margin-bottom: 20px;
 
 	label {

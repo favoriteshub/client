@@ -1,17 +1,17 @@
 <template>
-<div class="welcome">
-	<p>Welcome</p>
+<div class="homepage">
+	<p>Homepage</p>
 </div>
 </template>
 
 <script>
 export default {
-	name: "welcome"
+	name: "homepage"
 };
 </script>
 
 <style lang="scss" scoped>
-.welcome {
+.homepage {
 	@include viewport-100();
 	@include flex-center();
 }

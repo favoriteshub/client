@@ -1,43 +1,44 @@
 <template>
-  <form @submit="submit">
-    <template v-for="(field, index) in fields">
-      <cInput
-        v-if="field.type === `input`"
-        :key="index"
-        :label="field.label"
-        :name="field.name"
-        :type="field.inputType"
-        :required="field.required"
-        :disabled="field.disabled"
-        :blur="(e) => callBack(field.name, e.target.value)"
-      />
+<form class="v-form" @submit="submit">
+  <template v-for="(field, index) in fields">
+    <vInput
+      v-if="field.type === `input`"
+      :key="index"
+      :label="field.label"
+      :name="field.name"
+      :type="field.inputType"
+      :required="field.required"
+      :disabled="field.disabled"
+      :blur="(e) => callBack(field.name, e.target.value)"
+    />
 
-      <cSelect
-        v-if="field.type === `select`"
-        :key="index"
-        :label="field.label"
-        :name="field.name"
-        :required="field.required"
-        :disabled="field.disabled"
-        :options="field.options"
-        :onItemClick="(val) => callBack(field.name, val)"
-      />
-    </template>
+    <vSelect
+      v-if="field.type === `select`"
+      :key="index"
+      :label="field.label"
+      :name="field.name"
+      :required="field.required"
+      :disabled="field.disabled"
+      :options="field.options"
+      :onItemClick="(val) => callBack(field.name, val)"
+    />
+  </template>
 
-    <cButton type="submit" name="form-submit-button" :text="submitButtonText" importance="primary" />
-  </form>
+  <vButton type="submit" name="form-submit-button" :text="submitButtonText" importance="primary" />
+</form>
 </template>
 
 <script>
-import cInput from "@/components/input";
-import cSelect from "@/components/select";
-import cButton from "@/components/button";
+import vInput from "@/components/input";
+import vSelect from "@/components/select";
+import vButton from "@/components/button";
 
 export default {
+	name: "v-form",
 	components: {
-		cButton,
-		cSelect,
-		cInput
+		vButton,
+		vSelect,
+		vInput
 	},
 	props: {
 		submit: {
