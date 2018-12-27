@@ -1,7 +1,7 @@
 <template>
-<div :class="`auth auth--${location}`">
-	<div class="auth__form">
-		<VForm
+<div :class="[`auth`, location]">
+	<div>
+		<vForm
 			:submit="authenticate"
 			:submitButtonText="location === `login` ? `log in` : `sign up`"
 			:fields="jsonForm"
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import VForm from "@/components/form";
+import vForm from "@/components/form";
 import loginForm from "@/config/form/login.json";
 import registerForm from "@/config/form/register.json";
 
 export default {
 	name: "auth",
 	components: {
-		VForm
+		vForm
 	},
 	props: {
 		location: {
@@ -56,16 +56,16 @@ export default {
 	@include viewport-100();
 	@include flex-center();
 
-	&--login {
+	&.login {
 		background: linear-gradient(rgba(cyan, 0.5), rgba(white, 0.5)), url("../assets/img/bb.jpg") center/cover no-repeat;
 	}
 
-	&--register {
+	&.register {
 		background: linear-gradient(rgba(#738383, 0.5), rgba(white, 0.5)),
 			url("../assets/img/vikings.jpg") center/cover no-repeat;
 	}
 
-	&__form {
+	div {
 		width: 75%;
 		background-color: rgba(#fff, 0.75);
 		padding: 5%;

@@ -1,6 +1,6 @@
 <template>
 <div class="v-tabs">
-	<div class="v-tabs__selector">
+	<div class="selector">
 		<p
 			v-for="(el, index) in list"
 			:key="index"
@@ -11,7 +11,7 @@
 		</p>
 	</div>
 
-	<div class="v-tabs__content"><slot v-for="el in list" :name="el" v-if="el === selectedTab" /></div>
+	<div class="content"><slot v-for="el in list" :name="el" v-if="el === selectedTab" /></div>
 </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .v-tabs {
-	&__selector {
+	.selector {
 		display: flex;
 		margin-bottom: -1px;
 
@@ -68,7 +68,7 @@ export default {
 		}
 	}
 
-	&__content {
+	.content {
 		width: 100%;
 		padding: 10px;
 		border: 1px solid $color-grey-normal;

@@ -1,7 +1,7 @@
 <template>
 <div class="v-select">
 	<label :class="{required}">{{ label }}</label>
-	<div class="v-select__input">
+	<div>
 		<input
 			type="text"
 			:readonly="true"
@@ -15,7 +15,7 @@
 
 		<i :class="{open: isListVisible}" />
 
-		<transition name="v-select--animation">
+		<transition name="ul-animation">
 			<ul v-if="isListVisible">
 				<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{ el }}</li>
 			</ul>
@@ -75,7 +75,7 @@ export default {
 		color: rgba(#000000, 0.6);
 	}
 
-	&--animation {
+	.ul-animation {
 		&-enter-active,
 		&-leave-active {
 			transition: 0.5s all ease;
@@ -88,7 +88,7 @@ export default {
 		}
 	}
 
-	&__input {
+	div {
 		position: relative;
 
 		input {

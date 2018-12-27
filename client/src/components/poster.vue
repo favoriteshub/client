@@ -2,7 +2,7 @@
 <div class="v-poster">
 	<img :src="info.poster" :alt="`${info.title} poster`" />
 	<div class="overlay">
-		<i class="v-poster__star" @click="handleIconCLick" :class="{[`v-poster__star--checked`]: checked}" />
+		<i :class="{checked}" @click="handleIconCLick" />
 	</div>
 </div>
 </template>
@@ -52,7 +52,7 @@ export default {
 		display: none;
 	}
 
-	&__star {
+	i {
 		@include icon($icon-star);
 		font-size: 3.6rem;
 		color: yellow;
@@ -61,7 +61,7 @@ export default {
 			@include icon($icon-star, false);
 		}
 
-		&--checked {
+		&.checked {
 			@include icon($icon-star, false);
 
 			&:hover {

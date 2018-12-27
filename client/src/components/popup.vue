@@ -1,9 +1,9 @@
 <template>
 <div v-show="visible" class="v-popup">
 	<div class="overlay" @click="closePopup"></div>
-	<div class="v-popup__content">
+	<div class="content">
 		<component :is="component.name" v-bind="component.props" />
-		<i class="v-popup__content--close" @click="closePopup" />
+		<i @click="closePopup" />
 	</div>
 </div>
 </template>
@@ -31,7 +31,7 @@ export default {
 		position: fixed;
 	}
 
-	&__content {
+	.content {
 		@include flex-center();
 		position: fixed;
 		top: 0;
@@ -48,7 +48,7 @@ export default {
 			transform: translate(-50%, -50%);
 		}
 
-		&--close {
+		i {
 			@include icon($icon-close);
 			position: absolute;
 			top: 0;

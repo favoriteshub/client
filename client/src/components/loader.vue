@@ -1,11 +1,11 @@
 <template>
 <div v-show="visible" class="v-loader">
   <div class="overlay"></div>
-  <div class="v-loader__element">
-    <div class="v-loader__element__line"></div>
-    <div class="v-loader__element__line"></div>
-    <div class="v-loader__element__line"></div>
-    <div class="v-loader__element__line"></div>
+  <div class="element">
+    <div/>
+    <div/>
+    <div/>
+    <div/>
   </div>
 </div>
 </template>
@@ -29,13 +29,13 @@ export default {
 	}
 
 	// https://codepen.io/I-is-kevin/pen/jqejXj
-	&__element {
+	.element {
 		position: fixed;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 
-		&__line {
+		div {
 			animation: expand 1s ease-in-out infinite;
 			border-radius: 10px;
 			display: inline-block;
