@@ -2,7 +2,8 @@ import {noScroll} from "@/helpers/body";
 
 const state = {
 	visible: false,
-	component: {}
+	component: {},
+	extraClasses: ""
 };
 
 const getters = {};
@@ -13,11 +14,13 @@ const mutations = {
 	close(state) {
 		state.visible = false;
 		state.component = {};
+		state.extraClasses = "";
 		noScroll(false);
 	},
-	open(state, component) {
+	open(state, {component, extraClasses}) {
 		state.visible = true;
 		state.component = component;
+		state.extraClasses = extraClasses;
 		noScroll(true);
 	}
 };

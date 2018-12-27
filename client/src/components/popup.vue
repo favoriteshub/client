@@ -1,9 +1,9 @@
 <template>
 <div v-show="visible" class="v-popup">
 	<div class="overlay" @click="closePopup"></div>
-	<div class="content">
+	<div :class="[`content`, extraClasses]">
 		<component :is="component.name" v-bind="component.props" />
-		<i @click="closePopup" />
+		<div class="close" @click="closePopup" ><i /></div>
 	</div>
 </div>
 </template>
@@ -15,7 +15,8 @@ export default {
 	name: "v-popup",
 	computed: mapState({
 		visible: (state) => state.popup.visible,
-		component: (state) => state.popup.component
+		component: (state) => state.popup.component,
+		extraClasses: (state) => state.popup.extraClasses
 	}),
 	methods: {
 		closePopup: function() {
@@ -32,34 +33,40 @@ export default {
 	}
 
 	.content {
-		@include flex-center();
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
 		background-color: #fff;
+		padding: 40px;
 
 		@include media("m") {
 			top: 50%;
 			left: 50%;
-			width: 75%;
-			height: 75%;
+			width: auto;
+			max-width: 75%;
+			max-height: 75%;
 			transform: translate(-50%, -50%);
 		}
 
-		i {
-			@include icon($icon-close);
+		.close {
 			position: absolute;
 			top: 0;
 			right: 0;
-			font-size: 2.4rem;
+			width: 40px;
+			height: 40px;
 			background-color: $color-grey-light;
-			padding: 15px;
 			border-bottom-left-radius: 3px;
+			@include flex-center();
 
 			@include media("m") {
 				display: none;
+			}
+
+			i {
+				@include icon($icon-close);
+				font-size: 2.4rem;
 			}
 		}
 	}
