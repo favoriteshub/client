@@ -9,7 +9,7 @@ import user from "./modules/user";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
 	modules: {
 		shows,
 		popup,
@@ -18,3 +18,11 @@ export default new Vuex.Store({
 		user
 	}
 });
+
+export default store;
+
+const initialStateCopy = JSON.parse(JSON.stringify(store.state));
+
+export function resetState() {
+	store.replaceState(JSON.parse(JSON.stringify(initialStateCopy)));
+}

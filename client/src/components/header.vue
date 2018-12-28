@@ -3,7 +3,7 @@
 	<router-link to="/" class="home"></router-link>
 	<div>
 		<i class="search" @click="openSearchPopup" />
-		<router-link to="/logout" class="logout"></router-link>
+		<i class="logout" @click="logout" />
 	</div>
 </header>
 
@@ -28,6 +28,9 @@ export default {
 	methods: {
 		openSearchPopup: function() {
 			this.$store.commit("popup/open", {component: {name: vSearch}});
+		},
+		logout: function() {
+			this.$store.commit("auth/logout");
 		}
 	}
 };

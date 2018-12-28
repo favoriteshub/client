@@ -23,19 +23,3 @@ export function saveTokensInStorage(data) {
 export function removeTokensfromStorage() {
 	localStorage.clear();
 }
-
-export function refreshTokens() {
-	let data = {token: getToken(), refreshToken: getRefreshToken()};
-
-	return API.post(
-		"/auth/refresh",
-		data,
-		(resolve) => {
-			saveTokensInStorage(resolve.data);
-		},
-		(reject) => {
-			router.push("/logout");
-			throw reject;
-		}
-	);
-}

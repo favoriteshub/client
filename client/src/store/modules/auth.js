@@ -31,7 +31,9 @@ const mutations = {
 	},
 	logout(state) {
 		removeTokensfromStorage();
+		state.currentUser = {};
 		state.authenticated = false;
+		router.push("/welcome");
 	}
 };
 

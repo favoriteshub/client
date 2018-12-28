@@ -31,14 +31,6 @@ const router = new Router({
 			name: "login",
 			component: Auth,
 			props: {location: "login"}
-		},
-		{
-			path: "/logout",
-			name: "logout",
-			beforeEnter(to, from, next) {
-				store.commit("auth/logout");
-				next("/welcome");
-			}
 		}
 	]
 });

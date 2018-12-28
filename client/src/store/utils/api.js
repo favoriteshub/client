@@ -1,5 +1,6 @@
 import axios from "axios";
-import {getToken, refreshTokens} from "./session";
+import {getToken, getRefreshToken, saveTokensInStorage} from "./session";
+import store, {resetState} from "@/store/store";
 
 const API = axios.create({
 	baseURL: `http://localhost:3000/api`
@@ -17,12 +18,19 @@ API.interceptors.request.use((config) => {
 
 API.interceptors.response.use(undefined, (error) => {
 	if (error.response && error.response.status === 401 && error.config && !error.config.__isRetryRequest) {
-		return refreshTokens()
-			.then(() => {
+		const data = {token: getToken(), refreshToken: getRefreshToken()};
+
+		return API({method: "post", url: "/auth/refresh", data})
+			.then((resolve) => {
+				saveTokensInStorage(resolve.data);
+
 				error.config.__isRetryRequest = true;
 				return API(error.config);
 			})
 			.catch(() => {
+				resetState();
+				store.commit("auth/logout");
+
 				return Promise.reject(error);
 			});
 	}
