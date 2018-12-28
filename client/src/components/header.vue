@@ -1,12 +1,15 @@
 <template>
 <header class="v-header" v-if="authenticated">
 	<router-link to="/" class="home"></router-link>
-	<router-link to="/logout" class="logout"></router-link>
+	<div>
+		<i class="search" @click="openSearchPopup" />
+		<router-link to="/logout" class="logout"></router-link>
+	</div>
 </header>
 
 <header class="v-header" v-else>
 	<router-link to="/welcome" class="home"></router-link>
-	<div class="raftel">
+	<div>
 		<router-link to="/login">Log in</router-link>
 		<router-link to="/register">Register</router-link>
 	</div>
@@ -14,13 +17,19 @@
 </template>
 
 <script>
+import vSearch from "@/components/search";
 import {mapState} from "vuex";
 
 export default {
 	name: "v-header",
 	computed: mapState({
 		authenticated: (state) => state.auth.authenticated
-	})
+	}),
+	methods: {
+		openSearchPopup: function() {
+			this.$store.commit("popup/open", {component: {name: vSearch}});
+		}
+	}
 };
 </script>
 
@@ -42,16 +51,20 @@ export default {
 		@include icon($icon-logout);
 	}
 
-	.raftel {
+	.search {
+		@include icon($icon-search);
+	}
+
+	div {
+		display: grid;
+		grid-column-gap: 20px;
+		grid-auto-flow: column;
+
 		a {
 			font-style: italic;
 
 			&:hover {
 				color: cyan;
-			}
-
-			&:first-child {
-				margin-right: 20px;
 			}
 		}
 	}

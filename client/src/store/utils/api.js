@@ -88,3 +88,7 @@ export function del(url, resolve, reject) {
 			}
 		});
 }
+
+export function create(data) {
+	return API(data);
+}

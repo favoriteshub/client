@@ -21,6 +21,9 @@ const actions = {
 			commit("setSearchList", resolve.data);
 		});
 	},
+	search({}, name) {
+		return API.create({url: "shows/search", params: {name}});
+	},
 	addShow({}, data) {
 		return API.post("shows", data);
 	}
