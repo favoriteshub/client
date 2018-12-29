@@ -6,7 +6,7 @@
 	</div>
 
 	<div class="list">
-		<img v-for="show in shows" :key="show.id" :src="show.banner" :alt="show.title">
+		<vShowcase v-for="show in shows" :key="show.id" :data="show" type="banner" />
 	</div>
 </div>
 </template>
@@ -14,12 +14,14 @@
 <script>
 import vInput from "@/components/input";
 import vButton from "@/components/button";
+import vShowcase from "@/components/showcase";
 
 export default {
 	name: "v-search",
 	components: {
 		vInput,
-		vButton
+		vButton,
+		vShowcase
 	},
 	data: function() {
 		return {
@@ -51,10 +53,8 @@ export default {
 		overflow-y: auto;
 		@include scrollbar();
 
-		img {
-			width: 100%;
+		.v-showcase {
 			margin-bottom: 20px;
-			display: block;
 
 			&:last-child {
 				margin-bottom: 0;

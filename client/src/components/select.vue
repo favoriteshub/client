@@ -1,6 +1,6 @@
 <template>
 <div class="v-select">
-	<label :class="{required}">{{ label }}</label>
+	<label :class="{required}">{{label}}</label>
 	<div>
 		<input
 			type="text"
@@ -17,7 +17,7 @@
 
 		<transition name="ul-animation">
 			<ul v-if="isListVisible">
-				<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{ el }}</li>
+				<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{el}}</li>
 			</ul>
 		</transition>
 	</div>
