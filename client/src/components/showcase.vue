@@ -4,8 +4,8 @@
 	<div class="info">
 		<h4>{{`${data.title} (${data.status})`}}</h4>
 		<div>
-			<i class="star" />
-			<i class="details" />
+			<i class="star" @click="onFavouriteClick" />
+			<i class="details" @click="onDetailsClick" />
 		</div>
 	</div>
 </div>
@@ -25,6 +25,14 @@ export default {
 			validator: (value) => {
 				return ["banner", "poster"].indexOf(value) !== -1;
 			}
+		},
+		onFavouriteClick: {
+			type: Function,
+			required: true
+		},
+		onDetailsClick: {
+			type: Function,
+			required: true
 		}
 	}
 };

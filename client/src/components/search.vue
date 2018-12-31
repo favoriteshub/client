@@ -6,7 +6,14 @@
 	</div>
 
 	<div class="list">
-		<vShowcase v-for="show in shows" :key="show.id" :data="show" type="banner" />
+		<vShowcase
+			v-for="show in shows"
+			:key="show.thetvdb"
+			:data="show"
+			type="banner"
+			:onFavouriteClick="() => {}"
+			:onDetailsClick="() => redirectToSeriesPage(show.thetvdb)"
+		/>
 	</div>
 </div>
 </template>
@@ -32,6 +39,10 @@ export default {
 	methods: {
 		getResults: function() {
 			this.$store.dispatch(`shows/search`, this.input).then((response) => (this.shows = response.data));
+		},
+		redirectToSeriesPage: function(id) {
+			this.$router.push(`/series/${id}`);
+			this.$store.commit("popup/close");
 		}
 	}
 };
