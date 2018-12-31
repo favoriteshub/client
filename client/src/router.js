@@ -5,6 +5,7 @@ import store from "@/store/store";
 import Homepage from "@/views/homepage";
 import Welcome from "@/views/welcome";
 import Auth from "@/views/auth";
+import Series from "@/views/series";
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ const router = new Router({
 			name: "login",
 			component: Auth,
 			props: {location: "login"}
+		},
+		{
+			path: "/series/:seriesId",
+			name: "series",
+			component: Series
 		}
 	]
 });
