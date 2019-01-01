@@ -1,37 +1,55 @@
 import * as API from "../utils/api";
+const {sortBy} = require("lodash");
 
 const state = {
-	searchList: []
+	show: {
+		info: {},
+		seasons: []
+	}
 };
 
-const getters = {};
+const getters = {
+	seasons: (state) => {
+		return sortBy(state.show.seasons, ["season"]);
+	}
+};
 
 const actions = {
-	searchCount({commit, dispatch}, title) {
-		return API.get(`shows/search/count?title=${title}`, (resolve) => {
-			if (resolve.data.count > 0) {
-				dispatch("searchPaged", {title, page: 0});
-			} else {
-				commit("setSearchList", []);
-			}
-		});
-	},
-	searchPaged({commit}, {title, page}) {
-		return API.get(`shows/search/${page}?title=${title}`, (resolve) => {
-			commit("setSearchList", resolve.data);
-		});
-	},
 	search({}, name) {
 		return API.create({url: "shows/search", params: {name}});
 	},
-	addShow({}, data) {
-		return API.post("shows", data);
+	getInfo({commit, dispatch}, id) {
+		return API.create({url: `shows/${id}`}).then(
+			(response) => {
+				commit("setInfo", response.data);
+				for (let index = 1; index <= response.data.seasons; index++) {
+					dispatch("getSeason", {id, season: index});
+				}
+			},
+			(error) => {
+				console.log(error);
+			}
+		);
+	},
+	getSeason({commit}, {id, season}) {
+		return API.create({url: `shows/${id}/seasons/${season}`}).then(
+			(response) => {
+				commit("setSeason", response.data);
+			},
+			(error) => {
+				console.log(error);
+			}
+		);
 	}
 };
 
 const mutations = {
-	setSearchList(state, elements) {
-		state.searchList = elements;
+	setInfo(state, data) {
+		state.show.info = data;
+		state.show.seasons = [];
+	},
+	setSeason(state, season) {
+		state.show.seasons.push(season);
 	}
 };
 
