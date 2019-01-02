@@ -5,7 +5,7 @@ import store from "@/store/store";
 import Homepage from "@/views/homepage";
 import Welcome from "@/views/welcome";
 import Auth from "@/views/auth";
-import Series from "@/views/series";
+import Series from "@/views/series/index";
 
 Vue.use(Router);
 

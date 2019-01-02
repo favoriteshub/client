@@ -9,22 +9,20 @@
 			<p>{{info.summary}}</p>
 		</section>
 
-		<section class="episodes">
-			<h2>Episodes</h2>
-			<article v-for="season in seasons" :key="season.season">
-				<h3>season {{season.season}}</h3>
-				<p v-for="episode in season.episodes" :key="episode.title">{{episode.title}}</p>
-			</article>
-		</section>
+		<Episodes :seasons="seasons" />
 	</div>
 </div>
 </template>
 
 <script>
 import {mapState, mapGetters} from "vuex";
+import Episodes from "@/views/series/episodes";
 
 export default {
 	name: "series",
+	components: {
+		Episodes
+	},
 	computed: {
 		...mapState({
 			info: (state) => state.shows.show.info
@@ -61,12 +59,6 @@ export default {
 
 	.summary {
 		margin-bottom: 20px;
-	}
-
-	.episodes {
-		article {
-			margin-bottom: 20px;
-		}
 	}
 }
 </style>
