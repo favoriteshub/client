@@ -1,6 +1,6 @@
 .overlay {
 	@include absolute-100();
-	background-color: $color-overlay;
+	background-color: rgba(#000, 0.5);
 }
 
 .no-scroll {

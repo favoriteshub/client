@@ -2,7 +2,7 @@
 <div class="v-showcase">
 	<img :src="data[type]" :alt="`${data.title} ${type}`">
 	<div class="info">
-		<h4>{{`${data.title} (${data.status})`}}</h4>
+		<p>{{`${data.title} (${data.status})`}}</p>
 		<div>
 			<i class="star" @click="onFavouriteClick" />
 			<i class="details" @click="onDetailsClick" />
@@ -53,7 +53,7 @@ export default {
 		background-color: LightSalmon;
 		padding: 0 5px;
 
-		h4 {
+		p {
 			color: #fff;
 		}
 
