@@ -8,11 +8,11 @@
 	<div class="list">
 		<vShowcase
 			v-for="show in shows"
-			:key="show.thetvdb"
+			:key="show.id"
 			:data="show"
 			type="banner"
 			:onFavouriteClick="() => {}"
-			:onDetailsClick="() => redirectToSeriesPage(show.thetvdb)"
+			:onDetailsClick="() => redirectToSeriesPage(show.id)"
 		/>
 	</div>
 </div>

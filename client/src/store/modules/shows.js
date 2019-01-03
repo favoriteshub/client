@@ -1,5 +1,5 @@
 import * as API from "../utils/api";
-const {sortBy} = require("lodash");
+const {orderBy} = require("lodash");
 
 const state = {
 	show: {
@@ -10,7 +10,7 @@ const state = {
 
 const getters = {
 	seasons: (state) => {
-		return sortBy(state.show.seasons, ["season"]);
+		return orderBy(state.show.seasons, (el) => new Number(el.season));
 	}
 };
 
