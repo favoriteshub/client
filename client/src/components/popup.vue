@@ -28,10 +28,6 @@ export default {
 
 <style lang="scss" scoped>
 .v-popup {
-	.overlay {
-		position: fixed;
-	}
-
 	.content {
 		position: fixed;
 		top: 0;
@@ -51,14 +47,12 @@ export default {
 		}
 
 		.close {
-			position: absolute;
-			top: 0;
+			@include absolute(40px, 40px);
+			left: auto;
 			right: 0;
-			width: 40px;
-			height: 40px;
+			@extend %flex-center;
 			background-color: $color-grey-light;
 			border-bottom-left-radius: 3px;
-			@include flex-center();
 
 			@include media("m") {
 				display: none;

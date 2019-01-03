@@ -1,6 +1,0 @@
-// @include viewport-100();
-
-@mixin viewport-100() {
-	height: calc(100vh - 40px);
-	width: 100vw;
-}

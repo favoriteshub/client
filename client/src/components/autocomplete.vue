@@ -87,7 +87,7 @@ export default {
 	width: 100%;
 
 	input {
-		@include input();
+		@extend %input;
 	}
 
 	ul {

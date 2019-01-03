@@ -92,7 +92,7 @@ export default {
 		position: relative;
 
 		input {
-			@include input();
+			@extend %input;
 			cursor: pointer;
 		}
 

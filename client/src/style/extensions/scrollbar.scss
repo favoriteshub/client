@@ -1,6 +1,6 @@
-// @include scrollbar();
+// @extend %scrollbar;
 
-@mixin scrollbar() {
+%scrollbar {
 	&::-webkit-scrollbar {
 		width: 5px;
 	}

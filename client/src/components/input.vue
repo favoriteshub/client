@@ -34,7 +34,7 @@ export default {
 	}
 
 	input {
-		@include input();
+		@extend %input;
 	}
 }
 </style>

@@ -48,8 +48,7 @@ export default {
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 	grid-gap: 40px;
-	width: 80%;
-	margin: 20px auto 0;
+	@extend %container;
 
 	.info {
 		img {
@@ -59,6 +58,7 @@ export default {
 
 	.summary {
 		margin-bottom: 20px;
+		text-align: justify;
 	}
 }
 </style>

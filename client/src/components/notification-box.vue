@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 .v-notification-box {
-	@include flex-center();
+	@extend %flex-center;
 	border: 2px solid #e5e5e5;
 	border-radius: 3px;
 	height: 50px;

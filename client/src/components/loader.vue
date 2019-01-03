@@ -24,7 +24,6 @@ export default {
 <style lang="scss" scoped>
 .v-loader {
 	.overlay {
-		position: fixed;
 		background-color: rgba(#fff, 0.9);
 	}
 

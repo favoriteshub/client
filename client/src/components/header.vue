@@ -38,12 +38,15 @@ export default {
 
 <style lang="scss" scoped>
 .v-header {
+	position: fixed;
+	top: 0;
+	left: 0;
 	height: 40px;
 	width: 100%;
-	background-color: $color-grey-light;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	background-color: $color-grey-light;
 	padding: 0 20px;
 
 	.home {

@@ -11,7 +11,7 @@
 	line-height: 1;
 	cursor: pointer;
 
-	@if $regular == false {
+	@if not $regular {
 		font-family: "FA Solid";
 	}
 

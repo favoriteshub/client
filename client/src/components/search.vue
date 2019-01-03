@@ -62,7 +62,7 @@ export default {
 	.list {
 		margin-top: 20px;
 		overflow-y: auto;
-		@include scrollbar();
+		@extend %scrollbar;
 
 		.v-showcase {
 			margin-bottom: 20px;
