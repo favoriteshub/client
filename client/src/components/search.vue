@@ -1,9 +1,11 @@
 <template>
 <div class="v-search">
-	<div>
-		<vInput label="Series" :blur="(e) => input = e.target.value" />
-		<vButton importance="primary" :onClick="getResults" text="search" />
-	</div>
+	<vForm
+		:submit="getResults"
+		submitButtonText="search"
+		:fields="form"
+		:callBack="(key, val) => input = val"
+	/>
 
 	<div class="list">
 		<vShowcase
@@ -19,21 +21,21 @@
 </template>
 
 <script>
-import vInput from "@/components/input";
-import vButton from "@/components/button";
+import vForm from "@/components/form";
 import vShowcase from "@/components/showcase";
+import searchForm from "@/config/form/search.json";
 
 export default {
 	name: "v-search",
 	components: {
-		vInput,
-		vButton,
+		vForm,
 		vShowcase
 	},
 	data: function() {
 		return {
 			input: "",
-			shows: []
+			shows: [],
+			form: searchForm
 		};
 	},
 	methods: {

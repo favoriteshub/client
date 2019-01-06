@@ -1,0 +1,10 @@
+[
+	{
+		"label": "Series",
+		"name": "",
+		"type": "input",
+		"inputType": "text",
+		"disabled": false,
+		"required": true
+	}
+]
