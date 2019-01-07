@@ -1,5 +1,5 @@
 <template>
-<form class="v-form" @submit="submit">
+<form class="v-form" @submit.prevent="submit">
   <template v-for="(field, index) in fields">
     <vInput
       v-if="field.type === `input`"
@@ -9,7 +9,7 @@
       :type="field.inputType"
       :required="field.required"
       :disabled="field.disabled"
-      :blur="(e) => callBack(field.name, e.target.value)"
+      :change="(e) => callBack(field.name, e.target.value)"
     />
 
     <vSelect

@@ -39,9 +39,7 @@ export default {
 		}
 	},
 	methods: {
-		authenticate: function(e) {
-			e.preventDefault();
-
+		authenticate: function() {
 			this.$store.dispatch(`auth/${this.location}`, this.credentials);
 		},
 		dataHandler: function(key, val) {
