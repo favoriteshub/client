@@ -12,7 +12,7 @@
 		"npm-server": "cd server && npm install",
 		"npm-client": "cd client && npm install",
 		"install-all": "npm install && run-s npm-server npm-client",
-		"seed-data": "mongorestore seed-data",
+		"seed": "mongorestore --db my-tv-shows-status seed",
 		"server": "cd server && npm run dev",
 		"client": "cd client && npm run dev",
 		"all": "run-p server client"
