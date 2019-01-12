@@ -1,13 +1,27 @@
 <template>
-<div class="v-showcase">
-	<img :src="data[type]" :alt="`${data.title} ${type}`">
-	<div class="info">
-		<p>{{`${data.title} (${data.status})`}}</p>
-		<div>
+<div :class="[`v-showcase`, type]">
+	<template v-if="type === `banner`">
+		<img :src="data[type]" :alt="`${data.title} `">
+
+		<div class="info">
+			<p>{{`${data.title} (${data.status})`}}</p>
+			<div>
+				<i class="star" @click="onFavouriteClick" />
+				<i class="details" @click="onDetailsClick" />
+			</div>
+		</div>
+	</template>
+
+	<template v-else>
+		<div class="content">
+			<img :src="data[type]" :alt="`${data.title} `">
+		</div>
+
+		<div class="selectors">
 			<i class="star" @click="onFavouriteClick" />
 			<i class="details" @click="onDetailsClick" />
 		</div>
-	</div>
+	</template>
 </div>
 </template>
 
@@ -45,43 +59,61 @@ export default {
 		width: 100%;
 	}
 
-	.info {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		height: 30px;
-		background-color: LightSalmon;
-		padding: 0 5px;
+	i {
+		font-size: 1.8rem;
+	}
 
-		p {
-			color: #fff;
+	.details {
+		@include icon($icon-info);
+	}
+
+	.star {
+		@include icon($icon-star);
+		color: yellow;
+
+		&:hover {
+			@include icon($icon-star, false);
 		}
 
-		i {
-			font-size: 1.8rem;
-		}
-
-		.details {
-			@include icon($icon-info);
-			color: #fff;
-			margin-left: 5px;
-		}
-
-		.star {
-			@include icon($icon-star);
-			color: yellow;
+		&.checked {
+			@include icon($icon-star, false);
 
 			&:hover {
-				@include icon($icon-star, false);
+				@include icon($icon-star);
+			}
+		}
+	}
+
+	&.banner {
+		.info {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 30px;
+			background-color: LightSalmon;
+			padding: 0 5px;
+
+			p {
+				color: #fff;
 			}
 
-			&.checked {
-				@include icon($icon-star, false);
-
-				&:hover {
-					@include icon($icon-star);
-				}
+			.details {
+				color: #fff;
+				margin-left: 5px;
 			}
+		}
+	}
+
+	&.poster {
+		display: grid;
+		grid-template-columns: auto 40px;
+
+		.selectors {
+			width: 40px;
+			display: grid;
+			grid-auto-flow: row;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 }
