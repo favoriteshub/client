@@ -8,17 +8,17 @@ const getters = {};
 
 const actions = {
 	getShows({commit}) {
-		return API.get("user-shows", (resolve) => {
+		return API.get("users/shows", (resolve) => {
 			commit("setList", {list: resolve.data, type: "shows"});
 		});
 	},
-	addShow({commit}, {id, obj}) {
-		return API.post(`user-shows/${id}`, null, (resolve) => {
-			commit("add", {obj, type: "shows"});
+	addShow({commit}, id) {
+		return API.post(`users/shows/${id}`, null, (resolve) => {
+			commit("add", {obj: resolve.data, type: "shows"});
 		});
 	},
 	removeShow({commit}, id) {
-		return API.del(`user-shows/${id}`, (resolve) => {
+		return API.del(`users/shows/${id}`, () => {
 			commit("remove", {id, type: "shows"});
 		});
 	}
@@ -29,10 +29,10 @@ const mutations = {
 		state[type] = list;
 	},
 	add(state, {obj, type}) {
-		state[type] = [...state[type], obj];
+		state[type].push(obj);
 	},
 	remove(state, {id, type}) {
-		state[type] = state[type].filter((el) => el._id !== id);
+		state[type] = state[type].filter((el) => el.id !== id);
 	}
 };
 
