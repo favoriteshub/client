@@ -9,8 +9,7 @@ I like to keep track of my favorite tv shows on a text file, so i decided to bui
 #### Frontend
 
 - Vue.js with Vue Loader, Vue Router and Vuex
-- Sass
-- webpack
+- SCSS
 
 #### Backend
 
@@ -23,20 +22,29 @@ I like to keep track of my favorite tv shows on a text file, so i decided to bui
 - [node-gyp](https://github.com/nodejs/node-gyp) and its dependencies
 - MongoDB
 
-## Build Setup
+## Development Build
 
 ```bash
 # install dependencies
 npm run install-all
 
-# rename server/.env.example into server/.env
+# rename server/.env.example into server/.env and change the variables
 
 # run your MongoDB server
 
-# if you need seed data (requires mongodb tool mongorestore installed on your machine)
+# if you need seed data (requires the MongoDB tool mongorestore installed on your machine)
 # username: test, password: test
-npm run seed-data
+npm run seed
 
-# serve with hot reload at localhost:8080 and localhost:3000
+# for server side Development
+npm run server
+
+# for client side Development
 npm run all
+```
+
+## Production Build
+
+```bash
+# wip
 ```
