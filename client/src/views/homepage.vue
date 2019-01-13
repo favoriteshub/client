@@ -5,6 +5,9 @@
 		:key="show.id"
 		:data="show"
 		type="poster"
+		:isFavourite="true"
+		:onFavouriteClick="() => {}"
+		:onDetailsClick="() => {}"
 	/>
 </div>
 </template>

@@ -6,7 +6,7 @@
 		<div class="info">
 			<p>{{`${data.title} (${data.status})`}}</p>
 			<div>
-				<i class="star" @click="onFavouriteClick" />
+				<i :class="{star: true, checked: isFavourite}" @click="() => onFavouriteClick(data.id, !isFavourite)" />
 				<i class="details" @click="onDetailsClick" />
 			</div>
 		</div>
@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="selectors">
-			<i class="star" @click="onFavouriteClick" />
+			<i :class="{star: true, checked: isFavourite}" @click="() => onFavouriteClick(data.id, isFavourite)" />
 			<i class="details" @click="onDetailsClick" />
 		</div>
 	</template>
@@ -40,6 +40,7 @@ export default {
 				return ["banner", "poster"].indexOf(value) !== -1;
 			}
 		},
+		isFavourite: Boolean,
 		onFavouriteClick: {
 			type: Function,
 			required: true

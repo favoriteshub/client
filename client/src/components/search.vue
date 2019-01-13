@@ -13,7 +13,8 @@
 			:key="show.id"
 			:data="show"
 			type="banner"
-			:onFavouriteClick="() => {}"
+			:isFavourite="findIfFavourite(show.id)"
+			:onFavouriteClick="addRemove"
 			:onDetailsClick="() => redirectToSeriesPage(show.id)"
 		/>
 	</div>
@@ -24,6 +25,8 @@
 import vForm from "@/components/form";
 import vShowcase from "@/components/showcase";
 import searchForm from "@/config/form/search.json";
+import {mapState} from "vuex";
+import {findIndex} from "lodash";
 
 export default {
 	name: "v-search",
@@ -38,6 +41,9 @@ export default {
 			form: searchForm
 		};
 	},
+	computed: mapState({
+		userShows: (state) => state.user.shows
+	}),
 	methods: {
 		getResults: function() {
 			this.$store.dispatch(`shows/search`, this.input).then((response) => (this.shows = response.data));
@@ -45,6 +51,12 @@ export default {
 		redirectToSeriesPage: function(id) {
 			this.$router.push(`/series/${id}`);
 			this.$store.commit("popup/close");
+		},
+		addRemove: function(id, toAdd) {
+			this.$store.dispatch(`user/${toAdd ? "addShow" : "removeShow"}`, id);
+		},
+		findIfFavourite(id) {
+			return findIndex(this.userShows, {id}) !== -1;
 		}
 	}
 };
