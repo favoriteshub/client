@@ -3,13 +3,12 @@ import Router from "vue-router";
 import store from "@/store/store";
 
 import Homepage from "@/views/homepage";
-import Welcome from "@/views/welcome";
-import Auth from "@/views/auth";
-import Series from "@/views/series/index";
 
 Vue.use(Router);
 
 const router = new Router({
+	mode: "history",
+	base: process.env.BASE_URL,
 	routes: [
 		{
 			path: "/",
@@ -19,24 +18,24 @@ const router = new Router({
 		{
 			path: "/welcome",
 			name: "welcome",
-			component: Welcome
+			component: () => import("@/views/welcome")
 		},
 		{
 			path: "/register",
 			name: "register",
-			component: Auth,
+			component: () => import("@/views/auth"),
 			props: {location: "register"}
 		},
 		{
 			path: "/login",
 			name: "login",
-			component: Auth,
+			component: () => import("@/views/auth"),
 			props: {location: "login"}
 		},
 		{
 			path: "/series/:seriesId",
 			name: "series",
-			component: Series
+			component: () => import("@/views/series/index")
 		}
 	]
 });
