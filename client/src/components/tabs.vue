@@ -11,7 +11,7 @@
 		</p>
 	</div>
 
-	<div class="content"><slot v-for="el in list" :name="el" v-if="el === selectedTab" /></div>
+	<div class="content"><slot :name="selectedTab" /></div>
 </div>
 </template>
 

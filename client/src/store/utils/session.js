@@ -1,6 +1,3 @@
-import * as API from "./api";
-import router from "@/router";
-
 export function getToken() {
 	return localStorage.getItem("token");
 }

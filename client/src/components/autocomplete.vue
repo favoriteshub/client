@@ -59,10 +59,10 @@ export default {
 				}
 			}
 		},
-		handleFocus: function(e) {
+		handleFocus: function() {
 			this.$data.isListVisible = true;
 		},
-		handleBlur: function(e) {
+		handleBlur: function() {
 			this.$data.isListVisible = false;
 		},
 		handleItemClick: function(e, index) {

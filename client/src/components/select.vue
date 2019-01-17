@@ -44,10 +44,10 @@ export default {
 		};
 	},
 	methods: {
-		handleClick: function(e) {
+		handleClick: function() {
 			this.$data.isListVisible = !this.$data.isListVisible;
 		},
-		handleBlur: function(e) {
+		handleBlur: function() {
 			if (this.$data.isListVisible) {
 				this.$data.isListVisible = false;
 			}
