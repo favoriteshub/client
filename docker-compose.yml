@@ -1,0 +1,24 @@
+version: "3"
+services:
+  app:
+    container_name: app
+    build: ./client
+    ports:
+      - 80:80
+    depends_on:
+      - api
+  api:
+    container_name: api
+    restart: always
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      - DB=mongodb://db:27017/my-tv-shows-status
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: mongo
+    ports:
+      - "27017:27017"
