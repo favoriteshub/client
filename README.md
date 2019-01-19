@@ -46,5 +46,10 @@ npm run all
 ## Production Build
 
 ```bash
-# wip
+# rename server/.env.example into server/.env and change the variables
+
+# requires Docker and Docker Compose installed on your machine
+docker-compose up
+
+# the app can be accessed on localhost:80
 ```
