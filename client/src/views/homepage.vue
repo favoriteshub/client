@@ -1,10 +1,9 @@
 <template>
 <div class="homepage">
-	<vShowcase
+	<vPoster
 		v-for="show in shows"
 		:key="show.id"
 		:data="show"
-		type="poster"
 		:isFavourite="true"
 		:onFavouriteClick="() => {}"
 		:onDetailsClick="() => {}"
@@ -14,12 +13,12 @@
 
 <script>
 import {mapState} from "vuex";
-import vShowcase from "@/components/showcase";
+import vPoster from "@/components/poster";
 
 export default {
 	name: "homepage",
 	components: {
-		vShowcase
+		vPoster
 	},
 	computed: mapState({
 		shows: (state) => state.user.shows

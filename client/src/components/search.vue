@@ -8,11 +8,10 @@
 	/>
 
 	<div class="list">
-		<vShowcase
+		<vBanner
 			v-for="show in shows"
 			:key="show.id"
 			:data="show"
-			type="banner"
 			:isFavourite="findIfFavourite(show.id)"
 			:onFavouriteClick="addRemove"
 			:onDetailsClick="() => redirectToSeriesPage(show.id)"
@@ -23,7 +22,7 @@
 
 <script>
 import vForm from "@/components/form";
-import vShowcase from "@/components/showcase";
+import vBanner from "@/components/banner";
 import searchForm from "@/config/form/search.json";
 import {mapState} from "vuex";
 import {findIndex} from "lodash";
@@ -32,7 +31,7 @@ export default {
 	name: "v-search",
 	components: {
 		vForm,
-		vShowcase
+		vBanner
 	},
 	data: function() {
 		return {
@@ -78,7 +77,7 @@ export default {
 		overflow-y: auto;
 		@extend %scrollbar;
 
-		.v-showcase {
+		.v-banner {
 			margin-bottom: 20px;
 
 			&:last-child {
