@@ -4,9 +4,7 @@
 		v-for="show in shows"
 		:key="show.id"
 		:data="show"
-		:isFavourite="true"
-		:onFavouriteClick="() => {}"
-		:onDetailsClick="() => {}"
+		:onClick="() => redirectToSeriesPage(show.id)"
 	/>
 </div>
 </template>
@@ -25,6 +23,11 @@ export default {
 	}),
 	created: function() {
 		this.$store.dispatch("user/getShows");
+	},
+	methods: {
+		redirectToSeriesPage: function(id) {
+			this.$router.push(`/series/${id}`);
+		}
 	}
 };
 </script>
@@ -33,7 +36,8 @@ export default {
 .homepage {
 	@extend %container;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(6, 1fr);
 	grid-gap: 40px;
+	margin-bottom: 20px;
 }
 </style>

@@ -1,13 +1,6 @@
 <template>
 <div class="v-poster">
-	<div class="content">
-		<img :src="data[`poster`]" :alt="`${data.title} `">
-	</div>
-
-	<div class="selectors">
-		<i :class="{star: true, checked: isFavourite}" @click="() => onFavouriteClick(data.id, isFavourite)" />
-		<i class="details" @click="onDetailsClick" />
-	</div>
+	<img :src="data[`poster`]" :alt="`${data.title} `" @click="onClick" />
 </div>
 </template>
 
@@ -19,12 +12,7 @@ export default {
 			type: Object,
 			required: true
 		},
-		isFavourite: Boolean,
-		onFavouriteClick: {
-			type: Function,
-			required: true
-		},
-		onDetailsClick: {
+		onClick: {
 			type: Function,
 			required: true
 		}
@@ -34,44 +22,14 @@ export default {
 
 <style lang="scss" scoped>
 .v-poster {
-	display: grid;
-	grid-template-columns: auto 40px;
-
-	.selectors {
-		width: 40px;
-		display: grid;
-		grid-auto-flow: row;
-		justify-content: center;
-		align-items: center;
-	}
-
 	img {
 		display: block;
 		width: 100%;
-	}
-
-	i {
-		font-size: 1.8rem;
-	}
-
-	.details {
-		@include icon($icon-info);
-	}
-
-	.star {
-		@include icon($icon-star);
-		color: yellow;
+		cursor: pointer;
 
 		&:hover {
-			@include icon($icon-star, false);
-		}
-
-		&.checked {
-			@include icon($icon-star, false);
-
-			&:hover {
-				@include icon($icon-star);
-			}
+			opacity: 0.75;
+			box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.75);
 		}
 	}
 }
