@@ -41,6 +41,14 @@ export default {
 			openEpisode: undefined
 		};
 	},
+	watch: {
+		seasons: function() {
+			this.debouncedUpdateOpenArticle();
+		}
+	},
+	created: function() {
+		this.debouncedUpdateOpenArticle = _.debounce(this.updateOpenArticle, 500);
+	},
 	methods: {
 		formatDate: function(date) {
 			return moment(date).format(`ll`);
@@ -50,6 +58,9 @@ export default {
 		},
 		handleOpenEpisode: function(title) {
 			this.openEpisode = this.openEpisode === title ? undefined : title;
+		},
+		updateOpenArticle: function(params) {
+			this.openArticle = this.seasons.length;
 		}
 	}
 };
