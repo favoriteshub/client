@@ -48,6 +48,7 @@ export default {
 	justify-content: space-between;
 	background-color: $color-grey-light;
 	padding: 0 20px;
+	z-index: 100;
 
 	.home {
 		@include icon($icon-home);
