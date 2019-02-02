@@ -45,7 +45,6 @@ export function get(url, resolve, reject) {
 			}
 		})
 		.catch((error) => {
-			console.log(error);
 			if (reject) {
 				reject(error);
 			}
@@ -60,7 +59,6 @@ export function post(url, data, resolve, reject) {
 			}
 		})
 		.catch((error) => {
-			console.log(error);
 			if (reject) {
 				reject(error);
 			}
@@ -75,7 +73,6 @@ export function put(url, data, resolve, reject) {
 			}
 		})
 		.catch((error) => {
-			console.log(error);
 			if (reject) {
 				reject(error);
 			}
@@ -90,7 +87,6 @@ export function del(url, resolve, reject) {
 			}
 		})
 		.catch((error) => {
-			console.log(error);
 			if (reject) {
 				reject(error);
 			}

@@ -1,23 +1,18 @@
 <template>
-<div class="v-search">
-	<vForm
-		:submit="getResults"
-		submitButtonText="search"
-		:fields="form"
-		:callBack="(key, val) => input = val"
-	/>
+	<div class="v-search">
+		<vForm :submit="getResults" submitButtonText="search" :fields="form" :callBack="(key, val) => (input = val)" />
 
-	<div class="list">
-		<vBanner
-			v-for="show in shows"
-			:key="show.id"
-			:data="show"
-			:isFavourite="findIfFavourite(show.id)"
-			:onFavouriteClick="addRemove"
-			:onDetailsClick="() => redirectToSeriesPage(show.id)"
-		/>
+		<div class="list">
+			<vBanner
+				v-for="show in shows"
+				:key="show.id"
+				:data="show"
+				:isFavourite="findIfFavourite(show.id)"
+				:onFavouriteClick="addRemove"
+				:onDetailsClick="() => redirectToSeriesPage(show.id)"
+			/>
+		</div>
 	</div>
-</div>
 </template>
 
 <script>

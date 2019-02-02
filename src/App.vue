@@ -1,12 +1,12 @@
 <template>
-<div id="app">
-  <vHeader />
+	<div id="app">
+		<vHeader />
 
-  <main><router-view /></main>
-  
-  <vPopup />
-  <vLoader />
-</div>
+		<main><router-view /></main>
+
+		<vPopup />
+		<vLoader />
+	</div>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ import vPopup from "@/components/popup";
 import vLoader from "@/components/loader";
 
 export default {
-	name: "App",
+	name: "app",
 	components: {
 		vHeader,
 		vPopup,
@@ -24,5 +24,4 @@ export default {
 };
 </script>
 
-<style src="@/style/index.scss" lang="scss">
-</style>
+<style src="@/style/index.scss" lang="scss"></style>

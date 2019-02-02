@@ -1,15 +1,15 @@
 <template>
-<div :class="[`auth`, location]">
-	<div>
-		<vForm
-			:submit="authenticate"
-			:submitButtonText="location === `login` ? `log in` : `sign up`"
-			:fields="jsonForm"
-			:callBack="dataHandler"
-		/>
-		<p v-if="location === `login`">Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
+	<div :class="[`auth`, location]">
+		<div>
+			<vForm
+				:submit="authenticate"
+				:submitButtonText="location === `login` ? `log in` : `sign up`"
+				:fields="jsonForm"
+				:callBack="dataHandler"
+			/>
+			<p v-if="location === `login`">Don't have an account yet? <router-link to="/register">Sign up</router-link></p>
+		</div>
 	</div>
-</div>
 </template>
 
 <script>

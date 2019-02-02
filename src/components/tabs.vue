@@ -1,18 +1,18 @@
 <template>
-<div class="v-tabs">
-	<div class="selector">
-		<p
-			v-for="(el, index) in list"
-			:key="index"
-			@click="handleTabCLick(index);"
-			:class="{selected: el === selectedTab}"
-		>
-			{{el}}
-		</p>
-	</div>
+	<div class="v-tabs">
+		<div class="selector">
+			<p
+				v-for="(el, index) in list"
+				:key="index"
+				@click="handleTabCLick(index)"
+				:class="{selected: el === selectedTab}"
+			>
+				{{ el }}
+			</p>
+		</div>
 
-	<div class="content"><slot :name="selectedTab" /></div>
-</div>
+		<div class="content"><slot :name="selectedTab" /></div>
+	</div>
 </template>
 
 <script>

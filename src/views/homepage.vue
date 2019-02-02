@@ -1,12 +1,7 @@
 <template>
-<div class="homepage">
-	<vPoster
-		v-for="show in shows"
-		:key="show.id"
-		:data="show"
-		:onClick="() => redirectToSeriesPage(show.id)"
-	/>
-</div>
+	<div class="homepage">
+		<vPoster v-for="show in shows" :key="show.id" :data="show" :onClick="() => redirectToSeriesPage(show.id)" />
+	</div>
 </template>
 
 <script>

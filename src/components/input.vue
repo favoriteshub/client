@@ -1,8 +1,8 @@
 <template>
-<div class="v-input">
-	<label :class="{required}">{{label}}</label>
-	<input :type="type" :name="name" :required="required" :disabled="disabled" @blur="blur" @change="change" />
-</div>
+	<div class="v-input">
+		<label :class="{required}">{{ label }}</label>
+		<input :type="type" :name="name" :required="required" :disabled="disabled" @blur="blur" @change="change" />
+	</div>
 </template>
 
 <script>

@@ -1,11 +1,13 @@
 <template>
-<button
-	:type="type"
-	:name="name"
-	:class="[`v-button`, importance]"
-	:disabled="disabled"
-	v-on="onClick ? {click: onClick} : {}"
->{{text}}</button>
+	<button
+		:type="type"
+		:name="name"
+		:class="[`v-button`, importance]"
+		:disabled="disabled"
+		v-on="onClick ? {click: onClick} : {}"
+	>
+		{{ text }}
+	</button>
 </template>
 
 <script>

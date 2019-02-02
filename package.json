@@ -38,7 +38,7 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/strongly-recommended",
       "@vue/prettier"
     ],
     "rules": {
@@ -55,7 +55,10 @@
           "trailingComma": "none",
           "useTabs": true
         }
-      ]
+      ],
+      "vue/require-default-prop": "off",
+      "vue/name-property-casing": ["error", "kebab-case"],
+      "vue/attribute-hyphenation": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"

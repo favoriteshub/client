@@ -1,7 +1,7 @@
 <template>
-<div :class="[`v-notification-box`, importance]">
-  <span>{{text}}</span>
-</div>
+	<div :class="[`v-notification-box`, importance]">
+		<span>{{ text }}</span>
+	</div>
 </template>
 
 <script>

@@ -1,39 +1,39 @@
 <template>
-<div class="series">
-	<div class="info">
-		<img :src="info.poster" :alt="`${info.poster} poster`">
-		<h1>{{info.title}}</h1>
+	<div class="series">
+		<div class="info">
+			<img :src="info.poster" :alt="`${info.poster} poster`" />
+			<h1>{{ info.title }}</h1>
 
-		<div>
-			<span>Status:</span>
-			<p>{{info.status}}</p>
-			<span>Network:</span>
-			<p>{{info.network}}</p>
-			<span>Genre:</span>
-			<p>{{info.genre}}</p>
+			<div>
+				<span>Status:</span>
+				<p>{{ info.status }}</p>
+				<span>Network:</span>
+				<p>{{ info.network }}</p>
+				<span>Genre:</span>
+				<p>{{ info.genre }}</p>
+			</div>
+		</div>
+
+		<div class="other">
+			<section class="links">
+				<a :href="`https://www.youtube.com/results?search_query=${info.title} season 1 trailer`" target="_blank">
+					<img src="../../assets/img/yt.png" alt="Trailer" />
+				</a>
+				<a :href="`https://www.imdb.com/title/${info.imdb}`" target="_blank">
+					<img src="../../assets/img/IMDb.png" alt="IMDb logo" />
+				</a>
+				<a :href="`https://www.thetvdb.com/series/${info.thetvdb}`" target="_blank">
+					<img src="../../assets/img/TheTVDB.png" alt="TheTVDB logo" />
+				</a>
+			</section>
+
+			<section class="summary">
+				<p>{{ info.summary }}</p>
+			</section>
+
+			<Episodes :seasons="seasons" />
 		</div>
 	</div>
-
-	<div class="other">
-		<section class="links">
-			<a :href="`https://www.youtube.com/results?search_query=${info.title} season 1 trailer`" target="_blank">
-				<img src="../../assets/img/yt.png" alt="Trailer">
-			</a>
-			<a :href="`https://www.imdb.com/title/${info.imdb}`" target="_blank">
-				<img src="../../assets/img/IMDb.png" alt="IMDb logo">
-			</a>
-			<a :href="`https://www.thetvdb.com/series/${info.thetvdb}`" target="_blank">
-				<img src="../../assets/img/TheTVDB.png" alt="TheTVDB logo">
-			</a>
-		</section>
-
-		<section class="summary">
-			<p>{{info.summary}}</p>
-		</section>
-
-		<Episodes :seasons="seasons" />
-	</div>
-</div>
 </template>
 
 <script>

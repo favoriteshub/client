@@ -15,31 +15,20 @@ const getters = {
 };
 
 const actions = {
-	search({}, name) {
+	search(context, name) {
 		return API.create({url: "shows/search", params: {name}});
 	},
 	getInfo({commit, dispatch}, id) {
-		return API.create({url: `shows/${id}`}).then(
-			(response) => {
-				commit("setInfo", response.data);
-				for (let index = 1; index <= response.data.seasons; index++) {
-					dispatch("getSeason", {id, season: index});
-				}
-			},
-			(error) => {
-				console.log(error);
+		return API.get(`shows/${id}`, (response) => {
+			commit("setInfo", response.data);
+
+			for (let index = 1; index <= response.data.seasons; index++) {
+				dispatch("getSeason", {id, season: index});
 			}
-		);
+		});
 	},
 	getSeason({commit}, {id, season}) {
-		return API.create({url: `shows/${id}/seasons/${season}`}).then(
-			(response) => {
-				commit("setSeason", response.data);
-			},
-			(error) => {
-				console.log(error);
-			}
-		);
+		return API.get(`shows/${id}/seasons/${season}`, (response) => commit("setSeason", response.data));
 	}
 };
 

@@ -1,11 +1,11 @@
 <template>
-<div v-show="visible" class="v-popup">
-	<div class="overlay" @click="closePopup"></div>
-	<div :class="[`content`, extraClasses]">
-		<component :is="component.name" v-bind="component.props" />
-		<div class="close" @click="closePopup" ><i /></div>
+	<div v-show="visible" class="v-popup">
+		<div class="overlay" @click="closePopup"></div>
+		<div :class="[`content`, extraClasses]">
+			<component :is="component.name" v-bind="component.props" />
+			<div class="close" @click="closePopup"><i /></div>
+		</div>
 	</div>
-</div>
 </template>
 
 <script>

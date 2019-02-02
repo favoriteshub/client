@@ -1,34 +1,35 @@
 <template>
-<section class="episodes">
-	<h2>Episodes</h2>
-	
-	<article v-for="el in seasons" :key="el.season" :class="{open: openArticle === el.season}">
-		<div class="header" @click="() => handleOpenArticle(el.season)">
-			<i />
-			<i />
-			<h4>Season {{el.season}}</h4>
-		</div>
+	<section class="episodes">
+		<h2>Episodes</h2>
 
-		<div class="list">
-			<div
-				v-for="episode in el.episodes"
-				:key="episode.title"
-				@click="() => handleOpenEpisode(episode.title)"
-				:class="{open: openEpisode === episode.title}"
-			>
-				<div><i /></div>
-				<span>{{episode.episode}}</span>
-				<p>{{episode.title}}</p>
-				<span>{{formatDate(episode.aired)}}</span>
-				<p>{{episode.summary}}</p>
+		<article v-for="el in seasons" :key="el.season" :class="{open: openArticle === el.season}">
+			<div class="header" @click="() => handleOpenArticle(el.season)">
+				<i />
+				<i />
+				<h4>Season {{ el.season }}</h4>
 			</div>
-		</div>
-	</article>
-</section>
+
+			<div class="list">
+				<div
+					v-for="episode in el.episodes"
+					:key="episode.title"
+					@click="() => handleOpenEpisode(episode.title)"
+					:class="{open: openEpisode === episode.title}"
+				>
+					<div><i /></div>
+					<span>{{ episode.episode }}</span>
+					<p>{{ episode.title }}</p>
+					<span>{{ formatDate(episode.aired) }}</span>
+					<p>{{ episode.summary }}</p>
+				</div>
+			</div>
+		</article>
+	</section>
 </template>
 
 <script>
 import moment from "moment";
+import {debounce} from "lodash";
 
 export default {
 	name: "episodes",
@@ -47,7 +48,7 @@ export default {
 		}
 	},
 	created: function() {
-		this.debouncedUpdateOpenArticle = _.debounce(this.updateOpenArticle, 500);
+		this.debouncedUpdateOpenArticle = debounce(this.updateOpenArticle, 500);
 	},
 	methods: {
 		formatDate: function(date) {
@@ -59,7 +60,7 @@ export default {
 		handleOpenEpisode: function(title) {
 			this.openEpisode = this.openEpisode === title ? undefined : title;
 		},
-		updateOpenArticle: function(params) {
+		updateOpenArticle: function() {
 			this.openArticle = this.seasons.length;
 		}
 	}

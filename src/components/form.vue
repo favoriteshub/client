@@ -1,31 +1,31 @@
 <template>
-<form class="v-form" @submit.prevent="submit">
-  <template v-for="(field, index) in fields">
-    <vInput
-      v-if="field.type === `input`"
-      :key="index"
-      :label="field.label"
-      :name="field.name"
-      :type="field.inputType"
-      :required="field.required"
-      :disabled="field.disabled"
-      :change="(e) => callBack(field.name, e.target.value)"
-    />
+	<form class="v-form" @submit.prevent="submit">
+		<template v-for="(field, index) in fields">
+			<vInput
+				v-if="field.type === `input`"
+				:key="index"
+				:label="field.label"
+				:name="field.name"
+				:type="field.inputType"
+				:required="field.required"
+				:disabled="field.disabled"
+				:change="(e) => callBack(field.name, e.target.value)"
+			/>
 
-    <vSelect
-      v-if="field.type === `select`"
-      :key="index"
-      :label="field.label"
-      :name="field.name"
-      :required="field.required"
-      :disabled="field.disabled"
-      :options="field.options"
-      :onItemClick="(val) => callBack(field.name, val)"
-    />
-  </template>
+			<vSelect
+				v-if="field.type === `select`"
+				:key="index"
+				:label="field.label"
+				:name="field.name"
+				:required="field.required"
+				:disabled="field.disabled"
+				:options="field.options"
+				:onItemClick="(val) => callBack(field.name, val)"
+			/>
+		</template>
 
-  <vButton type="submit" name="form-submit-button" :text="submitButtonText" importance="primary" />
-</form>
+		<vButton type="submit" name="form-submit-button" :text="submitButtonText" importance="primary" />
+	</form>
 </template>
 
 <script>
@@ -61,5 +61,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

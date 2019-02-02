@@ -1,16 +1,16 @@
 <template>
-<div class="v-banner">
-	<img :src="data[`banner`]" :alt="`${data.title} `">
+	<div class="v-banner">
+		<img :src="data[`banner`]" :alt="`${data.title} banner`" />
 
-	<div class="info">
-		<p>{{`${data.title} (${data.status})`}}</p>
+		<div class="info">
+			<p>{{ `${data.title} (${data.status})` }}</p>
 
-		<div>
-			<i :class="{star: true, checked: isFavourite}" @click="() => onFavouriteClick(data.id, !isFavourite)" />
-			<i class="details" @click="onDetailsClick" />
+			<div>
+				<i :class="{star: true, checked: isFavourite}" @click="() => onFavouriteClick(data.id, !isFavourite)" />
+				<i class="details" @click="onDetailsClick" />
+			</div>
 		</div>
 	</div>
-</div>
 </template>
 
 <script>

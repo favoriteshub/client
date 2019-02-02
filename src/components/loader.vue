@@ -1,13 +1,13 @@
 <template>
-<div v-show="visible" class="v-loader">
-  <div class="overlay"></div>
-  <div class="element">
-    <div/>
-    <div/>
-    <div/>
-    <div/>
-  </div>
-</div>
+	<div v-show="visible" class="v-loader">
+		<div class="overlay"></div>
+		<div class="element">
+			<div />
+			<div />
+			<div />
+			<div />
+		</div>
+	</div>
 </template>
 
 <script>

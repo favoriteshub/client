@@ -1,7 +1,7 @@
 <template>
-<div class="v-poster">
-	<img :src="data[`poster`]" :alt="`${data.title} `" @click="onClick" />
-</div>
+	<div class="v-poster">
+		<img :src="data[`poster`]" :alt="`${data.title} `" @click="onClick" />
+	</div>
 </template>
 
 <script>
