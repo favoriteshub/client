@@ -1,6 +1,6 @@
 <template>
 	<div class="v-search">
-		<vForm :submit="getResults" submitButtonText="search" :fields="form" :callBack="(key, val) => (input = val)" />
+		<vForm @submit="getResults" submitButtonText="search" :fields="form" :callBack="(key, val) => (input = val)" />
 
 		<div class="list">
 			<vBanner
@@ -8,8 +8,8 @@
 				:key="show.id"
 				:data="show"
 				:isFavourite="findIfFavourite(show.id)"
-				:onFavouriteClick="addRemove"
-				:onDetailsClick="() => redirectToSeriesPage(show.id)"
+				@favouriteClick="addRemove"
+				@detailsClick="redirectToSeriesPage(show.id)"
 			/>
 		</div>
 	</div>

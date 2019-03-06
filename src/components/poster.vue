@@ -1,6 +1,6 @@
 <template>
 	<div class="v-poster">
-		<img :src="data[`poster`]" :alt="`${data.title} `" @click="onClick" />
+		<img :src="data[`poster`]" :alt="`${data.title} `" @click="$emit(`click`)" />
 	</div>
 </template>
 
@@ -10,10 +10,6 @@ export default {
 	props: {
 		data: {
 			type: Object,
-			required: true
-		},
-		onClick: {
-			type: Function,
 			required: true
 		}
 	}

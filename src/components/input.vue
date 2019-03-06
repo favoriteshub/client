@@ -1,13 +1,18 @@
 <template>
 	<div class="v-input">
 		<label :class="{required}">{{ label }}</label>
-		<input :type="type" :name="name" :required="required" :disabled="disabled" @blur="blur" @change="change" />
+		<input
+			:type="type"
+			:name="name"
+			:required="required"
+			:disabled="disabled"
+			@blur="$emit(`blur`, $event)"
+			@input="$emit(`change`, $event)"
+		/>
 	</div>
 </template>
 
 <script>
-import {noop} from "lodash";
-
 export default {
 	name: "v-input",
 	props: {
@@ -18,15 +23,7 @@ export default {
 		name: String,
 		label: String,
 		required: Boolean,
-		disabled: Boolean,
-		blur: {
-			type: Function,
-			default: noop
-		},
-		change: {
-			type: Function,
-			default: noop
-		}
+		disabled: Boolean
 	}
 };
 </script>

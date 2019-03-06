@@ -1,5 +1,5 @@
 <template>
-	<form class="v-form" @submit.prevent="submit">
+	<form class="v-form" @submit.prevent="$emit(`submit`)">
 		<template v-for="(field, index) in fields">
 			<vInput
 				v-if="field.type === `input`"
@@ -9,7 +9,7 @@
 				:type="field.inputType"
 				:required="field.required"
 				:disabled="field.disabled"
-				:change="(e) => callBack(field.name, e.target.value)"
+				@change="(e) => callBack(field.name, e.target.value)"
 			/>
 
 			<vSelect
@@ -20,7 +20,7 @@
 				:required="field.required"
 				:disabled="field.disabled"
 				:options="field.options"
-				:onItemClick="(val) => callBack(field.name, val)"
+				@change="(val) => callBack(field.name, val)"
 			/>
 		</template>
 
@@ -41,10 +41,6 @@ export default {
 		vInput
 	},
 	props: {
-		submit: {
-			type: Function,
-			required: true
-		},
 		callBack: {
 			type: Function,
 			required: true

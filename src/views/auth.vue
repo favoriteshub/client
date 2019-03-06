@@ -2,7 +2,7 @@
 	<div :class="[`auth`, location]">
 		<div>
 			<vForm
-				:submit="authenticate"
+				@submit="authenticate"
 				:submitButtonText="location === `login` ? `log in` : `sign up`"
 				:fields="jsonForm"
 				:callBack="dataHandler"

@@ -1,11 +1,5 @@
 <template>
-	<button
-		:type="type"
-		:name="name"
-		:class="[`v-button`, importance]"
-		:disabled="disabled"
-		v-on="onClick ? {click: onClick} : {}"
-	>
+	<button :type="type" :name="name" :class="[`v-button`, importance]" :disabled="disabled" @click="$emit(`click`)">
 		{{ text }}
 	</button>
 </template>
@@ -29,8 +23,7 @@ export default {
 				return ["primary", "secondary"].indexOf(value) !== -1;
 			}
 		},
-		disabled: Boolean,
-		onClick: Function
+		disabled: Boolean
 	}
 };
 </script>
