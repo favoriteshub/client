@@ -23,9 +23,9 @@ const actions = {
 };
 
 const mutations = {
-	authenticateUser(state, apiResponse) {
-		saveTokensInStorage(apiResponse);
-		state.currentUser = apiResponse.username;
+	authenticateUser(state, {username, token, refreshToken}) {
+		saveTokensInStorage(token, refreshToken);
+		state.currentUser = username;
 		state.authenticated = true;
 		router.push("/");
 	},

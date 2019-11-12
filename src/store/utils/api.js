@@ -22,9 +22,12 @@ API.interceptors.response.use(undefined, (error) => {
 
 		return API({method: "post", url: "/auth/refresh", data})
 			.then((resolve) => {
-				saveTokensInStorage(resolve.data);
+				const {token, refreshToken} = resolve.data;
+
+				saveTokensInStorage(token, refreshToken);
 
 				error.config.__isRetryRequest = true;
+
 				return API(error.config);
 			})
 			.catch(() => {
