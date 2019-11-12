@@ -1,5 +1,5 @@
 import * as API from "../utils/api";
-const {orderBy} = require("lodash");
+const { orderBy } = require("lodash");
 
 const state = {
 	show: {
@@ -16,18 +16,18 @@ const getters = {
 
 const actions = {
 	search(context, name) {
-		return API.create({url: "shows/search", params: {name}});
+		return API.create({ url: "shows/search", params: { name } });
 	},
-	getInfo({commit, dispatch}, id) {
+	getInfo({ commit, dispatch }, id) {
 		return API.get(`shows/${id}`, (response) => {
 			commit("setInfo", response.data);
 
 			for (let index = 1; index <= response.data.seasons; index++) {
-				dispatch("getSeason", {id, season: index});
+				dispatch("getSeason", { id, season: index });
 			}
 		});
 	},
-	getSeason({commit}, {id, season}) {
+	getSeason({ commit }, { id, season }) {
 		return API.get(`shows/${id}/seasons/${season}`, (response) => commit("setSeason", response.data));
 	}
 };

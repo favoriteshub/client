@@ -19,8 +19,8 @@
 import vForm from "@/components/form";
 import vBanner from "@/components/banner";
 import searchForm from "@/config/form/search.json";
-import {mapState} from "vuex";
-import {findIndex} from "lodash";
+import { mapState } from "vuex";
+import { findIndex } from "lodash";
 
 export default {
 	name: "v-search",
@@ -50,7 +50,7 @@ export default {
 			this.$store.dispatch(`user/${toAdd ? "addShow" : "removeShow"}`, id);
 		},
 		findIfFavourite(id) {
-			return findIndex(this.userShows, {id}) !== -1;
+			return findIndex(this.userShows, { id }) !== -1;
 		}
 	}
 };

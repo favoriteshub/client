@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import {mapState, mapGetters} from "vuex";
+import { mapState, mapGetters } from "vuex";
 import Episodes from "@/views/series/episodes";
 
 export default {

@@ -1,4 +1,4 @@
-import {noScroll} from "@/helpers/body";
+import { noScroll } from "@/helpers/body";
 
 const state = {
 	visible: false

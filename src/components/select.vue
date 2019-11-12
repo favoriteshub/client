@@ -1,6 +1,6 @@
 <template>
 	<div class="v-select">
-		<label :class="{required}">{{ label }}</label>
+		<label :class="{ required }">{{ label }}</label>
 		<div>
 			<input
 				type="text"
@@ -13,7 +13,7 @@
 				@blur="handleBlur"
 			/>
 
-			<i :class="{open: isListVisible}" />
+			<i :class="{ open: isListVisible }" />
 
 			<transition name="ul-animation">
 				<ul v-if="isListVisible">

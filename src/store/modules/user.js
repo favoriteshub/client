@@ -7,31 +7,31 @@ const state = {
 const getters = {};
 
 const actions = {
-	getShows({commit}) {
+	getShows({ commit }) {
 		return API.get("users/shows", (resolve) => {
-			commit("setList", {list: resolve.data, type: "shows"});
+			commit("setList", { list: resolve.data, type: "shows" });
 		});
 	},
-	addShow({commit}, id) {
+	addShow({ commit }, id) {
 		return API.post(`users/shows/${id}`, null, (resolve) => {
-			commit("add", {obj: resolve.data, type: "shows"});
+			commit("add", { obj: resolve.data, type: "shows" });
 		});
 	},
-	removeShow({commit}, id) {
+	removeShow({ commit }, id) {
 		return API.del(`users/shows/${id}`, () => {
-			commit("remove", {id, type: "shows"});
+			commit("remove", { id, type: "shows" });
 		});
 	}
 };
 
 const mutations = {
-	setList(state, {list, type}) {
+	setList(state, { list, type }) {
 		state[type] = list;
 	},
-	add(state, {obj, type}) {
+	add(state, { obj, type }) {
 		state[type].push(obj);
 	},
-	remove(state, {id, type}) {
+	remove(state, { id, type }) {
 		state[type] = state[type].filter((el) => el.id !== id);
 	}
 };

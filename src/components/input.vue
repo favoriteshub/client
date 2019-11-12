@@ -1,6 +1,6 @@
 <template>
 	<div class="v-input">
-		<label :class="{required}">{{ label }}</label>
+		<label :class="{ required }">{{ label }}</label>
 		<input
 			:type="type"
 			:name="name"

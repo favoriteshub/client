@@ -24,13 +24,13 @@ const router = new Router({
 			path: "/register",
 			name: "register",
 			component: () => import("@/views/auth"),
-			props: {location: "register"}
+			props: { location: "register" }
 		},
 		{
 			path: "/login",
 			name: "login",
 			component: () => import("@/views/auth"),
-			props: {location: "login"}
+			props: { location: "login" }
 		},
 		{
 			path: "/series/:seriesId",
@@ -41,7 +41,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-	let authenticated = store.state.auth.authenticated;
+	const authenticated = store.state.auth.authenticated;
 
 	if (authenticated) {
 		if (to.name === "login" || to.name === "register") {
@@ -50,7 +50,7 @@ router.beforeEach((to, from, next) => {
 			next();
 		}
 	} else {
-		let guestSession = to.name === "login" || to.name === "register" || to.name === "welcome";
+		const guestSession = to.name === "login" || to.name === "register" || to.name === "welcome";
 		next(guestSession ? undefined : "/welcome");
 	}
 });

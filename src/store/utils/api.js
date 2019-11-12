@@ -1,6 +1,6 @@
 import axios from "axios";
-import {getToken, getRefreshToken, saveTokensInStorage} from "./session";
-import store, {resetState} from "@/store/store";
+import { getToken, getRefreshToken, saveTokensInStorage } from "./session";
+import store, { resetState } from "@/store/store";
 
 const API = axios.create({
 	baseURL: `http://localhost:3000/api`
@@ -19,13 +19,13 @@ API.interceptors.request.use((config) => {
 API.interceptors.response.use(undefined, async (error) => {
 	if (error.response && error.response.status === 401 && error.config && !error.config.__isRetryRequest) {
 		try {
-			const {data} = await API({
+			const { data } = await API({
 				method: "post",
 				url: "/auth/refresh",
-				data: {token: getToken(), refreshToken: getRefreshToken()}
+				data: { token: getToken(), refreshToken: getRefreshToken() }
 			});
 
-			const {token, refreshToken} = data;
+			const { token, refreshToken } = data;
 
 			saveTokensInStorage(token, refreshToken);
 

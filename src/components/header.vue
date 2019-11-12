@@ -18,7 +18,7 @@
 
 <script>
 import vSearch from "@/components/search";
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
 	name: "v-header",
@@ -27,7 +27,7 @@ export default {
 	}),
 	methods: {
 		openSearchPopup: function() {
-			this.$store.commit("popup/open", {component: {name: vSearch}});
+			this.$store.commit("popup/open", { component: { name: vSearch } });
 		},
 		logout: function() {
 			this.$store.commit("auth/logout");

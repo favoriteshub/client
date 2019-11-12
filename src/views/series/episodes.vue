@@ -2,7 +2,7 @@
 	<section class="episodes">
 		<h2>Episodes</h2>
 
-		<article v-for="el in seasons" :key="el.season" :class="{open: openArticle === el.season}">
+		<article v-for="el in seasons" :key="el.season" :class="{ open: openArticle === el.season }">
 			<div class="header" @click="() => handleOpenArticle(el.season)">
 				<i />
 				<i />
@@ -14,7 +14,7 @@
 					v-for="episode in el.episodes"
 					:key="episode.title"
 					@click="() => handleOpenEpisode(episode.title)"
-					:class="{open: openEpisode === episode.title}"
+					:class="{ open: openEpisode === episode.title }"
 				>
 					<div><i /></div>
 					<span>{{ episode.episode }}</span>
@@ -29,7 +29,7 @@
 
 <script>
 import moment from "moment";
-import {debounce} from "lodash";
+import { debounce } from "lodash";
 
 export default {
 	name: "episodes",
