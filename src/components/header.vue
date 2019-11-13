@@ -2,7 +2,7 @@
 	<header class="v-header" v-if="authenticated">
 		<router-link to="/dashboard" class="home"></router-link>
 		<div>
-			<i class="search" @click="openSearchPopup" />
+			<router-link to="/search" class="search"><i /></router-link>
 			<i class="logout" @click="logout" />
 		</div>
 	</header>
@@ -10,6 +10,7 @@
 	<header class="v-header" v-else>
 		<router-link to="/" class="home"></router-link>
 		<div>
+			<router-link to="/search" class="search"><i /></router-link>
 			<router-link to="/login">Log in</router-link>
 			<router-link to="/register">Register</router-link>
 		</div>
@@ -17,7 +18,6 @@
 </template>
 
 <script>
-import vSearch from "@/components/search";
 import { mapState } from "vuex";
 
 export default {
@@ -26,9 +26,6 @@ export default {
 		authenticated: (state) => state.auth.authenticated
 	}),
 	methods: {
-		openSearchPopup: function() {
-			this.$store.commit("popup/open", { component: { name: vSearch } });
-		},
 		logout: function() {
 			this.$store.commit("auth/logout");
 		}
@@ -59,13 +56,22 @@ export default {
 	}
 
 	.search {
-		@include icon($icon-search);
+		display: contents;
+
+		&:hover {
+			color: #000;
+		}
+
+		i {
+			@include icon($icon-search);
+		}
 	}
 
 	div {
 		display: grid;
 		grid-column-gap: 20px;
 		grid-auto-flow: column;
+		align-items: center;
 
 		a {
 			font-style: italic;

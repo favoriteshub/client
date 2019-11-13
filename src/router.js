@@ -35,23 +35,25 @@ const router = new Router({
 		{
 			path: "/series/:id",
 			name: "series",
-			component: () => import("@/views/series/index")
+			component: () => import("@/views/series")
+		},
+		{
+			path: "/search",
+			name: "search",
+			component: () => import("@/views/search")
 		}
 	]
 });
 
 router.beforeEach((to, from, next) => {
 	const authenticated = store.state.auth.authenticated;
-	const toGuestPage = to.name === "login" || to.name === "register" || to.name === "homepage";
+	const toPublicRoute = to.name === "login" || to.name === "register" || to.name === "homepage";
+	const toPrivatePage = to.name === "dashboard";
 
 	if (authenticated) {
-		if (toGuestPage) {
-			next(!from.name ? "/dashboard" : false);
-		} else {
-			next();
-		}
+		next(toPublicRoute ? "/dashboard" : undefined);
 	} else {
-		next(toGuestPage ? undefined : "/");
+		next(toPublicRoute || !toPrivatePage ? undefined : "/");
 	}
 });
 
