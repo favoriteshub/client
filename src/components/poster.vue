@@ -1,7 +1,7 @@
 <template>
-	<div class="v-poster">
-		<img :src="data[`poster`]" :alt="`${data.title} `" @click="$emit(`click`)" />
-	</div>
+	<router-link :to="`/series/${data.id}`" class="v-poster">
+		<img :src="data.poster" :alt="`${data.title} poster`" />
+	</router-link>
 </template>
 
 <script>

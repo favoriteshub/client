@@ -1,6 +1,6 @@
 <template>
 	<div class="dashboard">
-		<vPoster v-for="show in shows" :key="show.id" :data="show" @click="() => redirectToSeriesPage(show.id)" />
+		<vPoster v-for="show in shows" :key="show.id" :data="show" />
 	</div>
 </template>
 
@@ -18,11 +18,6 @@ export default {
 	}),
 	created: function() {
 		this.$store.dispatch("user/getShows");
-	},
-	methods: {
-		redirectToSeriesPage: function(id) {
-			this.$router.push(`/series/${id}`);
-		}
 	}
 };
 </script>
