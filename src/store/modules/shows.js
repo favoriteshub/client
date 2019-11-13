@@ -15,8 +15,8 @@ const getters = {
 };
 
 const actions = {
-	search(context, name) {
-		return API.create({ url: "shows/search", params: { name } });
+	search(context, title) {
+		return API.create({ url: "/shows/search", params: { title, thetvdb: true } });
 	},
 	getInfo({ commit, dispatch }, id) {
 		return API.get(`shows/${id}`, (response) => {

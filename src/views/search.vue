@@ -58,19 +58,13 @@ export default {
 
 <style lang="scss" scoped>
 .v-search {
+	@extend %container;
 	display: flex;
 	flex-direction: column;
 	max-width: 758px;
-	height: 100%;
-
-	@include media("m") {
-		width: 758px;
-	}
 
 	.list {
 		margin-top: 20px;
-		overflow-y: auto;
-		@extend %scrollbar;
 
 		.v-banner {
 			margin-bottom: 20px;
