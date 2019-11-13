@@ -1,6 +1,6 @@
 <template>
 	<header class="v-header" v-if="authenticated">
-		<router-link to="/" class="home"></router-link>
+		<router-link to="/dashboard" class="home"></router-link>
 		<div>
 			<i class="search" @click="openSearchPopup" />
 			<i class="logout" @click="logout" />
@@ -8,7 +8,7 @@
 	</header>
 
 	<header class="v-header" v-else>
-		<router-link to="/welcome" class="home"></router-link>
+		<router-link to="/" class="home"></router-link>
 		<div>
 			<router-link to="/login">Log in</router-link>
 			<router-link to="/register">Register</router-link>

@@ -27,13 +27,13 @@ const mutations = {
 		saveTokensInStorage(token, refreshToken);
 		state.currentUser = username;
 		state.authenticated = true;
-		router.push("/");
+		router.push("/dashboard");
 	},
 	logout(state) {
 		removeTokensfromStorage();
 		state.currentUser = {};
 		state.authenticated = false;
-		router.push("/welcome");
+		router.push("/");
 	}
 };
 

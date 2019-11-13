@@ -55,11 +55,11 @@ export default {
 	},
 	beforeRouteEnter(to, from, next) {
 		next((vm) => {
-			vm.$store.dispatch(`shows/getInfo`, to.params.seriesId);
+			vm.$store.dispatch(`shows/getInfo`, to.params.id);
 		});
 	},
 	beforeRouteUpdate(to, from, next) {
-		this.$store.dispatch(`shows/getInfo`, to.params.seriesId);
+		this.$store.dispatch(`shows/getInfo`, to.params.id);
 		next();
 	}
 };
