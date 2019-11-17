@@ -1,10 +1,12 @@
 [
 	{
-		"label": "Series",
+		"label": "Series Name",
 		"name": "",
 		"type": "input",
 		"inputType": "text",
+		"options": [],
 		"disabled": false,
-		"required": true
+		"required": true,
+		"default": null
 	}
 ]
