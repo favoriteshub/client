@@ -1,6 +1,7 @@
 <template>
 	<button :type="type" :name="name" :class="[`v-button`, importance]" :disabled="disabled" @click="$emit(`click`)">
-		{{ text }}
+		<slot v-if="this.$slots.default" />
+		<template v-else>{{ text }}</template>
 	</button>
 </template>
 
@@ -10,18 +11,14 @@ export default {
 	props: {
 		type: {
 			type: String,
-			default: "button"
+			default: "button",
+			validator: (value) => ["button", "submit", "reset"].indexOf(value) !== -1
 		},
 		name: String,
-		text: {
-			type: String,
-			required: false
-		},
+		text: String,
 		importance: {
 			type: String,
-			validator: (value) => {
-				return ["primary", "secondary"].indexOf(value) !== -1;
-			}
+			validator: (value) => ["primary", "secondary"].indexOf(value) !== -1
 		},
 		disabled: Boolean
 	}
