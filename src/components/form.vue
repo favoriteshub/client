@@ -9,7 +9,7 @@
 				:type="field.inputType"
 				:required="field.required"
 				:disabled="field.disabled"
-				@change="(e) => callBack(field.name, e.target.value)"
+				@change="(value) => callBack(field.name, value)"
 			/>
 
 			<vSelect
