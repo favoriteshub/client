@@ -26,7 +26,11 @@ export default {
 .dashboard {
 	@extend %container;
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 40px;
+
+	@include media("xl") {
+		grid-template-columns: repeat(6, 1fr);
+	}
 }
 </style>

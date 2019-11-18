@@ -8,17 +8,17 @@ const getters = {};
 
 const actions = {
 	getShows({ commit }) {
-		return API.get("users/shows", (resolve) => {
+		return API.get("/users/shows", (resolve) => {
 			commit("setList", { list: resolve.data, type: "shows" });
 		});
 	},
 	addShow({ commit }, id) {
-		return API.post(`users/shows/${id}`, null, (resolve) => {
+		return API.post(`/users/shows/${id}`, null, (resolve) => {
 			commit("add", { obj: resolve.data, type: "shows" });
 		});
 	},
 	removeShow({ commit }, id) {
-		return API.del(`users/shows/${id}`, () => {
+		return API.del(`/users/shows/${id}`, () => {
 			commit("remove", { id, type: "shows" });
 		});
 	}

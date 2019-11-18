@@ -10,7 +10,7 @@
 				<span>Network:</span>
 				<p>{{ info.network }}</p>
 				<span>Genre:</span>
-				<p>{{ info.genre }}</p>
+				<p>{{ info.genre.join(", ") }}</p>
 			</div>
 		</div>
 
@@ -55,11 +55,11 @@ export default {
 	},
 	beforeRouteEnter(to, from, next) {
 		next((vm) => {
-			vm.$store.dispatch(`shows/getInfo`, to.params.id);
+			vm.$store.dispatch(`shows/getInfo`, { id: to.params.id });
 		});
 	},
 	beforeRouteUpdate(to, from, next) {
-		this.$store.dispatch(`shows/getInfo`, to.params.id);
+		this.$store.dispatch(`shows/getInfo`, { id: to.params.id });
 		next();
 	}
 };
