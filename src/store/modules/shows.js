@@ -15,17 +15,15 @@ const getters = {
 };
 
 const actions = {
-	search(context, title) {
-		return API.create({ url: "/shows/search", params: { title, thetvdb: true } });
+	search(context, { title, thetvdb = false }) {
+		return API.create({ url: "/shows/search", params: { title, thetvdb } });
 	},
-	getInfo({ commit, dispatch }, id) {
-		return API.get(`shows/${id}`, (response) => {
-			commit("setInfo", response.data);
+	async getInfo({ commit }, { id, thetvdb = false }) {
+		const { data: response } = await API.create({ url: `/shows/${id}`, params: { thetvdb } });
 
-			for (let index = 1; index <= response.data.seasons; index++) {
-				dispatch("getSeason", { id, season: index });
-			}
-		});
+		commit("setInfo", response);
+
+		// dispatch("getSeasons", response.thetvdbId);
 	},
 	getSeason({ commit }, { id, season }) {
 		return API.get(`shows/${id}/seasons/${season}`, (response) => commit("setSeason", response.data));
