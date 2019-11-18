@@ -1,6 +1,6 @@
 <template>
 	<div class="dashboard">
-		<vPoster v-for="show in shows" :key="show.id" :data="show" />
+		<vPoster v-for="show in favoriteShows" :key="show.id" :data="show" />
 	</div>
 </template>
 
@@ -14,10 +14,10 @@ export default {
 		vPoster
 	},
 	computed: mapState({
-		shows: (state) => state.user.shows
+		favoriteShows: (state) => state.user.favoriteShows
 	}),
 	created: function() {
-		this.$store.dispatch("user/getShows");
+		this.$store.dispatch("user/getFavoriteShows");
 	}
 };
 </script>

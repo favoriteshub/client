@@ -1,38 +1,38 @@
 import API from "../utils/api";
 
 const state = {
-	shows: []
+	favoriteShows: []
 };
 
 const getters = {};
 
 const actions = {
-	async getShows({ commit }) {
+	async getFavoriteShows({ commit }) {
 		const { data: response } = await API({ url: "/users/shows" });
 
-		commit("setList", { list: response, type: "shows" });
+		commit("setFavoriteShows", response);
 	},
-	async addShow({ commit }, id) {
+	async addFavoriteShow({ commit }, id) {
 		const { data: response } = await API({ method: "post", url: `/users/shows/${id}` });
 
-		commit("add", { obj: response, type: "shows" });
+		commit("addShow", response);
 	},
-	async removeShow({ commit }, id) {
+	async removeFavoriteShow({ commit }, id) {
 		await API({ method: "delete", url: `/users/shows/${id}` });
 
-		commit("remove", { id, type: "shows" });
+		commit("removeShow", id);
 	}
 };
 
 const mutations = {
-	setList(state, { list, type }) {
-		state[type] = list;
+	setFavoriteShows(state, list) {
+		state.favoriteShows = list;
 	},
-	add(state, { obj, type }) {
-		state[type].push(obj);
+	addShow(state, show) {
+		state.favoriteShows.push(show);
 	},
-	remove(state, { id, type }) {
-		state[type] = state[type].filter((el) => el.id !== id);
+	removeShow(state, showId) {
+		state.favoriteShows = state.favoriteShows.filter((el) => el.id !== showId);
 	}
 };
 

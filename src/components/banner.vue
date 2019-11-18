@@ -7,9 +7,9 @@
 
 			<div>
 				<i
-					v-if="showFavouriteIcon"
-					:class="{ star: true, checked: isFavourite }"
-					@click="$emit(`favouriteClick`, data, !isFavourite)"
+					v-if="showFavoriteIcon"
+					:class="{ star: true, checked: isFavorite }"
+					@click="$emit(`favoriteClick`, data, !isFavorite)"
 				/>
 
 				<router-link v-if="data.id" :to="`/series/${data.id}`">
@@ -30,8 +30,8 @@ export default {
 			type: Object,
 			required: true
 		},
-		showFavouriteIcon: Boolean,
-		isFavourite: Boolean
+		showFavoriteIcon: Boolean,
+		isFavorite: Boolean
 	}
 };
 </script>

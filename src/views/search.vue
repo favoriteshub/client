@@ -9,9 +9,9 @@
 				v-for="show in shows"
 				:key="show.title"
 				:data="show"
-				:showFavouriteIcon="authenticated && formValues.location !== `TheTVDB`"
-				:isFavourite="findIfFavourite(show.id)"
-				@favouriteClick="handleFavouriting"
+				:showFavoriteIcon="authenticated && formValues.location !== `TheTVDB`"
+				:isFavorite="findIfFavorite(show.id)"
+				@favoriteClick="handleFavoriting"
 				@detailsClick="retrieveSeriesInfo(show.thetvdbId)"
 			/>
 		</div>
@@ -40,7 +40,7 @@ export default {
 		};
 	},
 	computed: mapState({
-		userShows: (state) => state.user.shows,
+		favoriteShows: (state) => state.user.favoriteShows,
 		authenticated: (state) => state.auth.authenticated,
 		showInfo: (state) => state.shows.show.info
 	}),
@@ -65,12 +65,12 @@ export default {
 		retrieveSeriesInfo: function(thetvdbId) {
 			this.$store.dispatch(`shows/getInfo`, { id: thetvdbId, thetvdb: true });
 		},
-		handleFavouriting: function({ _id }, toAdd) {
-			const actionName = toAdd ? "user/addShow" : "user/removeShow";
-			this.$store.dispatch(actionName, _id);
+		handleFavoriting: function({ id }, toAdd) {
+			const actionName = toAdd ? "user/addFavoriteShow" : "user/removeFavoriteShow";
+			this.$store.dispatch(actionName, id);
 		},
-		findIfFavourite(id) {
-			return findIndex(this.userShows, { id }) !== -1;
+		findIfFavorite(id) {
+			return findIndex(this.favoriteShows, { id }) !== -1;
 		},
 		dataHandler: function(key, val) {
 			this.formValues[key] = val;
