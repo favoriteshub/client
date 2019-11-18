@@ -1,4 +1,4 @@
-import * as API from "../utils/api";
+import API from "../utils/api";
 const { orderBy } = require("lodash");
 
 const state = {
@@ -16,17 +16,19 @@ const getters = {
 
 const actions = {
 	search(context, { title, thetvdb = false }) {
-		return API.create({ url: "/shows/search", params: { title, thetvdb } });
+		return API({ url: "/shows/search", params: { title, thetvdb } });
 	},
 	async getInfo({ commit }, { id, thetvdb = false }) {
-		const { data: response } = await API.create({ url: `/shows/${id}`, params: { thetvdb } });
+		const { data: response } = await API({ url: `/shows/${id}`, params: { thetvdb } });
 
 		commit("setInfo", response);
 
 		// dispatch("getSeasons", response.thetvdbId);
 	},
-	getSeason({ commit }, { id, season }) {
-		return API.get(`shows/${id}/seasons/${season}`, (response) => commit("setSeason", response.data));
+	async getSeason({ commit }, { id, season }) {
+		const { data: response } = await API({ url: `shows/${id}/seasons/${season}` });
+
+		commit("setSeason", response);
 	}
 };
 

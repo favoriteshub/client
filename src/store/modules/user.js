@@ -1,4 +1,4 @@
-import * as API from "../utils/api";
+import API from "../utils/api";
 
 const state = {
 	shows: []
@@ -7,20 +7,20 @@ const state = {
 const getters = {};
 
 const actions = {
-	getShows({ commit }) {
-		return API.get("/users/shows", (resolve) => {
-			commit("setList", { list: resolve.data, type: "shows" });
-		});
+	async getShows({ commit }) {
+		const { data: response } = await API({ url: "/users/shows" });
+
+		commit("setList", { list: response, type: "shows" });
 	},
-	addShow({ commit }, id) {
-		return API.post(`/users/shows/${id}`, null, (resolve) => {
-			commit("add", { obj: resolve.data, type: "shows" });
-		});
+	async addShow({ commit }, id) {
+		const { data: response } = await API({ method: "post", url: `/users/shows/${id}` });
+
+		commit("add", { obj: response, type: "shows" });
 	},
-	removeShow({ commit }, id) {
-		return API.del(`/users/shows/${id}`, () => {
-			commit("remove", { id, type: "shows" });
-		});
+	async removeShow({ commit }, id) {
+		await API({ method: "delete", url: `/users/shows/${id}` });
+
+		commit("remove", { id, type: "shows" });
 	}
 };
 
