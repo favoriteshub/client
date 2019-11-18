@@ -33,6 +33,7 @@ export default {
 	height: 40px;
 	border: 0;
 	border-radius: 3px;
+	cursor: pointer;
 
 	&:disabled {
 		opacity: 0.5;
