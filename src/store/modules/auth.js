@@ -1,5 +1,5 @@
-import API from "../utils/api";
-import { isAuthenticated, saveTokensInStorage, removeTokensfromStorage } from "../utils/session";
+import API from "@/store/utils/api";
+import { isAuthenticated, saveTokensInStorage, removeTokensfromStorage } from "@/store/utils/session";
 import router from "@/router";
 
 const state = {

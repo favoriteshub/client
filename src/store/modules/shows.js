@@ -1,4 +1,4 @@
-import API from "../utils/api";
+import API from "@/store/utils/api";
 
 const state = {
 	show: {

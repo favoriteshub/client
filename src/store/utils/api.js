@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken, getRefreshToken, saveTokensInStorage } from "./session";
+import { getToken, getRefreshToken, saveTokensInStorage } from "@/store/utils/session";
 import store, { resetState } from "@/store/store";
 
 const API = axios.create({
