@@ -17,7 +17,7 @@
 					:class="{ open: openEpisode === episode.title }"
 				>
 					<div><i /></div>
-					<span>{{ episode.episode }}</span>
+					<span>{{ episode.number }}</span>
 					<p>{{ episode.title }}</p>
 					<span>{{ formatDate(episode.aired) }}</span>
 					<p>{{ episode.summary }}</p>
@@ -29,7 +29,6 @@
 
 <script>
 import moment from "moment";
-import { debounce } from "lodash";
 
 export default {
 	name: "episodes",
@@ -44,11 +43,10 @@ export default {
 	},
 	watch: {
 		seasons: function() {
-			this.debouncedUpdateOpenArticle();
+			setTimeout(() => {
+				this.updateOpenArticle();
+			}, 250);
 		}
-	},
-	created: function() {
-		this.debouncedUpdateOpenArticle = debounce(this.updateOpenArticle, 500);
 	},
 	methods: {
 		formatDate: function(date) {
@@ -105,7 +103,7 @@ export default {
 
 			> div {
 				display: grid;
-				grid-template-columns: 15px 30px 3fr 1fr;
+				grid-template-columns: 15px 25px 3fr 1fr;
 				align-items: center;
 				margin-bottom: 2px;
 				padding: 10px;

@@ -1,5 +1,4 @@
 import API from "../utils/api";
-const { orderBy } = require("lodash");
 
 const state = {
 	show: {
@@ -8,27 +7,23 @@ const state = {
 	}
 };
 
-const getters = {
-	seasons: (state) => {
-		return orderBy(state.show.seasons, (el) => new Number(el.season));
-	}
-};
+const getters = {};
 
 const actions = {
 	search(context, { title, thetvdb = false }) {
 		return API({ url: "/shows/search", params: { title, thetvdb } });
 	},
-	async getInfo({ commit }, { id, thetvdb = false }) {
+	async getInfo({ commit, dispatch }, { id, thetvdb = false }) {
 		const { data: response } = await API({ url: `/shows/${id}`, params: { thetvdb } });
 
 		commit("setInfo", response);
 
-		// dispatch("getSeasons", response.thetvdbId);
+		dispatch("getSeasons", response.thetvdbId);
 	},
-	async getSeason({ commit }, { id, season }) {
-		const { data: response } = await API({ url: `shows/${id}/seasons/${season}` });
+	async getSeasons({ commit }, thetvdbId) {
+		const { data: response } = await API({ url: `shows/${thetvdbId}/seasons` });
 
-		commit("setSeason", response);
+		commit("setSeasons", response);
 	}
 };
 
@@ -37,8 +32,8 @@ const mutations = {
 		state.show.info = data;
 		state.show.seasons = [];
 	},
-	setSeason(state, season) {
-		state.show.seasons.push(season);
+	setSeasons(state, seasons) {
+		state.show.seasons = seasons;
 	}
 };
 
