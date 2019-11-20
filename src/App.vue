@@ -4,21 +4,21 @@
 
 		<main><router-view /></main>
 
-		<vPopup />
+		<vPopupContainer />
 		<vLoaderContainer />
 	</div>
 </template>
 
 <script>
 import vHeaderContainer from "@/containers/header";
-import vPopup from "@/components/popup";
+import vPopupContainer from "@/containers/popup";
 import vLoaderContainer from "@/containers/loader";
 
 export default {
 	name: "app",
 	components: {
 		vHeaderContainer,
-		vPopup,
+		vPopupContainer,
 		vLoaderContainer
 	}
 };

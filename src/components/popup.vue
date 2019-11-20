@@ -1,27 +1,20 @@
 <template>
-	<div v-show="visible" class="v-popup">
-		<div class="overlay" @click="closePopup"></div>
-		<div :class="[`content`, extraClasses]">
+	<div v-show="isVisible" class="v-popup">
+		<div class="overlay" @click="$emit('outsideClick')"></div>
+		<div :class="['content', extraClasses]">
 			<component :is="component.name" v-bind="component.props" />
-			<div class="close" @click="closePopup"><i /></div>
+			<div class="close" @click="$emit('outsideClick')"><i /></div>
 		</div>
 	</div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
 	name: "v-popup",
-	computed: mapState({
-		visible: (state) => state.popup.visible,
-		component: (state) => state.popup.component,
-		extraClasses: (state) => state.popup.extraClasses
-	}),
-	methods: {
-		closePopup: function() {
-			this.$store.commit("popup/close");
-		}
+	props: {
+		isVisible: Boolean,
+		component: Object,
+		extraClasses: String
 	}
 };
 </script>
