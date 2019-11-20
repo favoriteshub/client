@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<vHeader />
+		<vHeaderContainer />
 
 		<main><router-view /></main>
 
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import vHeader from "@/components/header";
+import vHeaderContainer from "@/containers/header";
 import vPopup from "@/components/popup";
 import vLoader from "@/components/loader";
 
 export default {
 	name: "app",
 	components: {
-		vHeader,
+		vHeaderContainer,
 		vPopup,
 		vLoader
 	}
