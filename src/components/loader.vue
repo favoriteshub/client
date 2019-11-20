@@ -1,5 +1,5 @@
 <template>
-	<div v-show="visible" class="v-loader">
+	<div v-show="isVisible" class="v-loader">
 		<div class="overlay"></div>
 		<div class="element">
 			<div />
@@ -11,13 +11,11 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
 	name: "v-loader",
-	computed: mapState({
-		visible: (state) => state.loader.visible
-	})
+	props: {
+		isVisible: Boolean
+	}
 };
 </script>
 
