@@ -46,6 +46,7 @@ export default {
 	}),
 	watch: {
 		showInfo: function(newVal) {
+			this.$store.commit("loader/close");
 			this.$router.push(`/series/${newVal.id}`);
 		}
 	},
@@ -63,6 +64,7 @@ export default {
 			}
 		},
 		retrieveSeriesInfo: function(thetvdbId) {
+			this.$store.commit("loader/open");
 			this.$store.dispatch(`shows/getInfo`, { id: thetvdbId, thetvdb: true });
 		},
 		handleFavoriting: function({ id }, toAdd) {

@@ -22,7 +22,7 @@ export default {
 <style lang="scss" scoped>
 .v-loader {
 	.overlay {
-		background-color: rgba(#fff, 0.9);
+		background-color: rgba(#fff, 0.75);
 	}
 
 	// https://codepen.io/I-is-kevin/pen/jqejXj
@@ -31,6 +31,7 @@ export default {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		z-index: 100;
 
 		div {
 			animation: expand 1s ease-in-out infinite;
