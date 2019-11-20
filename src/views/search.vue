@@ -2,14 +2,16 @@
 	<div class="v-search">
 		<vForm @submit="getResults" submitButtonText="search" :fields="form" :callBack="dataHandler" />
 
-		<p v-if="searchCarriedOut && shows.length === 0">No results were found, try changing the search location!</p>
+		<p v-if="searchNumber > 0 && searchResults.length === 0">
+			No results were found, try changing the search location!
+		</p>
 
 		<div class="list">
 			<vBanner
-				v-for="show in shows"
+				v-for="show in searchResults"
 				:key="show.title"
 				:data="show"
-				:showFavoriteIcon="authenticated && formValues.location !== `TheTVDB`"
+				:showFavoriteIcon="authenticated && searchParams.location !== `TheTVDB`"
 				:isFavorite="findIfFavorite(show.id)"
 				@favoriteClick="handleFavoriting"
 				@detailsClick="retrieveSeriesInfo(show.thetvdbId)"
@@ -33,16 +35,16 @@ export default {
 	},
 	data: function() {
 		return {
-			formValues: {},
-			shows: [],
-			form: searchForm,
-			searchCarriedOut: false
+			form: searchForm
 		};
 	},
 	computed: mapState({
 		favoriteShows: (state) => state.user.favoriteShows,
 		authenticated: (state) => state.auth.authenticated,
-		showInfo: (state) => state.shows.show.info
+		showInfo: (state) => state.shows.show.info,
+		searchParams: (state) => state.shows.search.params,
+		searchResults: (state) => state.shows.search.results,
+		searchNumber: (state) => state.shows.search.number
 	}),
 	watch: {
 		showInfo: function(newVal) {
@@ -52,16 +54,7 @@ export default {
 	},
 	methods: {
 		getResults: async function() {
-			const { data: shows } = await this.$store.dispatch(`shows/search`, {
-				title: this.formValues.title,
-				thetvdb: this.formValues.location === "TheTVDB"
-			});
-
-			this.shows = shows;
-
-			if (!this.searchCarriedOut) {
-				this.searchCarriedOut = true;
-			}
+			this.$store.dispatch(`shows/search`);
 		},
 		retrieveSeriesInfo: function(thetvdbId) {
 			this.$store.commit("loader/open");
@@ -74,9 +67,14 @@ export default {
 		findIfFavorite(id) {
 			return findIndex(this.favoriteShows, { id }) !== -1;
 		},
-		dataHandler: function(key, val) {
-			this.formValues[key] = val;
+		dataHandler: function(key, value) {
+			this.$store.commit("shows/setSearchParam", { key, value });
 		}
+	},
+	created: function() {
+		this.form = searchForm.map((el) =>
+			this.searchParams[el.name] ? { ...el, default: this.searchParams[el.name] } : el
+		);
 	}
 };
 </script>
