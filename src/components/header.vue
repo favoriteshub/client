@@ -1,36 +1,27 @@
 <template>
-	<header class="v-header" v-if="authenticated">
-		<router-link to="/" class="home"></router-link>
-		<div>
-			<i class="search" @click="openSearchPopup" />
-			<i class="logout" @click="logout" />
-		</div>
-	</header>
+	<header class="v-header">
+		<router-link :to="authenticated ? '/dashboard' : '/'" class="home"></router-link>
 
-	<header class="v-header" v-else>
-		<router-link to="/welcome" class="home"></router-link>
 		<div>
-			<router-link to="/login">Log in</router-link>
-			<router-link to="/register">Register</router-link>
+			<router-link to="/search" class="search"><i /></router-link>
+
+			<i v-if="authenticated" class="logout" @click="$emit('logoutClick')" />
+
+			<template v-else>
+				<router-link to="/login">Log in</router-link>
+				<router-link to="/register">Register</router-link>
+			</template>
 		</div>
 	</header>
 </template>
 
 <script>
-import vSearch from "@/components/search";
-import {mapState} from "vuex";
-
 export default {
 	name: "v-header",
-	computed: mapState({
-		authenticated: (state) => state.auth.authenticated
-	}),
-	methods: {
-		openSearchPopup: function() {
-			this.$store.commit("popup/open", {component: {name: vSearch}});
-		},
-		logout: function() {
-			this.$store.commit("auth/logout");
+	props: {
+		authenticated: {
+			type: Boolean,
+			required: true
 		}
 	}
 };
@@ -59,13 +50,22 @@ export default {
 	}
 
 	.search {
-		@include icon($icon-search);
+		display: contents;
+
+		&:hover {
+			color: #000;
+		}
+
+		i {
+			@include icon($icon-search);
+		}
 	}
 
 	div {
 		display: grid;
 		grid-column-gap: 20px;
 		grid-auto-flow: column;
+		align-items: center;
 
 		a {
 			font-style: italic;

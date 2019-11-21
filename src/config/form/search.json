@@ -1,10 +1,22 @@
 [
 	{
-		"label": "Series",
-		"name": "",
+		"label": "Series Name",
+		"name": "title",
 		"type": "input",
 		"inputType": "text",
+		"options": [],
 		"disabled": false,
-		"required": true
+		"required": true,
+		"default": null
+	},
+	{
+		"label": "Search Location",
+		"name": "location",
+		"type": "select",
+		"inputType": null,
+		"options": ["Platform (Favorites Hub)", "TheTVDB"],
+		"disabled": false,
+		"required": false,
+		"default": "Platform (Favorites Hub)"
 	}
 ]

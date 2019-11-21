@@ -1,25 +1,25 @@
 <template>
 	<div id="app">
-		<vHeader />
+		<vHeaderContainer />
 
 		<main><router-view /></main>
 
-		<vPopup />
-		<vLoader />
+		<vPopupContainer />
+		<vLoaderContainer />
 	</div>
 </template>
 
 <script>
-import vHeader from "@/components/header";
-import vPopup from "@/components/popup";
-import vLoader from "@/components/loader";
+import vHeaderContainer from "@/containers/header";
+import vPopupContainer from "@/containers/popup";
+import vLoaderContainer from "@/containers/loader";
 
 export default {
 	name: "app",
 	components: {
-		vHeader,
-		vPopup,
-		vLoader
+		vHeaderContainer,
+		vPopupContainer,
+		vLoaderContainer
 	}
 };
 </script>

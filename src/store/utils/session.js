@@ -7,14 +7,15 @@ export function getRefreshToken() {
 }
 
 export function isAuthenticated() {
-	let token = getToken();
-	let refreshToken = getRefreshToken();
+	const token = getToken();
+	const refreshToken = getRefreshToken();
+
 	return token !== null && refreshToken !== null;
 }
 
-export function saveTokensInStorage(data) {
-	localStorage.setItem("token", data.token);
-	localStorage.setItem("refreshToken", data.refreshToken);
+export function saveTokensInStorage(token, refreshToken) {
+	localStorage.setItem("token", token);
+	localStorage.setItem("refreshToken", refreshToken);
 }
 
 export function removeTokensfromStorage() {

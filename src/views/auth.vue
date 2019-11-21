@@ -40,7 +40,9 @@ export default {
 	},
 	methods: {
 		authenticate: function() {
-			this.$store.dispatch(`auth/${this.location}`, this.credentials);
+			const actionName = this.location === "login" ? "auth/login" : "auth/register";
+
+			this.$store.dispatch(actionName, this.credentials);
 		},
 		dataHandler: function(key, val) {
 			this.credentials[key] = val;

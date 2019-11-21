@@ -1,5 +1,5 @@
 <template>
-	<div v-show="visible" class="v-loader">
+	<div v-show="isVisible" class="v-loader">
 		<div class="overlay"></div>
 		<div class="element">
 			<div />
@@ -11,20 +11,18 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
-
 export default {
 	name: "v-loader",
-	computed: mapState({
-		visible: (state) => state.loader.visible
-	})
+	props: {
+		isVisible: Boolean
+	}
 };
 </script>
 
 <style lang="scss" scoped>
 .v-loader {
 	.overlay {
-		background-color: rgba(#fff, 0.9);
+		background-color: rgba(#fff, 0.75);
 	}
 
 	// https://codepen.io/I-is-kevin/pen/jqejXj
@@ -33,6 +31,7 @@ export default {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		z-index: 100;
 
 		div {
 			animation: expand 1s ease-in-out infinite;

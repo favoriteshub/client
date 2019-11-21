@@ -1,13 +1,15 @@
 <template>
 	<div class="v-input">
-		<label :class="{required}">{{ label }}</label>
+		<label v-if="label" :class="{ required }">{{ label }}</label>
+
 		<input
 			:type="type"
 			:name="name"
+			:value="defaultValue"
 			:required="required"
 			:disabled="disabled"
-			@blur="$emit(`blur`, $event)"
-			@input="$emit(`change`, $event)"
+			@blur="$emit(`blur`, $event.target.value)"
+			@input="$emit(`change`, $event.target.value)"
 		/>
 	</div>
 </template>
@@ -18,10 +20,12 @@ export default {
 	props: {
 		type: {
 			type: String,
-			default: "text"
+			default: "text",
+			validator: (value) => ["email", "file", "number", "password", "tel", "text"].indexOf(value) !== -1
 		},
-		name: String,
 		label: String,
+		name: String,
+		defaultValue: String,
 		required: Boolean,
 		disabled: Boolean
 	}

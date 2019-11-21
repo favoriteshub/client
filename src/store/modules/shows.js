@@ -1,34 +1,41 @@
-import * as API from "../utils/api";
-const {orderBy} = require("lodash");
+import API from "@/store/utils/api";
 
 const state = {
 	show: {
 		info: {},
 		seasons: []
+	},
+	search: {
+		params: {},
+		results: [],
+		number: 0
 	}
 };
 
-const getters = {
-	seasons: (state) => {
-		return orderBy(state.show.seasons, (el) => new Number(el.season));
-	}
-};
+const getters = {};
 
 const actions = {
-	search(context, name) {
-		return API.create({url: "shows/search", params: {name}});
-	},
-	getInfo({commit, dispatch}, id) {
-		return API.get(`shows/${id}`, (response) => {
-			commit("setInfo", response.data);
+	async search({ commit, state }) {
+		const { title, location } = state.search.params;
 
-			for (let index = 1; index <= response.data.seasons; index++) {
-				dispatch("getSeason", {id, season: index});
-			}
+		const { data: response } = await API({
+			url: "/shows/search",
+			params: { title, thetvdb: location === "TheTVDB" }
 		});
+
+		commit("setSearchResults", response);
 	},
-	getSeason({commit}, {id, season}) {
-		return API.get(`shows/${id}/seasons/${season}`, (response) => commit("setSeason", response.data));
+	async getInfo({ commit, dispatch }, { id, thetvdb = false }) {
+		const { data: response } = await API({ url: `/shows/${id}`, params: { thetvdb } });
+
+		commit("setInfo", response);
+
+		dispatch("getSeasons", response.thetvdbId);
+	},
+	async getSeasons({ commit }, thetvdbId) {
+		const { data: response } = await API({ url: `shows/${thetvdbId}/seasons` });
+
+		commit("setSeasons", response);
 	}
 };
 
@@ -37,8 +44,15 @@ const mutations = {
 		state.show.info = data;
 		state.show.seasons = [];
 	},
-	setSeason(state, season) {
-		state.show.seasons.push(season);
+	setSeasons(state, seasons) {
+		state.show.seasons = seasons;
+	},
+	setSearchParam(state, { key, value }) {
+		state.search.params[key] = value;
+	},
+	setSearchResults(state, results) {
+		state.search.results = results;
+		state.search.number += 1;
 	}
 };
 

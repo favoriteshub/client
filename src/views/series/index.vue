@@ -10,7 +10,7 @@
 				<span>Network:</span>
 				<p>{{ info.network }}</p>
 				<span>Genre:</span>
-				<p>{{ info.genre }}</p>
+				<p>{{ info.genre.join(", ") }}</p>
 			</div>
 		</div>
 
@@ -19,10 +19,10 @@
 				<a :href="`https://www.youtube.com/results?search_query=${info.title} season 1 trailer`" target="_blank">
 					<img src="../../assets/img/yt.png" alt="Trailer" />
 				</a>
-				<a :href="`https://www.imdb.com/title/${info.imdb}`" target="_blank">
+				<a :href="`https://www.imdb.com/title/${info.imdbId}`" target="_blank">
 					<img src="../../assets/img/IMDb.png" alt="IMDb logo" />
 				</a>
-				<a :href="`https://www.thetvdb.com/series/${info.thetvdb}`" target="_blank">
+				<a :href="`https://www.thetvdb.com/series/${info.thetvdbSlug}`" target="_blank">
 					<img src="../../assets/img/TheTVDB.png" alt="TheTVDB logo" />
 				</a>
 			</section>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import {mapState, mapGetters} from "vuex";
+import { mapState } from "vuex";
 import Episodes from "@/views/series/episodes";
 
 export default {
@@ -47,19 +47,17 @@ export default {
 	},
 	computed: {
 		...mapState({
-			info: (state) => state.shows.show.info
-		}),
-		...mapGetters({
-			seasons: "shows/seasons"
+			info: (state) => state.shows.show.info,
+			seasons: (state) => state.shows.show.seasons
 		})
 	},
 	beforeRouteEnter(to, from, next) {
 		next((vm) => {
-			vm.$store.dispatch(`shows/getInfo`, to.params.seriesId);
+			vm.$store.dispatch(`shows/getInfo`, { id: to.params.id });
 		});
 	},
 	beforeRouteUpdate(to, from, next) {
-		this.$store.dispatch(`shows/getInfo`, to.params.seriesId);
+		this.$store.dispatch(`shows/getInfo`, { id: to.params.id });
 		next();
 	}
 };
@@ -83,11 +81,8 @@ export default {
 
 		div {
 			display: grid;
-			grid-template-columns: 1fr 1fr;
-
-			p {
-				justify-self: end;
-			}
+			grid-template-columns: 1fr 2fr;
+			grid-column-gap: 10px;
 		}
 	}
 

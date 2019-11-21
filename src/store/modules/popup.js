@@ -1,4 +1,4 @@
-import {noScroll} from "@/helpers/body";
+import { noScroll } from "@/helpers/body";
 
 const state = {
 	visible: false,
@@ -17,7 +17,7 @@ const mutations = {
 		state.extraClasses = "";
 		noScroll(false);
 	},
-	open(state, {component, extraClasses}) {
+	open(state, { component, extraClasses }) {
 		state.visible = true;
 		state.component = component;
 		state.extraClasses = extraClasses;

@@ -16,42 +16,44 @@ const router = new Router({
 			component: Homepage
 		},
 		{
-			path: "/welcome",
-			name: "welcome",
-			component: () => import("@/views/welcome")
+			path: "/dashboard",
+			name: "dashboard",
+			component: () => import("@/views/dashboard")
 		},
 		{
 			path: "/register",
 			name: "register",
 			component: () => import("@/views/auth"),
-			props: {location: "register"}
+			props: { location: "register" }
 		},
 		{
 			path: "/login",
 			name: "login",
 			component: () => import("@/views/auth"),
-			props: {location: "login"}
+			props: { location: "login" }
 		},
 		{
-			path: "/series/:seriesId",
+			path: "/series/:id",
 			name: "series",
-			component: () => import("@/views/series/index")
+			component: () => import("@/views/series")
+		},
+		{
+			path: "/search",
+			name: "search",
+			component: () => import("@/views/search")
 		}
 	]
 });
 
 router.beforeEach((to, from, next) => {
-	let authenticated = store.state.auth.authenticated;
+	const authenticated = store.state.auth.authenticated;
+	const toPublicRoute = to.name === "login" || to.name === "register" || to.name === "homepage";
+	const toPrivatePage = to.name === "dashboard";
 
 	if (authenticated) {
-		if (to.name === "login" || to.name === "register") {
-			next(!from.name ? "/" : false);
-		} else {
-			next();
-		}
+		next(toPublicRoute ? "/dashboard" : undefined);
 	} else {
-		let guestSession = to.name === "login" || to.name === "register" || to.name === "welcome";
-		next(guestSession ? undefined : "/welcome");
+		next(toPublicRoute || !toPrivatePage ? undefined : "/");
 	}
 });
 

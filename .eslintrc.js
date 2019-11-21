@@ -5,6 +5,8 @@ module.exports = {
 	},
 	extends: ["plugin:vue/strongly-recommended", "@vue/prettier"],
 	rules: {
+		"no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+		"no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
 		"vue/require-default-prop": "off",
 		"vue/name-property-casing": ["error", "kebab-case"],
 		"vue/attribute-hyphenation": "off"
@@ -14,7 +16,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ["**/__tests__/*.{j,t}s?(x)"],
+			files: ["**/__tests__/*.{j,t}s?(x)", "**/tests/unit/**/*.spec.{j,t}s?(x)"],
 			env: {
 				jest: true
 			}

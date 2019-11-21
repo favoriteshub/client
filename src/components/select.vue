@@ -1,22 +1,24 @@
 <template>
 	<div class="v-select">
-		<label :class="{required}">{{ label }}</label>
+		<label v-if="label" :class="{ required }">{{ label }}</label>
+
 		<div>
 			<input
 				type="text"
-				:readonly="true"
+				:name="name"
 				placeholder="Select an option"
 				:value="value"
 				:required="required"
 				:disabled="disabled"
 				@click="handleClick"
 				@blur="handleBlur"
+				readonly
 			/>
 
-			<i :class="{open: isListVisible}" />
+			<i :class="{ open: isListVisible }" />
 
 			<transition name="ul-animation">
-				<ul v-if="isListVisible">
+				<ul v-if="isListVisible && options.length">
 					<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{ el }}</li>
 				</ul>
 			</transition>
@@ -29,6 +31,8 @@ export default {
 	name: "v-select",
 	props: {
 		label: String,
+		name: String,
+		defaultValue: String,
 		required: Boolean,
 		disabled: Boolean,
 		options: {
@@ -39,20 +43,20 @@ export default {
 	data: function() {
 		return {
 			isListVisible: false,
-			value: ""
+			value: this.defaultValue ? this.defaultValue : ""
 		};
 	},
 	methods: {
 		handleClick: function() {
-			this.$data.isListVisible = !this.$data.isListVisible;
+			this.isListVisible = !this.isListVisible;
 		},
 		handleBlur: function() {
-			if (this.$data.isListVisible) {
-				this.$data.isListVisible = false;
+			if (this.isListVisible) {
+				this.isListVisible = false;
 			}
 		},
 		handleItemClick: function(e) {
-			this.$data.value = e.target.innerHTML;
+			this.value = e.target.innerHTML;
 
 			this.$emit("change", e.target.innerHTML);
 		}
@@ -110,6 +114,7 @@ export default {
 
 		ul {
 			position: absolute;
+			z-index: 10;
 			top: calc(100% + 5px);
 			left: 0;
 			width: 100%;

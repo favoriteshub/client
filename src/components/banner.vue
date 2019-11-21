@@ -6,8 +6,17 @@
 			<p>{{ `${data.title} (${data.status})` }}</p>
 
 			<div>
-				<i :class="{star: true, checked: isFavourite}" @click="$emit(`favouriteClick`, data.id, !isFavourite)" />
-				<i class="details" @click="$emit(`detailsClick`)" />
+				<i
+					v-if="showFavoriteIcon"
+					:class="{ star: true, checked: isFavorite }"
+					@click="$emit(`favoriteClick`, data, !isFavorite)"
+				/>
+
+				<router-link v-if="data.id" :to="`/series/${data.id}`">
+					<i class="details" />
+				</router-link>
+
+				<i v-else class="details" @click="$emit(`detailsClick`)" />
 			</div>
 		</div>
 	</div>
@@ -21,7 +30,8 @@ export default {
 			type: Object,
 			required: true
 		},
-		isFavourite: Boolean
+		showFavoriteIcon: Boolean,
+		isFavorite: Boolean
 	}
 };
 </script>
@@ -64,12 +74,23 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 30px;
+		height: 35px;
 		background-color: LightSalmon;
 		padding: 0 5px;
 
 		p {
 			color: #fff;
+		}
+
+		div {
+			display: grid;
+			grid-auto-flow: column;
+			grid-gap: 5px;
+			align-items: center;
+
+			a {
+				display: contents;
+			}
 		}
 	}
 }

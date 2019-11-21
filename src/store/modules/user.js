@@ -1,38 +1,38 @@
-import * as API from "../utils/api";
+import API from "@/store/utils/api";
 
 const state = {
-	shows: []
+	favoriteShows: []
 };
 
 const getters = {};
 
 const actions = {
-	getShows({commit}) {
-		return API.get("users/shows", (resolve) => {
-			commit("setList", {list: resolve.data, type: "shows"});
-		});
+	async getFavoriteShows({ commit }) {
+		const { data: response } = await API({ url: "/users/shows" });
+
+		commit("setFavoriteShows", response);
 	},
-	addShow({commit}, id) {
-		return API.post(`users/shows/${id}`, null, (resolve) => {
-			commit("add", {obj: resolve.data, type: "shows"});
-		});
+	async addFavoriteShow({ commit }, id) {
+		const { data: response } = await API({ method: "post", url: `/users/shows/${id}` });
+
+		commit("addShow", response);
 	},
-	removeShow({commit}, id) {
-		return API.del(`users/shows/${id}`, () => {
-			commit("remove", {id, type: "shows"});
-		});
+	async removeFavoriteShow({ commit }, id) {
+		await API({ method: "delete", url: `/users/shows/${id}` });
+
+		commit("removeShow", id);
 	}
 };
 
 const mutations = {
-	setList(state, {list, type}) {
-		state[type] = list;
+	setFavoriteShows(state, list) {
+		state.favoriteShows = list;
 	},
-	add(state, {obj, type}) {
-		state[type].push(obj);
+	addShow(state, show) {
+		state.favoriteShows.push(show);
 	},
-	remove(state, {id, type}) {
-		state[type] = state[type].filter((el) => el.id !== id);
+	removeShow(state, showId) {
+		state.favoriteShows = state.favoriteShows.filter((el) => el.id !== showId);
 	}
 };
 
